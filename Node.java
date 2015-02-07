@@ -5,7 +5,6 @@ public class Node {
 	//This constructor handles unweighted graphs.
 	public Node(int nextNode) {	
 		setNode(nextNode);
-		G.nodeCount++;
 	}
 	
 	private void setNode(int value){

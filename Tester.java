@@ -112,7 +112,7 @@ public class Tester {
 		System.out.println("Input integer representing node to check adjacencies for.");
 		first = scanner.nextInt();
 		writer.println("Adjacencies for Node " + first + ":");
-		writer.println(G.adjacentVertices(first));
+		writer.println(G.adjacentVertices(first).toString());
 		scanner.close();
 		fileScanner.close();
 		

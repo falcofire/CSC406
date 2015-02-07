@@ -23,14 +23,18 @@ public abstract class G {
 			//This creates the Node objects and then checks for weighted graph and process data further appropriately.
 			//Need to check for previously existing nodes before creating new ones.
 			node = existNode(nextNode);
-			if (node == null)
+			if (node == null){
 				node = new Node(nextNode);
+				nodeCount++;
+			}
 			degrees[nextNode]++;
 			outDegrees[nextNode]++;
 			nextNode = Tester.fileScanner.nextInt();
 			node2 = existNode(nextNode);
-			if (node2 == null)
+			if (node2 == null){
 				node2 = new Node(nextNode);
+				nodeCount++;
+			}
 			degrees[nextNode]++;
 			inDegrees[nextNode]++;
 			if (Tester.type == 0 || Tester.type == 2){

@@ -1,11 +1,10 @@
 import java.util.*;
 public abstract class G {
 	private static int edgeCount = 0;
-	public static int nodeCount = 0;
 	private static int[] degrees = new int[Tester.size + 1];
 	private static int[] outDegrees = new int[Tester.size + 1];
 	private static int[] inDegrees = new int[Tester.size + 1];
-	private Set<Node> nodes = new HashSet<Node>();
+	private static Set<Node> nodes = new HashSet<Node>();
 //	Iterator marker = list.listIterator();
 	
 	public G () {
@@ -25,7 +24,7 @@ public abstract class G {
 			node = existNode(nextNode);
 			if (node == null){
 				node = new Node(nextNode);
-				nodeCount++;
+				nodes.add(node);
 			}
 			degrees[nextNode]++;
 			outDegrees[nextNode]++;
@@ -33,7 +32,7 @@ public abstract class G {
 			node2 = existNode(nextNode);
 			if (node2 == null){
 				node2 = new Node(nextNode);
-				nodeCount++;
+				nodes.add(node2);
 			}
 			degrees[nextNode]++;
 			inDegrees[nextNode]++;
@@ -64,7 +63,7 @@ public abstract class G {
 	
 	//Methods that are implemented uniformly and ubiquitously across all graph classes.
 	protected static int numNodes(){
-		return nodeCount;
+		return nodes.size();
 	}
 	
 	protected static int numEdges(){
@@ -117,7 +116,7 @@ public abstract class G {
 			case 3: return ALDG.areAdjacent(i, j);
 			default: return false;
 		}
-	}//End areAdjacent
+	}
 	protected static List<Node> adjacentVertices(int i){
 		switch (Tester.type){
 			case 0: return AMWDG.adjacentVertices(i);
@@ -126,5 +125,38 @@ public abstract class G {
 			case 3: return ALDG.adjacentVertices(i);
 			default: return null;
 		}
-	}//End adjacent Vertices
+	}
+	protected static boolean existEdge(int i, int j){
+		switch (Tester.type){
+			case 0: return AMWDG.existEdge(i, j);
+			case 1: return AMDG.existEdge(i, j);
+			case 2: return ALWDG.existEdge(i, j);
+			case 3: return ALDG.existEdge(i, j);
+			default: return false;
+		}
+	}
+	protected static void removeEdge(int i, int j){
+		switch (Tester.type){
+			case 0: AMWDG.removeEdge(i, j);
+					break;
+			case 1: AMDG.removeEdge(i, j);
+					break;
+			case 2: ALWDG.removeEdge(i, j);
+					break;
+			case 3: ALDG.removeEdge(i, j);
+					break;
+		}
+	}
+	protected static void putEdge(int i, int j){
+		switch (Tester.type){
+			case 0: AMWDG.putEdge(i, j);
+					break;
+			case 1: AMDG.putEdge(i, j);
+					break;
+			case 2: ALWDG.putEdge(i, j);
+					break;
+			case 3: ALDG.putEdge(i, j);
+					break;
+		}
+	}
 }//End G

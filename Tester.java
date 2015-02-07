@@ -103,6 +103,16 @@ public class Tester {
 		writer.println("Degree: " + G.degree(first));
 		writer.println("In degree: " + G.inDegree(first));
 		writer.println("Out degree: " + G.outDegree(first));
+		
+		System.out.println("Input two integers representing nodes separated by a space to check for adjacency.");
+		first = scanner.nextInt();
+		second = scanner.nextInt();
+		writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + G.areAdjacent(first, second));
+		
+		System.out.println("Input integer representing node to check adjacencies for.");
+		first = scanner.nextInt();
+		writer.println("Adjacencies for Node " + first + ":");
+		writer.println(G.adjacentVertices(first));
 		scanner.close();
 		fileScanner.close();
 		

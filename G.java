@@ -102,9 +102,25 @@ public abstract class G {
 		return outDegrees[i];
 	}
 	
-	//Abstract methods that depend on the class to process.
+	//Methods that depend on the class to process.
 	protected abstract void initializeList();
 	protected abstract void putEdge(Edge e);
-	
-	
+	protected static boolean areAdjacent(int i, int j) {
+		switch (Tester.type){
+			case 0: return AMWDG.areAdjacent(i, j);
+			case 1: return AMDG.areAdjacent(i, j);
+			case 2: return ALWDG.areAdjacent(i, j);
+			case 3: return ALDG.areAdjacent(i, j);
+			default: return false;
+		}
+	}//End areAdjacent
+	protected static List<Node> adjacentVertices(int i){
+		switch (Tester.type){
+			case 0: return AMWDG.adjacentVertices(i);
+			case 1: return AMDG.adjacentVertices(i);
+			case 2: return ALWDG.adjacentVertices(i);
+			case 3: return ALDG.adjacentVertices(i);
+			default: return null;
+		}
+	}//End adjacent Vertices
 }//End G

@@ -121,6 +121,7 @@ public class Tester {
 		else
 			printListArray();
 		
+		System.out.println("***TEST FOR EDGE PLACEMENT*** \n Input to integers representing nodes to place an edge between them.");
 		scanner.close();
 		fileScanner.close();
 		

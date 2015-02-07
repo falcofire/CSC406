@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class ALDG extends G{
 	
 	@SuppressWarnings("unchecked")
@@ -11,17 +10,13 @@ public class ALDG extends G{
 	public static boolean existEdge(Edge e) {
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
-		int dim1 = node1.getNode();
-		//If statement checks to ensure reference is not out of bounds.
-		if (dim1 < Tester.size){
-			Iterator<Node> marker = unweightedList[dim1].iterator();
+		Iterator<Node> marker = unweightedList[node1.getNode()].iterator();
 			//While loop checks over all nodes in list to ensure the specified node is not alreay present.
 			while (marker.hasNext()){
 				Node check = marker.next();
 				if (check.getNode() == node2.getNode())
 					return true;
 			}
-		}	
 		return false;
 	}
 

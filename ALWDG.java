@@ -1,6 +1,4 @@
 import java.util.*;
-
-
 public class ALWDG extends G{
 	
 	@SuppressWarnings("unchecked")

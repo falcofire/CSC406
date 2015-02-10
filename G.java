@@ -70,7 +70,7 @@ public abstract class G {
 		return edgeCount;
 	}
 	
-	protected Node existNode(int i){
+	protected static Node existNode(int i){
 		Iterator<Node> marker = nodes.iterator();
 		while(marker.hasNext()){
 			Node test = marker.next();
@@ -147,13 +147,13 @@ public abstract class G {
 					break;
 		}
 	}
-	protected static void putEdge(int i, int j){
+	protected static void putEdge(int i, int j, int k){
 		switch (Tester.type){
 			case 0: AMWDG.putEdge(i, j);
 					break;
 			case 1: AMDG.putEdge(i, j);
 					break;
-			case 2: ALWDG.putEdge(i, j);
+			case 2: ALWDG.putEdge(i, j, k);
 					break;
 			case 3: ALDG.putEdge(i, j);
 					break;

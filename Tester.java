@@ -27,6 +27,7 @@ public class Tester {
 	static int numEdges;
 	private static Edge[][] matrix;
 	private static List<Node>[] list;
+	private static List<Edge>[] wList;
 	@SuppressWarnings("unused")
 	private Node n1, n2, n3, n4, n5, n6, n7, n8;
 	@SuppressWarnings("unused")
@@ -40,7 +41,6 @@ public class Tester {
 		try {
 			fileScanner = new Scanner(new FileReader(path));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		type = fileScanner.nextInt();
@@ -72,8 +72,8 @@ public class Tester {
 					printMatrix();
 					break;
 			case 2: ALWDG ALWDgraph = new ALWDG();
-					list = ALWDG.getList();
-					printListArray();
+					wList = ALWDG.getList();
+					printwListArray();
 					break;
 			case 3: ALDG ALDgraph = new ALDG();
 					list = ALDG.getList();
@@ -115,17 +115,33 @@ public class Tester {
 		first = scanner.nextInt();
 		second = scanner.nextInt();
 		G.removeEdge(first, second);
-		writer.println("\n After edge removal: ");
+		writer.println("\n After edge removal (" + first + ", " + second + "): ");
 		if (type == 0 || type == 1)
 			printMatrix();
+		else if (type == 2)
+			printwListArray();
 		else
 			printListArray();
 		
 		System.out.println("***TEST FOR EDGE PLACEMENT*** \n Input two integers representing nodes to place an edge between them.");
+		first = scanner.nextInt();
+		second = scanner.nextInt();
+		if (type == 0 || type == 2){
+			System.out.println("Enter integer for weight value.");
+			int weight = scanner.nextInt();
+			G.putEdge(first, second, weight);
+		}
+		G.putEdge(first, second, 0);
+		writer.println("\n After edge placement (" + first + ", " + second + "): ");
+		if (type == 0 || type == 1)
+			printMatrix();
+		else if (type == 2)
+			printwListArray();
+		else
+			printListArray();
+		System.out.println("Processing complete.");
 		scanner.close();
-		fileScanner.close();
-		
-		
+		fileScanner.close();	
 		writer.close();
 		System.exit(0);
 	}//End testMain,
@@ -141,8 +157,8 @@ public class Tester {
 			}
 			writer.println();
 		}
-	}//End printMatrix.
-	
+	}
+	//Method to print unweighted list structures.
 	private void printListArray(){
 		writer.println();
 		writer.println();
@@ -157,7 +173,7 @@ public class Tester {
 			writer.println();
 		}
 	}
-	
+	//Method to print individual lists (specifically those returned by adjacent node method calls.
 	private void printList(List<Node> l){
 		Iterator<Node> marker = l.iterator();
 		Node node;
@@ -171,9 +187,22 @@ public class Tester {
 			writer.print("No adjacent nodes.");
 		writer.println();
 	}
+	//Method to print weighted list objects.
+	private void printwListArray(){
+		Edge e;
+		for (int i = 1; i < Tester.size; i++){
+			Iterator<Edge> marker = wList[i].iterator();
+			writer.print(i + ": ");
+			while(marker.hasNext()){
+				e = marker.next();
+				writer.print(e.getVertex2().getNode() + " ");
+			}
+			writer.println();
+		}
+	}
 	
 	public void testFailure() throws Exception {
 	    fail();
 	}
 	
-}
+}//End Tester

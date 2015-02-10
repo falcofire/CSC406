@@ -2,7 +2,7 @@ import java.util.*;
 public class ALWDG extends G{
 	
 	@SuppressWarnings("unchecked")
-	private static List<Node>[] weightedList = new List[Tester.size];
+	private static List<Edge>[] weightedList = new List[Tester.size];
 	
 	public ALWDG (){	
 	}
@@ -10,11 +10,11 @@ public class ALWDG extends G{
 	public static boolean existEdge(Edge e) {
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
-		Iterator<Node> marker = weightedList[node1.getNode()].iterator();
+		Iterator<Edge> marker = weightedList[node1.getNode()].iterator();
 		//While loop checks over all nodes in list to ensure the specified node is not already present.
 		while (marker.hasNext()){
-			Node check = marker.next();
-			if (check.getNode() == node2.getNode())
+			Edge check = marker.next();
+			if (check.getVertex2().getNode() == node2.getNode())
 				return true;
 		}	
 		return false;
@@ -22,10 +22,10 @@ public class ALWDG extends G{
 
 	public static boolean existEdge(int i, int j) {
 		if (i < Tester.size){
-			Iterator<Node> marker = weightedList[i].iterator();
+			Iterator<Edge> marker = weightedList[i].iterator();
 			while (marker.hasNext()){
-				Node check = marker.next();
-				if (check.getNode() == j)
+				Edge check = marker.next();
+				if (check.getVertex2().getNode() == j)
 					return true;
 			}
 		}
@@ -35,17 +35,22 @@ public class ALWDG extends G{
 	protected void putEdge(Edge e) {
 		if (!existEdge(e)){
 			Node node1 = e.getVertex1();
-			Node node2 = e.getVertex2();
 			if (node1.getNode() < Tester.size){
-				weightedList[node1.getNode()].add(node2);
+				weightedList[node1.getNode()].add(e);
 			}
 		}
 	}
 
-	protected static void putEdge(int i, int j) {
+	protected static void putEdge(int i, int j, int k) {
 		if (!existEdge(i,j)){
-			Node node2 = new Node(j);
-			weightedList[i].add(node2);
+			Node node1 = G.existNode(i);
+			if (node1 == null)
+				node1 = new Node(i);
+			Node node2 = G.existNode(j);
+			if (node2 == null)
+				node2 = new Node(j);
+			Edge e = new Edge(node1, node2, k);
+			weightedList[i].add(e);
 		}
 		
 	}
@@ -55,10 +60,10 @@ public class ALWDG extends G{
 			Node node1 = e.getVertex1();
 			Node node2 = e.getVertex2();
 			int dim1 = node1.getNode();
-			Iterator<Node> marker = weightedList[dim1].iterator();
+			Iterator<Edge> marker = weightedList[dim1].iterator();
 			while (marker.hasNext()){
-				Node check = marker.next();
-				if (check.getNode() == node2.getNode())
+				Edge check = marker.next();
+				if (check.getVertex2().getNode() == node2.getNode())
 					weightedList[dim1].remove(check);
 			}
 		}
@@ -66,11 +71,11 @@ public class ALWDG extends G{
 
 	public static void removeEdge(int i, int j) {
 		if (existEdge(i, j)){
-			Iterator<Node> marker = weightedList[i].iterator();
+			Iterator<Edge> marker = weightedList[i].iterator();
 			while (marker.hasNext()){
-				Node node = marker.next();
-				if (node.getNode() == j){
-					weightedList[i].remove(node);
+				Edge e = marker.next();
+				if (e.getVertex2().getNode() == j){
+					weightedList[i].remove(e);
 					break;
 				}	
 			}
@@ -78,12 +83,18 @@ public class ALWDG extends G{
 		
 	}
 	
-	public static List<Node> adjacentVertices(Node i) {
+	public static List<Edge> adjacentVertices(Node i) {
 		return weightedList[i.getNode()];
 	}
 
 	public static List<Node> adjacentVertices(int i) {
-		return weightedList[i];
+		List<Node> adjNodes = new ArrayList<Node>();
+		Iterator<Edge> marker = weightedList[i].iterator();
+		while (marker.hasNext()){
+			Edge e = marker.next();
+			adjNodes.add(e.getVertex2());
+		}
+		return adjNodes;
 	}
 
 	public static boolean areAdjacent(Node i, Node j) {
@@ -100,13 +111,13 @@ public class ALWDG extends G{
 		return false;
 	}
 	
-	public static List<Node>[] getList(){
+	public static List<Edge>[] getList(){
 		return weightedList;
 	}
 		
 	protected void initializeList() {
 	    for (int i = 1; i < Tester.size; i++){
-	        List<Node> list = new ArrayList<Node>();
+	        List<Edge> list = new ArrayList<Edge>();
 	        weightedList[i] = list;
 	    }
 	}

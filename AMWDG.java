@@ -7,7 +7,7 @@ public class AMWDG extends G{
 	public AMWDG(){
 	}
 	
-	public static boolean existEdge(Edge e){
+	protected static boolean existEdge(Edge e){
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
 		if (node1.getNode() < Tester.size && node2.getNode() < Tester.size){
@@ -20,7 +20,7 @@ public class AMWDG extends G{
 			return false;
 	}
 	
-	public static boolean existEdge(int i, int j){
+	protected static boolean existEdge(int i, int j){
 		if (weightedMatrix[i][j] != null)
 			return true;
 		else
@@ -47,7 +47,7 @@ public class AMWDG extends G{
 		}
 	}
 
-	public static void removeEdge(Edge e) {
+	protected static void removeEdge(Edge e) {
 		if (existEdge(e)){
 			Node node1 = e.getVertex1();
 			Node node2 = e.getVertex2();
@@ -55,7 +55,7 @@ public class AMWDG extends G{
 		}	
 	}
 
-	public static void removeEdge(int i, int j) {
+	protected static void removeEdge(int i, int j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e)){
 			weightedMatrix[i][j] = null;
@@ -63,7 +63,7 @@ public class AMWDG extends G{
 		
 	}
 	
-	public static ArrayList<Node> adjacentVertices(Node i){
+	protected static ArrayList<Node> adjacentVertices(Node i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 0; j < weightedMatrix.length; j++){
 			if (weightedMatrix[j][i.getNode()] != null)
@@ -72,7 +72,7 @@ public class AMWDG extends G{
 		return adjNodes;
 	}
 	
-	public static ArrayList<Node> adjacentVertices(int i){
+	protected static ArrayList<Node> adjacentVertices(int i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 0; j < weightedMatrix.length; j++){
 			if (weightedMatrix[j][i] != null)
@@ -81,24 +81,24 @@ public class AMWDG extends G{
 		return adjNodes;
 	}
 	
-	public static boolean areAdjacent(Node i, Node j){
+	protected static boolean areAdjacent(Node i, Node j){
 		if (weightedMatrix[i.getNode()][j.getNode()] != null || weightedMatrix[j.getNode()][i.getNode()] != null)
 			return true;
 		else
 			return false;
 	}
 	
-	public static boolean areAdjacent(int i, int j){
+	protected static boolean areAdjacent(int i, int j){
 		if (weightedMatrix[i][j] != null || weightedMatrix[j][i] != null)
 			return true;
 		return false;
 	}
 	
-	public static Edge[][] getMatrix(){
+	protected static Edge[][] getMatrix(){
 		return weightedMatrix;
 	}
 
 	protected void initializeList() {
 	}
 	
-}
+}//End AMWDG

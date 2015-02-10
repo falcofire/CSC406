@@ -7,7 +7,7 @@ public class ALDG extends G{
 	public ALDG (){
 	}
 
-	public static boolean existEdge(Edge e) {
+	protected static boolean existEdge(Edge e) {
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
 		Iterator<Node> marker = unweightedList[node1.getNode()].iterator();
@@ -20,7 +20,7 @@ public class ALDG extends G{
 		return false;
 	}
 
-	public static boolean existEdge(int i, int j) {
+	protected static boolean existEdge(int i, int j) {
 		if (i < Tester.size){
 			Iterator<Node> marker = unweightedList[i].iterator();
 			while (marker.hasNext()){
@@ -51,7 +51,7 @@ public class ALDG extends G{
 		
 	}
 
-	public static void removeEdge(Edge e) {
+	protected static void removeEdge(Edge e) {
 		if (existEdge(e)){
 			Node node1 = e.getVertex1();
 			Node node2 = e.getVertex2();
@@ -65,7 +65,7 @@ public class ALDG extends G{
 		}
 	}
 
-	public static void removeEdge(int i, int j) {
+	protected static void removeEdge(int i, int j) {
 		if (existEdge(i, j)){
 			Iterator<Node> marker = unweightedList[i].iterator();
 			while (marker.hasNext()){
@@ -79,29 +79,29 @@ public class ALDG extends G{
 		
 	}
 	
-	public static List<Node> adjacentVertices(Node i) {
+	protected static List<Node> adjacentVertices(Node i) {
 		return unweightedList[i.getNode()];
 	}
 
-	public static List<Node> adjacentVertices(int i) {
+	protected static List<Node> adjacentVertices(int i) {
 		return unweightedList[i];
 	}
 
-	public static boolean areAdjacent(Node i, Node j) {
+	protected static boolean areAdjacent(Node i, Node j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e))
 			return true;
 		return false;
 	}
 
-	public static boolean areAdjacent(int i, int j) {
+	protected static boolean areAdjacent(int i, int j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e))
 			return true;
 		return false;
 	}
 	
-	public static List<Node>[] getList(){
+	protected static List<Node>[] getList(){
 		return unweightedList;
 	}
 	

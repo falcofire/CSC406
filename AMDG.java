@@ -8,7 +8,7 @@ public class AMDG extends G{
 	public AMDG (){
 	}
 	
-	public static boolean existEdge(Edge e){
+	protected static boolean existEdge(Edge e){
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
 		if (unweightedMatrix[node1.getNode()][node2.getNode()] != null)
@@ -17,7 +17,7 @@ public class AMDG extends G{
 			return false;
 	}
 	
-	public static boolean existEdge(int i, int j){
+	protected static boolean existEdge(int i, int j){
 		if (unweightedMatrix[i][j] != null)
 			return true;
 		else
@@ -41,17 +41,17 @@ public class AMDG extends G{
 		}	
 	}
 	
-	public static void removeEdge(Edge edge){
+	protected static void removeEdge(Edge edge){
 		Node node1 = edge.getVertex1();
 		Node node2 = edge.getVertex2();
 		unweightedMatrix[node1.getNode()][node2.getNode()] = null;
 	}
 	
-	public static void removeEdge(int i, int j){
+	protected static void removeEdge(int i, int j){
 		unweightedMatrix[i][j] = null;
 	}
 	
-	public static ArrayList<Node> adjacentVertices(Node i){
+	protected static ArrayList<Node> adjacentVertices(Node i){
 		ArrayList<Node> adjNodes= new ArrayList<Node>();
 		for (int j = 0; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[j][i.getNode()] != null)
@@ -60,7 +60,7 @@ public class AMDG extends G{
 		return adjNodes;
 	}
 	
-	public static ArrayList<Node> adjacentVertices(int i){
+	protected static ArrayList<Node> adjacentVertices(int i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 0; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[j][i] != null)
@@ -69,21 +69,21 @@ public class AMDG extends G{
 		return adjNodes;
 	}
 	
-	public static boolean areAdjacent(Node i, Node j){
+	protected static boolean areAdjacent(Node i, Node j){
 		if (unweightedMatrix[i.getNode()][j.getNode()] != null || unweightedMatrix[j.getNode()][i.getNode()] != null)
 			return true;
 		else
 			return false;
 	}
 	
-	public static boolean areAdjacent(int i, int j){
+	protected static boolean areAdjacent(int i, int j){
 		if (unweightedMatrix[i][j] != null || unweightedMatrix[j][i] != null)
 			return true;
 		else
 			return false;
 	}
 	
-	public static Edge[][] getMatrix(){
+	protected static Edge[][] getMatrix(){
 		return unweightedMatrix;
 	}
 
@@ -91,4 +91,4 @@ public class AMDG extends G{
 		
 	}
 
-}
+}//End AMDG

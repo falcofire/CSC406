@@ -4,10 +4,10 @@ public class ALWDG extends G{
 	@SuppressWarnings("unchecked")
 	private static List<Edge>[] weightedList = new List[Tester.size];
 	
-	public ALWDG (){	
+	protected ALWDG (){	
 	}
 
-	public static boolean existEdge(Edge e) {
+	protected static boolean existEdge(Edge e) {
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
 		Iterator<Edge> marker = weightedList[node1.getNode()].iterator();
@@ -20,7 +20,7 @@ public class ALWDG extends G{
 		return false;
 	}
 
-	public static boolean existEdge(int i, int j) {
+	protected static boolean existEdge(int i, int j) {
 		if (i < Tester.size){
 			Iterator<Edge> marker = weightedList[i].iterator();
 			while (marker.hasNext()){
@@ -55,7 +55,7 @@ public class ALWDG extends G{
 		
 	}
 
-	public static void removeEdge(Edge e) {
+	protected static void removeEdge(Edge e) {
 		if (existEdge(e)){
 			Node node1 = e.getVertex1();
 			Node node2 = e.getVertex2();
@@ -69,7 +69,7 @@ public class ALWDG extends G{
 		}
 	}
 
-	public static void removeEdge(int i, int j) {
+	protected static void removeEdge(int i, int j) {
 		if (existEdge(i, j)){
 			Iterator<Edge> marker = weightedList[i].iterator();
 			while (marker.hasNext()){
@@ -83,11 +83,11 @@ public class ALWDG extends G{
 		
 	}
 	
-	public static List<Edge> adjacentVertices(Node i) {
+	protected static List<Edge> adjacentVertices(Node i) {
 		return weightedList[i.getNode()];
 	}
 
-	public static List<Node> adjacentVertices(int i) {
+	protected static List<Node> adjacentVertices(int i) {
 		List<Node> adjNodes = new ArrayList<Node>();
 		Iterator<Edge> marker = weightedList[i].iterator();
 		while (marker.hasNext()){
@@ -97,21 +97,21 @@ public class ALWDG extends G{
 		return adjNodes;
 	}
 
-	public static boolean areAdjacent(Node i, Node j) {
+	protected static boolean areAdjacent(Node i, Node j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e))
 			return true;
 		return false;
 	}
 
-	public static boolean areAdjacent(int i, int j) {
+	protected static boolean areAdjacent(int i, int j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e))
 			return true;
 		return false;
 	}
 	
-	public static List<Edge>[] getList(){
+	protected static List<Edge>[] getList(){
 		return weightedList;
 	}
 		
@@ -121,6 +121,5 @@ public class ALWDG extends G{
 	        weightedList[i] = list;
 	    }
 	}
-
 	
 }//End ALWDG

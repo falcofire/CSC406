@@ -2,8 +2,7 @@ public class Node {
 	
 	private int value;
 	
-	//This constructor handles unweighted graphs.
-	public Node(int nextNode) {	
+	protected Node(int nextNode) {	
 		setNode(nextNode);
 	}
 	
@@ -11,9 +10,8 @@ public class Node {
 		this.value = value;
 	}
 	
-	public int getNode(){
+	protected int getNode(){
 		return value; 
 	}
 
 }//End Node
-//TESTING PUSH COMMIT FROM LAPTOP!!!

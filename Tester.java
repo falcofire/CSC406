@@ -33,7 +33,7 @@ public class Tester {
 	@SuppressWarnings("unused")
 	private Edge e1, e2, e3, e4, e5, e6, e7, e8;
 	
-	@Before public void setUp(){
+	@Before public static void setUp(){
 		scanner = new Scanner(System.in);
 		//Prompt for file.
 		System.out.println("Enter file name.");
@@ -48,9 +48,14 @@ public class Tester {
 		numEdges = fileScanner.nextInt();
 	}//End setUp
 	
+	public static void main(String[] args){
+		setUp();
+		testMain();
+	}
+	
 	@SuppressWarnings({ "unused" })
 	@Test
-	public void main() {
+	public static void testMain() {
 		try {
 			writer = new PrintWriter("graph_data.txt", "UTF-8");
 		} catch (FileNotFoundException e1) {
@@ -147,7 +152,7 @@ public class Tester {
 	}//End testMain,
 
 	//This method prints out the contents of adjacency matrices.
-	private void printMatrix(){
+	private static void printMatrix(){
 		for (int i = 1; i < matrix.length; i++){
 			for (int j = 1; j < matrix.length; j++){
 				if (matrix[i][j] != null)
@@ -159,7 +164,7 @@ public class Tester {
 		}
 	}
 	//Method to print unweighted list structures.
-	private void printListArray(){
+	private static void printListArray(){
 		writer.println();
 		writer.println();
 		for (int i = 1; i < Tester.size; i++){
@@ -174,7 +179,7 @@ public class Tester {
 		}
 	}
 	//Method to print individual lists (specifically those returned by adjacent node method calls.
-	private void printList(List<Node> l){
+	private static void printList(List<Node> l){
 		Iterator<Node> marker = l.iterator();
 		Node node;
 		if (marker.hasNext()){
@@ -188,7 +193,7 @@ public class Tester {
 		writer.println();
 	}
 	//Method to print weighted list objects.
-	private void printwListArray(){
+	private static void printwListArray(){
 		Edge e;
 		for (int i = 1; i < Tester.size; i++){
 			Iterator<Edge> marker = wList[i].iterator();

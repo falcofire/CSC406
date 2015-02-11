@@ -65,18 +65,18 @@ public class AMWDG extends G{
 	
 	protected static ArrayList<Node> adjacentVertices(Node i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
-		for (int j = 0; j < weightedMatrix.length; j++){
-			if (weightedMatrix[j][i.getNode()] != null)
-				adjNodes.add(weightedMatrix[j][i.getNode()].getVertex2());
+		for (int j = 1; j < weightedMatrix.length; j++){
+			if (weightedMatrix[i.getNode()][j] != null)
+				adjNodes.add(weightedMatrix[i.getNode()][j].getVertex2());
 		}
 		return adjNodes;
 	}
 	
 	protected static ArrayList<Node> adjacentVertices(int i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
-		for (int j = 0; j < weightedMatrix.length; j++){
-			if (weightedMatrix[j][i] != null)
-				adjNodes.add(weightedMatrix[j][i].getVertex2());
+		for (int j = 1; j < weightedMatrix.length; j++){
+			if (weightedMatrix[i][j] != null)
+				adjNodes.add(weightedMatrix[i][j].getVertex2());
 		}
 		return adjNodes;
 	}

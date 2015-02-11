@@ -50,7 +50,7 @@ public class Tester {
 	
 	@SuppressWarnings({ "unused" })
 	@Test
-	public void testMain() {
+	public void main() {
 		try {
 			writer = new PrintWriter("graph_data.txt", "UTF-8");
 		} catch (FileNotFoundException e1) {

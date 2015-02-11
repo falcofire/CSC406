@@ -53,31 +53,31 @@ public class AMDG extends G{
 	
 	protected static ArrayList<Node> adjacentVertices(Node i){
 		ArrayList<Node> adjNodes= new ArrayList<Node>();
-		for (int j = 0; j < unweightedMatrix.length; j++){
-			if (unweightedMatrix[j][i.getNode()] != null)
-				adjNodes.add(unweightedMatrix[j][i.getNode()].getVertex2());
+		for (int j = 1; j < unweightedMatrix.length; j++){
+			if (unweightedMatrix[i.getNode()][j] != null)
+				adjNodes.add(unweightedMatrix[i.getNode()][j].getVertex2());
 		}
 		return adjNodes;
 	}
 	
 	protected static ArrayList<Node> adjacentVertices(int i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
-		for (int j = 0; j < unweightedMatrix.length; j++){
-			if (unweightedMatrix[j][i] != null)
-				adjNodes.add(unweightedMatrix[j][i].getVertex2());
+		for (int j = 1; j < unweightedMatrix.length; j++){
+			if (unweightedMatrix[i][j] != null)
+				adjNodes.add(unweightedMatrix[i][j].getVertex2());
 		}
 		return adjNodes;
 	}
 	
 	protected static boolean areAdjacent(Node i, Node j){
-		if (unweightedMatrix[i.getNode()][j.getNode()] != null || unweightedMatrix[j.getNode()][i.getNode()] != null)
+		if (unweightedMatrix[j.getNode()][i.getNode()] != null)
 			return true;
 		else
 			return false;
 	}
 	
 	protected static boolean areAdjacent(int i, int j){
-		if (unweightedMatrix[i][j] != null || unweightedMatrix[j][i] != null)
+		if (unweightedMatrix[j][i] != null)
 			return true;
 		else
 			return false;

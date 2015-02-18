@@ -87,38 +87,36 @@ public class Tester {
 		}
 		
 		writer.println();
-		writer.println("Declared number of nodes: " + (size - 1));
-		writer.println("Actual number of nodes: " + G.numNodes());
-		writer.println("Declared number of edges: " + numEdges);
-		writer.println("Actual number of edges: " + G.numEdges());
+		writer.println("Number of nodes: " + G.numNodes());
+		writer.println("Number of edges: " + G.numEdges());
 		writer.println();
 		
 		System.out.println("***TEST FOR EXISTING EDGE*** \n Input two integer representing nodes separated by a space in range 1 - " + (Tester.size - 1));
-		int first = scanner.nextInt();
-		int second = scanner.nextInt();
+		int first = fileScanner.nextInt();
+		int second = fileScanner.nextInt();
 		writer.println("Exists edge from " + first + " to " + second + ": " + G.existEdge(first, second));
 		writer.println();
 		
 		System.out.println("***TEST FOR DEGREES*** \n Input node for which to calculate degree statistcs of.");
-		first = scanner.nextInt();
+		first = fileScanner.nextInt();
 		writer.println("Degrees for node " + first + ":");
 		writer.println("Degree: " + G.degree(first));
 		writer.println("In degree: " + G.inDegree(first));
 		writer.println("Out degree: " + G.outDegree(first) + "\n");
 		
 		System.out.println("***TEST FOR ADJACENCY*** \n Input two integers representing nodes separated by a space to check for adjacency.");
-		first = scanner.nextInt();
-		second = scanner.nextInt();
+		first = fileScanner.nextInt();
+		second = fileScanner.nextInt();
 		writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + G.areAdjacent(first, second));
 		
 		System.out.println("***TEST FOR ADJACENT NODES*** \n Input integer representing node to check adjacencies for.");
-		first = scanner.nextInt();
+		first = fileScanner.nextInt();
 		writer.print("Adjacencies for Node " + first + ": ");
 		printList(G.adjacentVertices(first));
 		
 		System.out.println("***TEST FOR EDGE REMOVAL*** \n Input two integers representing nodes connected by an edge to remove that edge.");
-		first = scanner.nextInt();
-		second = scanner.nextInt();
+		first = fileScanner.nextInt();
+		second = fileScanner.nextInt();
 		G.removeEdge(first, second);
 		writer.println("\n After edge removal (" + first + ", " + second + "): ");
 		if (type == 0 || type == 1)
@@ -129,11 +127,10 @@ public class Tester {
 			printListArray();
 		
 		System.out.println("***TEST FOR EDGE PLACEMENT*** \n Input two integers representing nodes to place an edge between them.");
-		first = scanner.nextInt();
-		second = scanner.nextInt();
+		first = fileScanner.nextInt();
+		second = fileScanner.nextInt();
 		if (type == 0 || type == 2){
-			System.out.println("Enter integer for weight value.");
-			int weight = scanner.nextInt();
+			int weight = fileScanner.nextInt();
 			G.putEdge(first, second, weight);
 		}
 		G.putEdge(first, second, 0);

@@ -12,7 +12,7 @@ public abstract class G {
 		if (Tester.type == 2 || Tester.type == 3)
 			initializeList();
 		
-		while (Tester.fileScanner.hasNextInt()){
+		while (nodes.size() < Tester.size-1 && edgeCount < Tester.numEdges){
 			//Get next node from file.
 			int nextNode = Tester.fileScanner.nextInt();
 			Node node, node2;

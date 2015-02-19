@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
-
 public class AMDG extends G{
 
-	private static Edge[][] unweightedMatrix = new Edge[Tester.size][Tester.size];
+	private static Integer[][] unweightedMatrix = new Integer[Tester.size][Tester.size];
 	
 	public AMDG (){
 	}
@@ -28,15 +27,12 @@ public class AMDG extends G{
 		if (!existEdge(edge)){
 			Node node1 = edge.getVertex1();
 			Node node2 = edge.getVertex2();
-			unweightedMatrix[node1.getNode()][node2.getNode()] = edge;
+			unweightedMatrix[node1.getNode()][node2.getNode()] = 1;
 		}
 	}
 	
 	protected static void putEdge(int i, int j){
-		Node node1 = new Node(i);
-		Node node2 = new Node(j);
-		Edge edge = new Edge(node1, node2);
-		unweightedMatrix[i][j] = edge;
+		unweightedMatrix[i][j] = 1;
 	}
 	
 	protected static void removeEdge(Edge edge){
@@ -49,20 +45,20 @@ public class AMDG extends G{
 		unweightedMatrix[i][j] = null;
 	}
 	
-	protected static ArrayList<Node> adjacentVertices(Node i){
-		ArrayList<Node> adjNodes= new ArrayList<Node>();
+	protected static ArrayList<Integer> adjacentVertices(Node i){
+		ArrayList<Integer> adjNodes= new ArrayList<Integer>();
 		for (int j = 1; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[i.getNode()][j] != null)
-				adjNodes.add(unweightedMatrix[i.getNode()][j].getVertex2());
+				adjNodes.add(unweightedMatrix[i.getNode()][j]);
 		}
 		return adjNodes;
 	}
 	
-	protected ArrayList<Node> adjacentVertices(int i){
-		ArrayList<Node> adjNodes = new ArrayList<Node>();
+	protected ArrayList<Integer> adjacentVertices(int i){
+		ArrayList<Integer> adjNodes = new ArrayList<Integer>();
 		for (int j = 1; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[i][j] != null)
-				adjNodes.add(unweightedMatrix[i][j].getVertex2());
+				adjNodes.add(unweightedMatrix[i][j]);
 		}
 		return adjNodes;
 	}
@@ -81,7 +77,7 @@ public class AMDG extends G{
 			return false;
 	}
 	
-	protected static Edge[][] getMatrix(){
+	protected static Integer[][] getMatrix(){
 		return unweightedMatrix;
 	}
 
@@ -91,6 +87,24 @@ public class AMDG extends G{
 
 	@Override
 	protected void putEdge(int i, int j, int k) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void print() {
+		for (int i = 1; i < unweightedMatrix.length; i++){
+			for (int j = 1; j < unweightedMatrix.length; j++){
+				if (unweightedMatrix[i][j] != null)
+					Tester.writer.print("1 ");
+				else
+					Tester.writer.print("0 ");
+			}
+			Tester.writer.println();
+		}
+	}
+
+	@Override
+	protected void printAdj(int i) {
 		// TODO Auto-generated method stub
 		
 	}

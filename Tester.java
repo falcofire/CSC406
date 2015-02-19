@@ -25,7 +25,6 @@ public class Tester {
 	static int weight;
 	static int size;
 	static int numEdges;
-	private static Edge[][] matrix;
 	static List<Node>[] list;
 	@SuppressWarnings("unused")
 	private Node n1, n2, n3, n4, n5, n6, n7, n8;
@@ -63,25 +62,15 @@ public class Tester {
 			e1.printStackTrace();
 		}
 		
-		writer.println("Graph Statistics: \n");
-		
 		//Switch here creates appropriate graph object and manipulates with test objects from this class.
 		switch (type){
 			case 0: AMWDG AMWDgraph = new AMWDG();
-					matrix = AMWDG.getMatrix();
-					printMatrix();
 					break;
 			case 1: AMDG AMDgraph = new AMDG();
-					matrix = AMDG.getMatrix();
-					printMatrix();
 					break;
 			case 2: ALWDG ALWDgraph = new ALWDG();
-			ALWDG.getList();
-					printListArray(list);
 					break;
 			case 3: ALDG ALDgraph = new ALDG();
-					list = ALDG.getList();
-					printListArray(list);
 					break;
 		}
 	
@@ -92,47 +81,6 @@ public class Tester {
 		System.exit(0);
 	}//End testMain,
 
-	//This method prints out the contents of adjacency matrices.
-	static void printMatrix(){
-		for (int i = 1; i < matrix.length; i++){
-			for (int j = 1; j < matrix.length; j++){
-				if (matrix[i][j] != null)
-					writer.print("1 ");
-				else
-					writer.print("0 ");
-			}
-			writer.println();
-		}
-		writer.println();
-	}
-	//Method to print list structures.
-	static void printListArray(List<Node>[] l){
-		writer.println();
-		writer.println();
-		for (int i = 1; i < Tester.size; i++){
-			Iterator<Node> marker = list[i].iterator();
-			Node node;
-			writer.print(i + ": ");
-			while (marker.hasNext()){
-				node = marker.next();
-				writer.print(node.getNode() + " ");
-			}
-			writer.println();
-		}
-		writer.println();
-	}
-	
-	static void printList(List<Node> l){
-		writer.println();
-		Iterator<Node> marker = l.iterator();
-		Node node;
-		while (marker.hasNext()){
-			node = marker.next();
-			writer.print(node.getNode() + " ");
-		}
-		
-		writer.println();
-	}
 
 	public void testFailure() throws Exception {
 	    fail();

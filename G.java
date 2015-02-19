@@ -59,9 +59,12 @@ public abstract class G {
 		}//End while looop
 		System.out.println("Graph constructed successfully.");
 		
+		Tester.writer.println("Graph statistics: ");
+		print();
+		
 		Tester.writer.println();
-		Tester.writer.println("Number of nodes: " + G.numNodes());
-		Tester.writer.println("Number of edges: " + G.numEdges());
+		Tester.writer.println("Number of nodes: " + nodes.size());
+		Tester.writer.println("Number of edges: " + edgeCount);
 		Tester.writer.println();
 		
 		Tester.writer.println("***TEST FOR EXISTING EDGE***");
@@ -85,19 +88,14 @@ public abstract class G {
 		Tester.writer.print("***TEST FOR ADJACENT NODES***\n");
 		first = Tester.fileScanner.nextInt();
 		Tester.writer.print("Adjacencies for Node " + first + ": ");
-		Tester.printList(adjacentVertices(first));
+		printAdj(first);
 		
 		Tester.writer.print("***TEST FOR EDGE REMOVAL***");
 		first = Tester.fileScanner.nextInt();
 		second = Tester.fileScanner.nextInt();
 		removeEdge(first, second);
 		Tester.writer.println("\n After edge removal (" + first + ", " + second + "): ");
-		if (Tester.type == 0 || Tester.type == 1)
-			Tester.printMatrix();
-		else if (Tester.type == 2)
-			Tester.printListArray(Tester.list);
-		else
-			Tester.printListArray(Tester.list);
+		print();
 		
 		Tester.writer.print("***TEST FOR EDGE PLACEMENT***");
 		first = Tester.fileScanner.nextInt();
@@ -108,23 +106,10 @@ public abstract class G {
 		}
 		putEdge(first, second, 0);
 		Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
-		if (Tester.type == 0 || Tester.type == 1)
-			Tester.printMatrix();
-		else if (Tester.type == 2)
-			Tester.printListArray(Tester.list);
-		else
-			Tester.printListArray(Tester.list);
+		print();
 	}//End G
 	
 	//Methods that are implemented uniformly and ubiquitously across all graph classes.
-	protected static int numNodes(){
-		return nodes.size();
-	}
-	
-	protected static int numEdges(){
-		return edgeCount;
-	}
-	
 	protected static Node existNode(int i){
 		Iterator<Node> marker = nodes.iterator();
 		while(marker.hasNext()){
@@ -164,8 +149,10 @@ public abstract class G {
 	protected abstract void initializeList();
 	protected abstract void putEdge(Edge e);
 	protected abstract boolean areAdjacent(int i, int j);
-	protected abstract List<Node> adjacentVertices(int i);
+	protected abstract List<Integer> adjacentVertices(int i);
 	protected abstract boolean existEdge(int i, int j);
 	protected abstract void removeEdge(int i, int j);
 	protected abstract void putEdge(int i, int j, int k);
+	protected abstract void print();
+	protected abstract void printAdj(int i);
 }//End G

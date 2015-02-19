@@ -2,7 +2,7 @@ import java.util.*;
 
 public class AMWDG extends G{
 	
-	private static Edge[][] weightedMatrix = new Edge[Tester.size][Tester.size];
+	private static Integer[][] weightedMatrix = new Integer[Tester.size][Tester.size];
 	
 	public AMWDG(){
 	}
@@ -34,16 +34,14 @@ public class AMWDG extends G{
 			Node node2 = edge.getVertex2();
 			int dim1 = node1.getNode();
 			int dim2 = node2.getNode();
-			weightedMatrix[dim1][dim2] = edge;
+			int weight = edge.getWeight();
+			weightedMatrix[dim1][dim2] = weight;
 		}
 	}
 
 	protected void putEdge(int i, int j) {
 		if (!existEdge(i, j)){
-			Node node1 = new Node(i);
-			Node node2 = new Node(j);
-			Edge e = new Edge(node1, node2);
-			weightedMatrix[i][j] = e;
+			weightedMatrix[i][j] = (Integer) 1;
 		}
 	}
 
@@ -63,20 +61,20 @@ public class AMWDG extends G{
 		
 	}
 	
-	protected static ArrayList<Node> adjacentVertices(Node i){
-		ArrayList<Node> adjNodes = new ArrayList<Node>();
+	protected static ArrayList<Integer> adjacentVertices(Node i){
+		ArrayList<Integer> adjNodes = new ArrayList<Integer>();
 		for (int j = 1; j < weightedMatrix.length; j++){
 			if (weightedMatrix[i.getNode()][j] != null)
-				adjNodes.add(weightedMatrix[i.getNode()][j].getVertex2());
+				adjNodes.add(weightedMatrix[i.getNode()][j]);
 		}
 		return adjNodes;
 	}
 	
-	protected ArrayList<Node> adjacentVertices(int i){
-		ArrayList<Node> adjNodes = new ArrayList<Node>();
+	protected ArrayList<Integer> adjacentVertices(int i){
+		ArrayList<Integer> adjNodes = new ArrayList<Integer>();
 		for (int j = 1; j < weightedMatrix.length; j++){
 			if (weightedMatrix[i][j] != null)
-				adjNodes.add(weightedMatrix[i][j].getVertex2());
+				adjNodes.add(weightedMatrix[i][j]);
 		}
 		return adjNodes;
 	}
@@ -94,7 +92,7 @@ public class AMWDG extends G{
 		return false;
 	}
 	
-	protected static Edge[][] getMatrix(){
+	protected static Integer[][] getMatrix(){
 		return weightedMatrix;
 	}
 
@@ -103,6 +101,24 @@ public class AMWDG extends G{
 
 	@Override
 	protected void putEdge(int i, int j, int k) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void print() {
+		for (int i = 1; i < weightedMatrix.length; i++){
+			for (int j = 1; j < weightedMatrix.length; j++){
+				if (weightedMatrix[i][j] != null)
+					Tester.writer.print(weightedMatrix[i][j] + " ");
+				else
+					Tester.writer.print("0 ");
+			}
+			Tester.writer.println();
+		}
+	}
+
+	@Override
+	protected void printAdj(int i) {
 		// TODO Auto-generated method stub
 		
 	}

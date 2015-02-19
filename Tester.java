@@ -26,7 +26,7 @@ public class Tester {
 	static int size;
 	static int numEdges;
 	private static Edge[][] matrix;
-	private static List<Node>[] list;
+	static List<Node>[] list;
 	@SuppressWarnings("unused")
 	private Node n1, n2, n3, n4, n5, n6, n7, n8;
 	@SuppressWarnings("unused")
@@ -84,62 +84,7 @@ public class Tester {
 					printListArray(list);
 					break;
 		}
-		
-		writer.println();
-		writer.println("Number of nodes: " + G.numNodes());
-		writer.println("Number of edges: " + G.numEdges());
-		writer.println();
-		
-		writer.println("***TEST FOR EXISTING EDGE***");
-		int first = fileScanner.nextInt();
-		int second = fileScanner.nextInt();
-		writer.println("Exists edge from " + first + " to " + second + ": " + G.existEdge(first, second));
-		writer.println();
-		
-		writer.println("***TEST FOR DEGREES***");
-		first = fileScanner.nextInt();
-		writer.println("Degrees for node " + first + ":");
-		writer.println("Degree: " + G.degree(first));
-		writer.println("In degree: " + G.inDegree(first));
-		writer.println("Out degree: " + G.outDegree(first) + "\n");
-		
-		writer.println("***TEST FOR ADJACENCY***");
-		first = fileScanner.nextInt();
-		second = fileScanner.nextInt();
-		writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + G.areAdjacent(first, second) + "\n");
-		
-		writer.print("***TEST FOR ADJACENT NODES***\n");
-		first = fileScanner.nextInt();
-		writer.print("Adjacencies for Node " + first + ": ");
-		printList(G.adjacentVertices(first));
-		
-		writer.print("***TEST FOR EDGE REMOVAL***");
-		first = fileScanner.nextInt();
-		second = fileScanner.nextInt();
-		G.removeEdge(first, second);
-		writer.println("\n After edge removal (" + first + ", " + second + "): ");
-		if (type == 0 || type == 1)
-			printMatrix();
-		else if (type == 2)
-			printListArray(list);
-		else
-			printListArray(list);
-		
-		writer.print("***TEST FOR EDGE PLACEMENT***");
-		first = fileScanner.nextInt();
-		second = fileScanner.nextInt();
-		if (type == 0 || type == 2){
-			int weight = fileScanner.nextInt();
-			G.putEdge(first, second, weight);
-		}
-		G.putEdge(first, second, 0);
-		writer.println("\n After edge placement (" + first + ", " + second + "): ");
-		if (type == 0 || type == 1)
-			printMatrix();
-		else if (type == 2)
-			printListArray(list);
-		else
-			printListArray(list);
+	
 		writer.println("Processing complete.");
 		scanner.close();
 		fileScanner.close();	
@@ -148,7 +93,7 @@ public class Tester {
 	}//End testMain,
 
 	//This method prints out the contents of adjacency matrices.
-	private static void printMatrix(){
+	static void printMatrix(){
 		for (int i = 1; i < matrix.length; i++){
 			for (int j = 1; j < matrix.length; j++){
 				if (matrix[i][j] != null)
@@ -161,7 +106,7 @@ public class Tester {
 		writer.println();
 	}
 	//Method to print list structures.
-	private static void printListArray(List<Node>[] l){
+	static void printListArray(List<Node>[] l){
 		writer.println();
 		writer.println();
 		for (int i = 1; i < Tester.size; i++){
@@ -177,7 +122,7 @@ public class Tester {
 		writer.println();
 	}
 	
-	private static void printList(List<Node> l){
+	static void printList(List<Node> l){
 		writer.println();
 		Iterator<Node> marker = l.iterator();
 		Node node;

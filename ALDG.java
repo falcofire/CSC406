@@ -20,7 +20,7 @@ public class ALDG extends G{
 		return false;
 	}
 
-	protected static boolean existEdge(int i, int j) {
+	protected boolean existEdge(int i, int j) {
 		if (i < Tester.size){
 			Iterator<Node> marker = unweightedList[i].iterator();
 			while (marker.hasNext()){
@@ -44,11 +44,8 @@ public class ALDG extends G{
 	}
 
 	protected static void putEdge(int i, int j) {
-		if (!existEdge(i,j)){
-			Node node2 = new Node(j);
-			unweightedList[i].add(node2);
-		}
-		
+		Node node2 = new Node(j);
+		unweightedList[i].add(node2);
 	}
 
 	protected static void removeEdge(Edge e) {
@@ -65,25 +62,22 @@ public class ALDG extends G{
 		}
 	}
 
-	protected static void removeEdge(int i, int j) {
-		if (existEdge(i, j)){
-			Iterator<Node> marker = unweightedList[i].iterator();
-			while (marker.hasNext()){
-				Node node = marker.next();
-				if (node.getNode() == j){
-					unweightedList[i].remove(node);
-					break;
-				}	
-			}
+	protected void removeEdge(int i, int j) {
+		Iterator<Node> marker = unweightedList[i].iterator();
+		while (marker.hasNext()){
+			Node node = marker.next();
+			if (node.getNode() == j){
+				unweightedList[i].remove(node);
+				break;
+			}	
 		}
-		
 	}
 	
 	protected static List<Node> adjacentVertices(Node i) {
 		return unweightedList[i.getNode()];
 	}
 
-	protected static List<Node> adjacentVertices(int i) {
+	protected List<Node> adjacentVertices(int i) {
 		return unweightedList[i];
 	}
 
@@ -94,7 +88,7 @@ public class ALDG extends G{
 		return false;
 	}
 
-	protected static boolean areAdjacent(int i, int j) {
+	protected boolean areAdjacent(int i, int j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e))
 			return true;
@@ -110,6 +104,12 @@ public class ALDG extends G{
 	        List<Node> list = new ArrayList<Node>();
 	        unweightedList[i] = list;
 	    }
+	}
+
+	@Override
+	protected void putEdge(int i, int j, int k) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }//End ALDG

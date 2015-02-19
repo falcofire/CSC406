@@ -59,6 +59,61 @@ public abstract class G {
 		}//End while looop
 		System.out.println("Graph constructed successfully.");
 		
+		Tester.writer.println();
+		Tester.writer.println("Number of nodes: " + G.numNodes());
+		Tester.writer.println("Number of edges: " + G.numEdges());
+		Tester.writer.println();
+		
+		Tester.writer.println("***TEST FOR EXISTING EDGE***");
+		int first = Tester.fileScanner.nextInt();
+		int second = Tester.fileScanner.nextInt();
+		Tester.writer.println("Exists edge from " + first + " to " + second + ": " + existEdge(first, second));
+		Tester.writer.println();
+		
+		Tester.writer.println("***TEST FOR DEGREES***");
+		first = Tester.fileScanner.nextInt();
+		Tester.writer.println("Degrees for node " + first + ":");
+		Tester.writer.println("Degree: " + G.degree(first));
+		Tester.writer.println("In degree: " + G.inDegree(first));
+		Tester.writer.println("Out degree: " + G.outDegree(first) + "\n");
+		
+		Tester.writer.println("***TEST FOR ADJACENCY***");
+		first = Tester.fileScanner.nextInt();
+		second = Tester.fileScanner.nextInt();
+		Tester.writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + areAdjacent(first, second) + "\n");
+		
+		Tester.writer.print("***TEST FOR ADJACENT NODES***\n");
+		first = Tester.fileScanner.nextInt();
+		Tester.writer.print("Adjacencies for Node " + first + ": ");
+		Tester.printList(adjacentVertices(first));
+		
+		Tester.writer.print("***TEST FOR EDGE REMOVAL***");
+		first = Tester.fileScanner.nextInt();
+		second = Tester.fileScanner.nextInt();
+		removeEdge(first, second);
+		Tester.writer.println("\n After edge removal (" + first + ", " + second + "): ");
+		if (Tester.type == 0 || Tester.type == 1)
+			Tester.printMatrix();
+		else if (Tester.type == 2)
+			Tester.printListArray(Tester.list);
+		else
+			Tester.printListArray(Tester.list);
+		
+		Tester.writer.print("***TEST FOR EDGE PLACEMENT***");
+		first = Tester.fileScanner.nextInt();
+		second = Tester.fileScanner.nextInt();
+		if (Tester.type == 0 || Tester.type == 2){
+			int weight = Tester.fileScanner.nextInt();
+			putEdge(first, second, weight);
+		}
+		putEdge(first, second, 0);
+		Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
+		if (Tester.type == 0 || Tester.type == 1)
+			Tester.printMatrix();
+		else if (Tester.type == 2)
+			Tester.printListArray(Tester.list);
+		else
+			Tester.printListArray(Tester.list);
 	}//End G
 	
 	//Methods that are implemented uniformly and ubiquitously across all graph classes.
@@ -108,55 +163,9 @@ public abstract class G {
 	//Methods that depend on the class to process.
 	protected abstract void initializeList();
 	protected abstract void putEdge(Edge e);
-	protected static boolean areAdjacent(int i, int j) {
-		switch (Tester.type){
-			case 0: return AMWDG.areAdjacent(i, j);
-			case 1: return AMDG.areAdjacent(i, j);
-			case 2: return ALWDG.areAdjacent(i, j);
-			case 3: return ALDG.areAdjacent(i, j);
-			default: return false;
-		}
-	}
-	protected static List<Node> adjacentVertices(int i){
-		switch (Tester.type){
-			case 0: return AMWDG.adjacentVertices(i);
-			case 1: return AMDG.adjacentVertices(i);
-			case 2: return ALWDG.adjacentVertices(i);
-			case 3: return ALDG.adjacentVertices(i);
-			default: return null;
-		}
-	}
-	protected static boolean existEdge(int i, int j){
-		switch (Tester.type){
-			case 0: return AMWDG.existEdge(i, j);
-			case 1: return AMDG.existEdge(i, j);
-			case 2: return ALWDG.existEdge(i, j);
-			case 3: return ALDG.existEdge(i, j);
-			default: return false;
-		}
-	}
-	protected static void removeEdge(int i, int j){
-		switch (Tester.type){
-			case 0: AMWDG.removeEdge(i, j);
-					break;
-			case 1: AMDG.removeEdge(i, j);
-					break;
-			case 2: ALWDG.removeEdge(i, j);
-					break;
-			case 3: ALDG.removeEdge(i, j);
-					break;
-		}
-	}
-	protected static void putEdge(int i, int j, int k){
-		switch (Tester.type){
-			case 0: AMWDG.putEdge(i, j);
-					break;
-			case 1: AMDG.putEdge(i, j);
-					break;
-			case 2: ALWDG.putEdge(i, j, k);
-					break;
-			case 3: ALDG.putEdge(i, j);
-					break;
-		}
-	}
+	protected abstract boolean areAdjacent(int i, int j);
+	protected abstract List<Node> adjacentVertices(int i);
+	protected abstract boolean existEdge(int i, int j);
+	protected abstract void removeEdge(int i, int j);
+	protected abstract void putEdge(int i, int j, int k);
 }//End G

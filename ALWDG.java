@@ -20,7 +20,7 @@ public class ALWDG extends G{
 		return false;
 	}
 
-	protected static boolean existEdge(int i, int j) {
+	protected boolean existEdge(int i, int j) {
 		if (i < Tester.size){
 			Iterator<Edge> marker = weightedList[i].iterator();
 			while (marker.hasNext()){
@@ -41,7 +41,7 @@ public class ALWDG extends G{
 		}
 	}
 
-	protected static void putEdge(int i, int j, int k) {
+	protected void putEdge(int i, int j, int k) {
 		if (!existEdge(i,j)){
 			Node node1 = G.existNode(i);
 			if (node1 == null)
@@ -69,7 +69,7 @@ public class ALWDG extends G{
 		}
 	}
 
-	protected static void removeEdge(int i, int j) {
+	protected void removeEdge(int i, int j) {
 		if (existEdge(i, j)){
 			Iterator<Edge> marker = weightedList[i].iterator();
 			while (marker.hasNext()){
@@ -87,7 +87,7 @@ public class ALWDG extends G{
 		return weightedList[i.getNode()];
 	}
 
-	protected static List<Node> adjacentVertices(int i) {
+	protected List<Node> adjacentVertices(int i) {
 		List<Node> adjNodes = new ArrayList<Node>();
 		Iterator<Edge> marker = weightedList[i].iterator();
 		while (marker.hasNext()){
@@ -104,7 +104,7 @@ public class ALWDG extends G{
 		return false;
 	}
 
-	protected static boolean areAdjacent(int i, int j) {
+	protected boolean areAdjacent(int i, int j) {
 		Edge e = new Edge(i, j);
 		if (existEdge(e))
 			return true;

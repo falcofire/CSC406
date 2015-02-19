@@ -17,7 +17,7 @@ public class AMDG extends G{
 			return false;
 	}
 	
-	protected static boolean existEdge(int i, int j){
+	protected boolean existEdge(int i, int j){
 		if (unweightedMatrix[i][j] != null)
 			return true;
 		else
@@ -33,12 +33,10 @@ public class AMDG extends G{
 	}
 	
 	protected static void putEdge(int i, int j){
-		if (!existEdge(i, j)){
-			Node node1 = new Node(i);
-			Node node2 = new Node(j);
-			Edge edge = new Edge(node1, node2);
-			unweightedMatrix[i][j] = edge;
-		}	
+		Node node1 = new Node(i);
+		Node node2 = new Node(j);
+		Edge edge = new Edge(node1, node2);
+		unweightedMatrix[i][j] = edge;
 	}
 	
 	protected static void removeEdge(Edge edge){
@@ -47,7 +45,7 @@ public class AMDG extends G{
 		unweightedMatrix[node1.getNode()][node2.getNode()] = null;
 	}
 	
-	protected static void removeEdge(int i, int j){
+	protected void removeEdge(int i, int j){
 		unweightedMatrix[i][j] = null;
 	}
 	
@@ -60,7 +58,7 @@ public class AMDG extends G{
 		return adjNodes;
 	}
 	
-	protected static ArrayList<Node> adjacentVertices(int i){
+	protected ArrayList<Node> adjacentVertices(int i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 1; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[i][j] != null)
@@ -76,7 +74,7 @@ public class AMDG extends G{
 			return false;
 	}
 	
-	protected static boolean areAdjacent(int i, int j){
+	protected boolean areAdjacent(int i, int j){
 		if (unweightedMatrix[j][i] != null)
 			return true;
 		else
@@ -88,6 +86,12 @@ public class AMDG extends G{
 	}
 
 	protected void initializeList() {
+		
+	}
+
+	@Override
+	protected void putEdge(int i, int j, int k) {
+		// TODO Auto-generated method stub
 		
 	}
 

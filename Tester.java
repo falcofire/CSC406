@@ -27,7 +27,6 @@ public class Tester {
 	static int numEdges;
 	private static Edge[][] matrix;
 	private static List<Node>[] list;
-	private static List<Edge>[] wList;
 	@SuppressWarnings("unused")
 	private Node n1, n2, n3, n4, n5, n6, n7, n8;
 	@SuppressWarnings("unused")
@@ -64,7 +63,7 @@ public class Tester {
 			e1.printStackTrace();
 		}
 		
-		writer.println("Graph Statistics: ");
+		writer.println("Graph Statistics: \n");
 		
 		//Switch here creates appropriate graph object and manipulates with test objects from this class.
 		switch (type){
@@ -77,12 +76,12 @@ public class Tester {
 					printMatrix();
 					break;
 			case 2: ALWDG ALWDgraph = new ALWDG();
-					wList = ALWDG.getList();
-					printwListArray();
+			ALWDG.getList();
+					printListArray(list);
 					break;
 			case 3: ALDG ALDgraph = new ALDG();
 					list = ALDG.getList();
-					printListArray();
+					printListArray(list);
 					break;
 		}
 		
@@ -91,30 +90,30 @@ public class Tester {
 		writer.println("Number of edges: " + G.numEdges());
 		writer.println();
 		
-		System.out.println("***TEST FOR EXISTING EDGE*** \n Input two integer representing nodes separated by a space in range 1 - " + (Tester.size - 1));
+		writer.println("***TEST FOR EXISTING EDGE***");
 		int first = fileScanner.nextInt();
 		int second = fileScanner.nextInt();
 		writer.println("Exists edge from " + first + " to " + second + ": " + G.existEdge(first, second));
 		writer.println();
 		
-		System.out.println("***TEST FOR DEGREES*** \n Input node for which to calculate degree statistcs of.");
+		writer.println("***TEST FOR DEGREES***");
 		first = fileScanner.nextInt();
 		writer.println("Degrees for node " + first + ":");
 		writer.println("Degree: " + G.degree(first));
 		writer.println("In degree: " + G.inDegree(first));
 		writer.println("Out degree: " + G.outDegree(first) + "\n");
 		
-		System.out.println("***TEST FOR ADJACENCY*** \n Input two integers representing nodes separated by a space to check for adjacency.");
+		writer.println("***TEST FOR ADJACENCY***");
 		first = fileScanner.nextInt();
 		second = fileScanner.nextInt();
-		writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + G.areAdjacent(first, second));
+		writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + G.areAdjacent(first, second) + "\n");
 		
-		System.out.println("***TEST FOR ADJACENT NODES*** \n Input integer representing node to check adjacencies for.");
+		writer.print("***TEST FOR ADJACENT NODES***\n");
 		first = fileScanner.nextInt();
 		writer.print("Adjacencies for Node " + first + ": ");
 		printList(G.adjacentVertices(first));
 		
-		System.out.println("***TEST FOR EDGE REMOVAL*** \n Input two integers representing nodes connected by an edge to remove that edge.");
+		writer.print("***TEST FOR EDGE REMOVAL***");
 		first = fileScanner.nextInt();
 		second = fileScanner.nextInt();
 		G.removeEdge(first, second);
@@ -122,11 +121,11 @@ public class Tester {
 		if (type == 0 || type == 1)
 			printMatrix();
 		else if (type == 2)
-			printwListArray();
+			printListArray(list);
 		else
-			printListArray();
+			printListArray(list);
 		
-		System.out.println("***TEST FOR EDGE PLACEMENT*** \n Input two integers representing nodes to place an edge between them.");
+		writer.print("***TEST FOR EDGE PLACEMENT***");
 		first = fileScanner.nextInt();
 		second = fileScanner.nextInt();
 		if (type == 0 || type == 2){
@@ -138,10 +137,10 @@ public class Tester {
 		if (type == 0 || type == 1)
 			printMatrix();
 		else if (type == 2)
-			printwListArray();
+			printListArray(list);
 		else
-			printListArray();
-		System.out.println("Processing complete.");
+			printListArray(list);
+		writer.println("Processing complete.");
 		scanner.close();
 		fileScanner.close();	
 		writer.close();
@@ -159,9 +158,10 @@ public class Tester {
 			}
 			writer.println();
 		}
+		writer.println();
 	}
-	//Method to print unweighted list structures.
-	private static void printListArray(){
+	//Method to print list structures.
+	private static void printListArray(List<Node>[] l){
 		writer.println();
 		writer.println();
 		for (int i = 1; i < Tester.size; i++){
@@ -174,35 +174,21 @@ public class Tester {
 			}
 			writer.println();
 		}
-	}
-	//Method to print individual lists (specifically those returned by adjacent node method calls.
-	private static void printList(List<Node> l){
-		Iterator<Node> marker = l.iterator();
-		Node node;
-		if (marker.hasNext()){
-			while (marker.hasNext()){
-				node = marker.next();
-				writer.print(node.getNode() + " ");
-			}
-		}
-		else
-			writer.print("No adjacent nodes.");
 		writer.println();
 	}
-	//Method to print weighted list objects.
-	private static void printwListArray(){
-		Edge e;
-		for (int i = 1; i < Tester.size; i++){
-			Iterator<Edge> marker = wList[i].iterator();
-			writer.print(i + ": ");
-			while(marker.hasNext()){
-				e = marker.next();
-				writer.print(e.getVertex2().getNode() + " ");
-			}
-			writer.println();
-		}
-	}
 	
+	private static void printList(List<Node> l){
+		writer.println();
+		Iterator<Node> marker = l.iterator();
+		Node node;
+		while (marker.hasNext()){
+			node = marker.next();
+			writer.print(node.getNode() + " ");
+		}
+		
+		writer.println();
+	}
+
 	public void testFailure() throws Exception {
 	    fail();
 	}

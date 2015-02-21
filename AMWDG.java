@@ -54,11 +54,7 @@ public class AMWDG extends G{
 	}
 
 	protected void removeEdge(int i, int j) {
-		Edge e = new Edge(i, j);
-		if (existEdge(e)){
-			weightedMatrix[i][j] = null;
-		}
-		
+		weightedMatrix[i][j] = null;
 	}
 	
 	protected static ArrayList<Integer> adjacentVertices(Node i){
@@ -99,9 +95,8 @@ public class AMWDG extends G{
 	protected void initializeList() {
 	}
 
-	@Override
 	protected void putEdge(int i, int j, int k) {
-		// TODO Auto-generated method stub
+		weightedMatrix[i][j] = k;
 		
 	}
 

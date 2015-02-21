@@ -84,7 +84,13 @@ public abstract class G {
 		first = Tester.fileScanner.nextInt();
 		second = Tester.fileScanner.nextInt();
 		if (Tester.type == 0 || Tester.type == 2){
-			int weight = Tester.fileScanner.nextInt();
+			int weight;
+			try{
+				weight = Tester.fileScanner.nextInt();
+			}
+			catch(NoSuchElementException e){
+				weight = 1;
+			}
 			putEdge(first, second, weight);
 		}
 		else

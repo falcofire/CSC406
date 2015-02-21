@@ -12,7 +12,6 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,7 +24,6 @@ public class Tester {
 	static int weight;
 	static int size;
 	static int numEdges;
-	static List<Node>[] list;
 	
 	@Before public static void setUp(){
 		scanner = new Scanner(System.in);

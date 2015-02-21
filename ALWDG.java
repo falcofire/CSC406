@@ -100,13 +100,13 @@ public class ALWDG extends G{
 		return false;
 	}
 	
-	protected static List<Edge>[] getList(){
+	protected static List<Node>[] getList(){
 		return weightedList;
 	}
 		
 	protected void initializeList() {
 	    for (int i = 1; i < Tester.size; i++){
-	        List<Edge> list = new ArrayList<Edge>();
+	        List<Node> list = new ArrayList<Node>();
 	        weightedList[i] = list;
 	    }
 	}

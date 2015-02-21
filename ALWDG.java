@@ -39,6 +39,11 @@ public class ALWDG extends G{
 		}
 	}
 
+	protected void putEdge(int i, int j) {
+		Node node = new Node(j, 1);
+		weightedList[i].add(node);
+	}
+	
 	protected void putEdge(int i, int j, int k) {
 		Node node = new Node(j,k);
 		weightedList[i].add(node);
@@ -72,8 +77,14 @@ public class ALWDG extends G{
 		
 	}
 	
-	protected static List<Node> adjacentVertices(Node i) {
-		return weightedList[i.getNode()];
+	protected static List<Integer> adjacentVertices(Node i) {
+		List<Integer> adjNodes = new ArrayList<Integer>();
+		Iterator<Node> marker = weightedList[i.getNode()].iterator();
+		while (marker.hasNext()){
+			adjNodes.add(marker.next().getNode());
+		}
+		printAdj(i.getNode(), adjNodes);
+		return adjNodes;
 	}
 
 	protected List<Integer> adjacentVertices(int i) {
@@ -83,6 +94,7 @@ public class ALWDG extends G{
 			Node check = marker.next();
 			adjNodes.add(check.getNode());
 		}
+		printAdj(i, adjNodes);
 		return adjNodes;
 	}
 
@@ -111,22 +123,20 @@ public class ALWDG extends G{
 	    }
 	}
 
-	@Override
 	protected void print() {
-		// TODO Auto-generated method stub
-		
+		for (int i =1; i < weightedList.length; i++){
+			Tester.writer.print(i + ": ");
+			Iterator<Node> marker = weightedList[i].iterator();
+			while (marker.hasNext())
+				Tester.writer.print(marker.next().getNode() + " ");
+			Tester.writer.println();
+		}
 	}
 
-	@Override
-	protected void printAdj(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void putEdge(int i, int j) {
-		// TODO Auto-generated method stub
-		
+	protected static void printAdj(int j, List<Integer> i) {
+		Iterator<Integer> marker = i.iterator();
+		while (marker.hasNext())
+			Tester.writer.print(marker.next() + " ");
 	}
 	
 }//End ALWDG

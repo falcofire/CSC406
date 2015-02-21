@@ -26,10 +26,6 @@ public class Tester {
 	static int size;
 	static int numEdges;
 	static List<Node>[] list;
-	@SuppressWarnings("unused")
-	private Node n1, n2, n3, n4, n5, n6, n7, n8;
-	@SuppressWarnings("unused")
-	private Edge e1, e2, e3, e4, e5, e6, e7, e8;
 	
 	@Before public static void setUp(){
 		scanner = new Scanner(System.in);
@@ -74,7 +70,7 @@ public class Tester {
 					break;
 		}
 	
-		writer.println("Processing complete.");
+		System.out.println("Processing complete.");
 		scanner.close();
 		fileScanner.close();	
 		writer.close();

@@ -72,6 +72,7 @@ public class ALDG extends G{
 	}
 	
 	protected static List<Integer> adjacentVertices(Node i) {
+		printAdj(i.getNode(), unweightedList[i.getNode()]);
 		return unweightedList[i.getNode()];
 	}
 
@@ -104,13 +105,11 @@ public class ALDG extends G{
 	    }
 	}
 
-	@Override
 	protected void putEdge(int i, int j, int k) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	protected void print() {
 		for (int i = 1; i < unweightedList.length; i++){
 			Tester.writer.print(i + ": ");
@@ -120,11 +119,11 @@ public class ALDG extends G{
 			Tester.writer.println();
 		}
 	}
-
-	@Override
-	protected void printAdj(int i) {
-		// TODO Auto-generated method stub
-		
+	
+	protected static void printAdj(int j, List<Integer> i) {
+		Iterator<Integer> marker = i.iterator();
+		while (marker.hasNext())
+			Tester.writer.print(marker.next() + " ");
 	}
 
 }//End ALDG

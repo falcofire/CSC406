@@ -15,11 +15,12 @@ public abstract class G {
 		while (nodes.size() < Tester.size-1 && edgeCount < Tester.numEdges){
 			//Get next node from file.
 			int firstNode = Tester.fileScanner.nextInt();
+			rangeCheck(firstNode);
 			int weight = 0;
-			
 			degrees[firstNode]++;
 			outDegrees[firstNode]++;
 			int secondNode = Tester.fileScanner.nextInt();
+			rangeCheck(secondNode);
 			degrees[secondNode]++;
 			inDegrees[secondNode]++;
 			if (Tester.type == 0 || Tester.type == 2){
@@ -71,18 +72,20 @@ public abstract class G {
 		Tester.writer.print("***TEST FOR ADJACENT NODES***\n");
 		first = Tester.fileScanner.nextInt();
 		Tester.writer.print("Adjacencies for Node " + first + ": ");
-		printAdj(first);
+		adjacentVertices(first);
 		
-		Tester.writer.print("***TEST FOR EDGE REMOVAL***");
+		Tester.writer.print("\n\n***TEST FOR EDGE REMOVAL***");
 		first = Tester.fileScanner.nextInt();
 		second = Tester.fileScanner.nextInt();
 		removeEdge(first, second);
 		Tester.writer.println("\n After edge removal (" + first + ", " + second + "): ");
 		print();
 		
-		Tester.writer.print("***TEST FOR EDGE PLACEMENT***");
+		Tester.writer.print("\n***TEST FOR EDGE PLACEMENT***");
 		first = Tester.fileScanner.nextInt();
+		rangeCheck(first);
 		second = Tester.fileScanner.nextInt();
+		rangeCheck(second);
 		if (Tester.type == 0 || Tester.type == 2){
 			int weight;
 			try{
@@ -99,7 +102,7 @@ public abstract class G {
 		print();
 	}//End G
 	
-	//Methods that are implemented uniformly and ubiquitously across all graph classes.
+	//Methods that are implemented uniformly across all graph classes.
 	protected static Node existNode(int i){
 		Iterator<Node> marker = nodes.iterator();
 		while(marker.hasNext()){
@@ -135,6 +138,13 @@ public abstract class G {
 		return outDegrees[i];
 	}
 	
+	protected static void rangeCheck(int i){
+		if (i > Tester.size || i < 0){
+			System.out.println("Node value (" + i + ") out of range.");
+			System.exit(1);
+		}		
+	}
+	
 	//Methods that depend on the class to process.
 	protected abstract void initializeList();
 	protected abstract boolean areAdjacent(int i, int j);
@@ -145,5 +155,4 @@ public abstract class G {
 	protected abstract void putEdge(int i, int j, int k);
 	protected abstract void putEdge(Edge e);
 	protected abstract void print();
-	protected abstract void printAdj(int i);
 }//End G

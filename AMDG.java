@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class AMDG extends G{
 
@@ -35,6 +36,9 @@ public class AMDG extends G{
 		unweightedMatrix[i][j] = 1;
 	}
 	
+	protected void putEdge(int i, int j, int k) {
+	}
+	
 	protected static void removeEdge(Edge edge){
 		Node node1 = edge.getVertex1();
 		Node node2 = edge.getVertex2();
@@ -51,6 +55,7 @@ public class AMDG extends G{
 			if (unweightedMatrix[i.getNode()][j] != null)
 				adjNodes.add(unweightedMatrix[i.getNode()][j]);
 		}
+		printAdj(i.getNode(), adjNodes);
 		return adjNodes;
 	}
 	
@@ -60,6 +65,7 @@ public class AMDG extends G{
 			if (unweightedMatrix[i][j] != null)
 				adjNodes.add(unweightedMatrix[i][j]);
 		}
+		printAdj(i, adjNodes);
 		return adjNodes;
 	}
 	
@@ -77,18 +83,14 @@ public class AMDG extends G{
 			return false;
 	}
 	
+	
+	
+	
 	protected static Integer[][] getMatrix(){
 		return unweightedMatrix;
 	}
 
-	protected void initializeList() {
-		
-	}
-
-	@Override
-	protected void putEdge(int i, int j, int k) {
-		// TODO Auto-generated method stub
-		
+	protected void initializeList() {	
 	}
 
 	protected void print() {
@@ -103,10 +105,10 @@ public class AMDG extends G{
 		}
 	}
 
-	@Override
-	protected void printAdj(int i) {
-		// TODO Auto-generated method stub
-		
+	protected static void printAdj(int j, ArrayList<Integer> i) {
+		Iterator<Integer> marker = i.iterator();
+		while (marker.hasNext())
+			Tester.writer.print(marker.next() + " ");
 	}
 
 }//End AMDG

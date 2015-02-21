@@ -23,5 +23,9 @@ public class Node {
 	protected int getNode(){
 		return value; 
 	}
+	
+	protected int getWeight(){
+		return weight;
+	}
 
 }//End Node

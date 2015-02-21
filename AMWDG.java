@@ -27,7 +27,6 @@ public class AMWDG extends G{
 			return false;
 	}
 	
-	
 	protected void putEdge(Edge edge){
 		if (!existEdge(edge)){
 			Node node1 = edge.getVertex1();
@@ -40,9 +39,11 @@ public class AMWDG extends G{
 	}
 
 	protected void putEdge(int i, int j) {
-		if (!existEdge(i, j)){
-			weightedMatrix[i][j] = (Integer) 1;
-		}
+		weightedMatrix[i][j] = 1;
+	}
+	
+	protected void putEdge(int i, int j, int k) {
+		weightedMatrix[i][j] = k;
 	}
 
 	protected static void removeEdge(Edge e) {
@@ -72,6 +73,7 @@ public class AMWDG extends G{
 			if (weightedMatrix[i][j] != null)
 				adjNodes.add(weightedMatrix[i][j]);
 		}
+		printAdj(i, adjNodes);
 		return adjNodes;
 	}
 	
@@ -88,16 +90,14 @@ public class AMWDG extends G{
 		return false;
 	}
 	
+	
+	
+	
 	protected static Integer[][] getMatrix(){
 		return weightedMatrix;
 	}
 
 	protected void initializeList() {
-	}
-
-	protected void putEdge(int i, int j, int k) {
-		weightedMatrix[i][j] = k;
-		
 	}
 
 	protected void print() {
@@ -112,10 +112,10 @@ public class AMWDG extends G{
 		}
 	}
 
-	@Override
-	protected void printAdj(int i) {
-		// TODO Auto-generated method stub
-		
+	protected void printAdj(int j, ArrayList<Integer> i) {
+		Iterator<Integer> marker = i.iterator();
+		while (marker.hasNext())
+			Tester.writer.print(marker.next() + " ");
 	}
 	
 }//End AMWDG

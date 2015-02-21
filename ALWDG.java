@@ -122,5 +122,11 @@ public class ALWDG extends G{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected void putEdge(int i, int j) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }//End ALWDG

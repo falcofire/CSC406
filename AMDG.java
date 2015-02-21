@@ -31,7 +31,7 @@ public class AMDG extends G{
 		}
 	}
 	
-	protected static void putEdge(int i, int j){
+	protected void putEdge(int i, int j){
 		unweightedMatrix[i][j] = 1;
 	}
 	

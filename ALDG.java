@@ -41,7 +41,7 @@ public class ALDG extends G{
 		}
 	}
 
-	protected static void putEdge(int i, int j) {
+	protected void putEdge(int i, int j) {
 		Node node2 = new Node(j);
 		unweightedList[i].add(node2.getNode());
 	}
@@ -112,8 +112,13 @@ public class ALDG extends G{
 
 	@Override
 	protected void print() {
-		// TODO Auto-generated method stub
-		
+		for (int i = 1; i < unweightedList.length; i++){
+			Tester.writer.print(i + ": ");
+			Iterator<Integer> marker = unweightedList[i].iterator();
+			while (marker.hasNext())
+				Tester.writer.print(marker.next() + " ");
+			Tester.writer.println();
+		}
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 import java.util.*;
 public abstract class G {
 	private static int edgeCount = 0;
-	private static int[] degrees = new int[Tester.size + 1];
+	private static int[] degrees = new int[Tester.size];
 	private static int[] outDegrees = new int[Tester.size + 1];
 	private static int[] inDegrees = new int[Tester.size + 1];
 	private static Set<Node> nodes = new HashSet<Node>();
@@ -14,44 +14,27 @@ public abstract class G {
 		
 		while (nodes.size() < Tester.size-1 && edgeCount < Tester.numEdges){
 			//Get next node from file.
-			int nextNode = Tester.fileScanner.nextInt();
-			Node node, node2;
-			int weight;
-			Edge edge;
+			int firstNode = Tester.fileScanner.nextInt();
+			int weight = 0;
 			
-			//This creates the Node objects and then checks for weighted graph and process data further appropriately.
-			//Need to check for previously existing nodes before creating new ones.
-			node = existNode(nextNode);
-			if (node == null){
-				node = new Node(nextNode);
-				nodes.add(node);
-			}
-			degrees[nextNode]++;
-			outDegrees[nextNode]++;
-			nextNode = Tester.fileScanner.nextInt();
-			node2 = existNode(nextNode);
-			if (node2 == null){
-				node2 = new Node(nextNode);
-				nodes.add(node2);
-			}
-			degrees[nextNode]++;
-			inDegrees[nextNode]++;
+			degrees[firstNode]++;
+			outDegrees[firstNode]++;
+			int secondNode = Tester.fileScanner.nextInt();
+			degrees[secondNode]++;
+			inDegrees[secondNode]++;
 			if (Tester.type == 0 || Tester.type == 2){
 				weight = Tester.fileScanner.nextInt();
-				edge = new Edge(node, node2, weight);
 			}	
-			else
-				edge = new Edge(node, node2);
 			
 			//Store nodes in appropriate graph data structure at this point according to value of type.
 			switch (Tester.type){
-				case 0: putEdge(edge);
+				case 0: putEdge(firstNode, secondNode, weight);
 						break;
-				case 1: putEdge(edge);
+				case 1: putEdge(firstNode, secondNode);
 						break;
-				case 2: putEdge(edge);
+				case 2: putEdge(firstNode, secondNode, weight);
 						break;
-				case 3: putEdge(edge);
+				case 3: putEdge(firstNode, secondNode);
 						break;
 			}
 			edgeCount++;
@@ -63,7 +46,7 @@ public abstract class G {
 		print();
 		
 		Tester.writer.println();
-		Tester.writer.println("Number of nodes: " + nodes.size());
+		Tester.writer.println("Number of nodes: " + (Tester.size-1));
 		Tester.writer.println("Number of edges: " + edgeCount);
 		Tester.writer.println();
 		
@@ -104,7 +87,8 @@ public abstract class G {
 			int weight = Tester.fileScanner.nextInt();
 			putEdge(first, second, weight);
 		}
-		putEdge(first, second, 0);
+		else
+			putEdge(first, second);
 		Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
 		print();
 	}//End G
@@ -147,12 +131,13 @@ public abstract class G {
 	
 	//Methods that depend on the class to process.
 	protected abstract void initializeList();
-	protected abstract void putEdge(Edge e);
 	protected abstract boolean areAdjacent(int i, int j);
 	protected abstract List<Integer> adjacentVertices(int i);
 	protected abstract boolean existEdge(int i, int j);
 	protected abstract void removeEdge(int i, int j);
+	protected abstract void putEdge(int i, int j);
 	protected abstract void putEdge(int i, int j, int k);
+	protected abstract void putEdge(Edge e);
 	protected abstract void print();
 	protected abstract void printAdj(int i);
 }//End G

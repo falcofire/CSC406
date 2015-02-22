@@ -3,57 +3,43 @@ import java.util.List;
 
 public class AMWG extends G{
 
-	@Override
-	protected void initializeList() {
-		// TODO Auto-generated method stub
+	private static Integer[][] undirectedMatrix = new Integer[Tester.size][Tester.size];
+	
+	public AMWG(){
+	}
+	
+	protected boolean existEdge(int i, int j) {
+		return false;
+	}
+	
+	protected void putEdge(int i, int j) {
 		
 	}
 
-	@Override
-	protected boolean areAdjacent(int i, int j) {
-		// TODO Auto-generated method stub
-		return false;
+	protected void putEdge(int i, int j, int k) {
+		
 	}
 
-	@Override
+	protected void putEdge(Edge e) {
+		
+	}
+	
+	protected void removeEdge(int i, int j) {
+		
+	}
+	
 	protected List<Integer> adjacentVertices(int i) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	protected boolean existEdge(int i, int j) {
-		// TODO Auto-generated method stub
+	
+	protected boolean areAdjacent(int i, int j) {
 		return false;
 	}
-
-	@Override
-	protected void removeEdge(int i, int j) {
-		// TODO Auto-generated method stub
-		
+	
+	protected void initializeList() {
 	}
 
-	@Override
-	protected void putEdge(int i, int j) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void putEdge(int i, int j, int k) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void putEdge(Edge e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	protected void print() {
-		// TODO Auto-generated method stub
 		
 	}
 

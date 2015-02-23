@@ -90,16 +90,13 @@ public class AMWDG extends G{
 		return false;
 	}
 	
-	
-	
-	
 	protected static Integer[][] getMatrix(){
 		return weightedMatrix;
 	}
 
 	protected void initializeList() {
 	}
-
+	//Helper method to print contents of matrix in readable format.
 	protected void print() {
 		for (int i = 1; i < weightedMatrix.length; i++){
 			for (int j = 1; j < weightedMatrix.length; j++){
@@ -111,11 +108,10 @@ public class AMWDG extends G{
 			Tester.writer.println();
 		}
 	}
-
+	//Helper method to print adjacent Nodes.
 	protected void printAdj(int j, ArrayList<Integer> i) {
 		Iterator<Integer> marker = i.iterator();
 		while (marker.hasNext())
 			Tester.writer.print(marker.next() + " ");
 	}
-	
 }//End AMWDG

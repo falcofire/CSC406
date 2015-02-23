@@ -81,17 +81,14 @@ public class AMDG extends G{
 		else
 			return false;
 	}
-	
-	
-	
-	
+		
 	protected static Integer[][] getMatrix(){
 		return unweightedMatrix;
 	}
 
 	protected void initializeList() {	
 	}
-
+	//Helper method to print contents of matrix in readable format.
 	protected void print() {
 		for (int i = 1; i < unweightedMatrix.length; i++){
 			for (int j = 1; j < unweightedMatrix.length; j++){
@@ -103,11 +100,10 @@ public class AMDG extends G{
 			Tester.writer.println();
 		}
 	}
-
+	//Helper method to print adjacent vertices.
 	protected static void printAdj(int j, ArrayList<Integer> i) {
 		Iterator<Integer> marker = i.iterator();
 		while (marker.hasNext())
 			Tester.writer.print(marker.next() + " ");
 	}
-
 }//End AMDG

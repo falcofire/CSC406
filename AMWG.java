@@ -47,7 +47,7 @@ public class AMWG extends G{
 	
 	protected void initializeList() {
 	}
-
+	//Helper method to print contents of matrix in readable format.
 	protected void print() {
 		for (int i = 1; i < undirectedMatrix.length; i++){
 			for (int j = 1; j < undirectedMatrix.length; j++){
@@ -59,5 +59,4 @@ public class AMWG extends G{
 			Tester.writer.println();
 		}
 	}
-
-}
+}//END AMWG

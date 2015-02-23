@@ -132,11 +132,10 @@ public class ALWDG extends G{
 			Tester.writer.println();
 		}
 	}
-
+	//Helper method that prints out list of adjacent Nodes for specified Node.
 	protected static void printAdj(int j, List<Integer> i) {
 		Iterator<Integer> marker = i.iterator();
 		while (marker.hasNext())
 			Tester.writer.print(marker.next() + " ");
 	}
-	
 }//End ALWDG

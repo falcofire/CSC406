@@ -5,13 +5,12 @@ public abstract class G {
 	private static int[] outDegrees = new int[Tester.size + 1];
 	private static int[] inDegrees = new int[Tester.size + 1];
 	private static Set<Node> nodes = new HashSet<Node>();
-//	Iterator marker = list.listIterator();
 	
 	public G () {
-		
+		//Checks if structure is a list and if so, initializes the list.
 		if (Tester.type == 2 || Tester.type == 3)
 			initializeList();
-		
+		//While loop checks when to stop processing data as Nodes.
 		while (nodes.size() < Tester.size-1 && edgeCount < Tester.numEdges){
 			//Get next node from file.
 			int firstNode = Tester.fileScanner.nextInt();
@@ -40,9 +39,10 @@ public abstract class G {
 			}
 			edgeCount++;
 			
-		}//End while looop
+		}//End while loop
 		System.out.println("Graph constructed successfully.");
 		
+		//Processing for testing the various methods for the data structures.
 		Tester.writer.println("Graph statistics: ");
 		print();
 		
@@ -103,17 +103,6 @@ public abstract class G {
 	}//End G
 	
 	//Methods that are implemented uniformly across all graph classes.
-	protected static Node existNode(int i){
-		Iterator<Node> marker = nodes.iterator();
-		while(marker.hasNext()){
-			Node test = marker.next();
-			if (test.getNode() == i){
-				return test;
-			}
-		}
-		return null;
-	}
-	
 	protected static int degree(Node i){
 		return degrees[i.getNode()];
 	}

@@ -5,6 +5,7 @@ public class Edge {
 	private Node vertex2;
 	private int weight1;
 	
+	//Constructor for unweighted graph edges.
 	protected Edge (int i, int j){
 		Node node1 = new Node(i);
 		Node node2 = new Node(j);
@@ -22,6 +23,15 @@ public class Edge {
 	protected Edge (Node i, Node j, int weight){
 		setVertex1(i);
 		setVertex2(j);
+		setWeight(weight);
+	}
+	
+	//Constructor for weighted graph edges.
+	protected Edge (int i, int j, int weight){
+		Node node1 = new Node(i);
+		Node node2 = new Node(j);
+		setVertex1(node1);
+		setVertex2(node2);
 		setWeight(weight);
 	}
 	

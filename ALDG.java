@@ -11,7 +11,7 @@ public class ALDG extends G{
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
 		Iterator<Integer> marker = unweightedList[node1.getNode()].iterator();
-		//While loop checks over all nodes in list to ensure the specified node is not alreay present.
+		//While loop checks over all nodes in list to ensure the specified node is not already present.
 		while (marker.hasNext()){
 			Integer check = marker.next();
 			if (check == node2.getNode())
@@ -119,5 +119,4 @@ public class ALDG extends G{
 		while (marker.hasNext())
 			Tester.writer.print(marker.next() + " ");
 	}
-
 }//End ALDG

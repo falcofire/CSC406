@@ -63,5 +63,4 @@ public class ALWG extends G{
 	protected void print() {
 		
 	}
-
-}
+} //End ALWG

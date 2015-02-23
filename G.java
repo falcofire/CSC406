@@ -4,14 +4,13 @@ public abstract class G {
 	private static int[] degrees = new int[Tester.size];
 	private static int[] outDegrees = new int[Tester.size + 1];
 	private static int[] inDegrees = new int[Tester.size + 1];
-	private static Set<Node> nodes = new HashSet<Node>();
 	
 	public G () {
 		//Checks if structure is a list and if so, initializes the list.
 		if (Tester.type == 2 || Tester.type == 3)
 			initializeList();
 		//While loop checks when to stop processing data as Nodes.
-		while (nodes.size() < Tester.size-1 && edgeCount < Tester.numEdges){
+		while (edgeCount < Tester.numEdges){
 			//Get next node from file.
 			int firstNode = Tester.fileScanner.nextInt();
 			rangeCheck(firstNode);

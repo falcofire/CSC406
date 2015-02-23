@@ -71,6 +71,7 @@ public class ALDG extends G{
 	}
 
 	protected List<Integer> adjacentVertices(int i) {
+		printAdj(i, unweightedList[i]);
 		return unweightedList[i];
 	}
 

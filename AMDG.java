@@ -20,8 +20,7 @@ public class AMDG extends G{
 	protected boolean existEdge(int i, int j){
 		if (unweightedMatrix[i][j] != null)
 			return true;
-		else
-			return false;
+		return false;
 	}
 	
 	protected void putEdge(Edge edge){

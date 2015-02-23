@@ -6,7 +6,6 @@ ASSIGNED: 26 JAN 2015
 DUE: 11 FEB 2015
 */
 import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
@@ -74,7 +73,6 @@ public class Tester {
 		writer.close();
 		System.exit(0);
 	}//End testMain,
-
 
 	public void testFailure() throws Exception {
 	    fail();

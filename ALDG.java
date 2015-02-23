@@ -21,14 +21,8 @@ public class ALDG extends G{
 	}
 
 	protected boolean existEdge(int i, int j) {
-		if (i < Tester.size){
-			Iterator<Integer> marker = unweightedList[i].iterator();
-			while (marker.hasNext()){
-				Integer check = marker.next();
-				if (check == j)
-					return true;
-			}
-		}
+		if (unweightedList[i].contains(j))
+			return true;
 		return false;
 	}
 

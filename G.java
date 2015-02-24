@@ -43,6 +43,7 @@ public abstract class G {
 		
 		//Processing for testing the various methods for the data structures.
 		Tester.writer.println("Graph statistics: ");
+		//Print graph with initial contents.
 		print();
 		
 		Tester.writer.println();
@@ -78,6 +79,7 @@ public abstract class G {
 		second = Tester.fileScanner.nextInt();
 		removeEdge(first, second);
 		Tester.writer.println("\n After edge removal (" + first + ", " + second + "): ");
+		//Print to verify correct removal.
 		print();
 		
 		Tester.writer.print("\n***TEST FOR EDGE PLACEMENT***");
@@ -98,6 +100,7 @@ public abstract class G {
 		else
 			putEdge(first, second);
 		Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
+		//Print to verify correct placement.
 		print();
 	}//End G
 	

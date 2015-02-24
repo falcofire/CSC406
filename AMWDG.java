@@ -100,7 +100,7 @@ public class AMWDG extends G{
 		for (int i = 1; i < weightedMatrix.length; i++){
 			for (int j = 1; j < weightedMatrix.length; j++){
 				if (weightedMatrix[i][j] != null)
-					Tester.writer.print(weightedMatrix[i][j] + " ");
+					Tester.writer.print(weightedMatrix[i][j].getWeight() + " ");
 				else
 					Tester.writer.print("0 ");
 			}
@@ -111,6 +111,6 @@ public class AMWDG extends G{
 	protected void printAdj(int j, ArrayList<Node> i) {
 		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next().getWeight() + " ");
+			Tester.writer.print(marker.next().getNode() + " ");
 	}
 }//End AMWDG

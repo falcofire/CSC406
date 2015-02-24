@@ -5,13 +5,10 @@ ASSIGNMENT 1
 ASSIGNED: 26 JAN 2015
 DUE: 11 FEB 2015
 */
-import static org.junit.Assert.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.*;
 import org.junit.Before;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class Tester {
@@ -43,7 +40,6 @@ public class Tester {
 		setUp();
 		testMain();
 	}
-	
 	@SuppressWarnings({ "unused" })
 	@Test
 	public static void testMain() {
@@ -54,7 +50,6 @@ public class Tester {
 		} catch (UnsupportedEncodingException e1) {
 			e1.printStackTrace();
 		}
-		
 		//Switch here creates appropriate graph object and manipulates with test objects from this class.
 		switch (type){
 			case 0: AMWDG AMWDgraph = new AMWDG();
@@ -66,7 +61,6 @@ public class Tester {
 			case 3: ALDG ALDgraph = new ALDG();
 					break;
 		}
-	
 		System.out.println("Processing complete.");
 		scanner.close();
 		fileScanner.close();	
@@ -77,5 +71,4 @@ public class Tester {
 	public void testFailure() throws Exception {
 	    fail();
 	}
-	
 }//End Tester

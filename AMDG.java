@@ -3,7 +3,7 @@ import java.util.Iterator;
 
 public class AMDG extends G{
 
-	private static Integer[][] unweightedMatrix = new Integer[Tester.size][Tester.size];
+	private static Node[][] unweightedMatrix = new Node[Tester.size][Tester.size];
 	
 	public AMDG (){
 	}
@@ -27,12 +27,13 @@ public class AMDG extends G{
 		if (!existEdge(edge)){
 			Node node1 = edge.getVertex1();
 			Node node2 = edge.getVertex2();
-			unweightedMatrix[node1.getNode()][node2.getNode()] = 1;
+			unweightedMatrix[node1.getNode()][node2.getNode()] = node2;
 		}
 	}
 	
 	protected void putEdge(int i, int j){
-		unweightedMatrix[i][j] = 1;
+		Node node = new Node(j, 1);
+		unweightedMatrix[i][j] = node;
 	}
 	
 	protected void putEdge(int i, int j, int k) {
@@ -48,8 +49,8 @@ public class AMDG extends G{
 		unweightedMatrix[i][j] = null;
 	}
 	
-	protected static ArrayList<Integer> adjacentVertices(Node i){
-		ArrayList<Integer> adjNodes= new ArrayList<Integer>();
+	protected static ArrayList<Node> adjacentVertices(Node i){
+		ArrayList<Node> adjNodes= new ArrayList<Node>();
 		for (int j = 1; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[i.getNode()][j] != null)
 				adjNodes.add(unweightedMatrix[i.getNode()][j]);
@@ -58,8 +59,8 @@ public class AMDG extends G{
 		return adjNodes;
 	}
 	
-	protected ArrayList<Integer> adjacentVertices(int i){
-		ArrayList<Integer> adjNodes = new ArrayList<Integer>();
+	protected ArrayList<Node> adjacentVertices(int i){
+		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 1; j < unweightedMatrix.length; j++){
 			if (unweightedMatrix[i][j] != null)
 				adjNodes.add(unweightedMatrix[i][j]);
@@ -82,7 +83,7 @@ public class AMDG extends G{
 			return false;
 	}
 		
-	protected static Integer[][] getMatrix(){
+	protected static Node[][] getMatrix(){
 		return unweightedMatrix;
 	}
 
@@ -101,9 +102,9 @@ public class AMDG extends G{
 		}
 	}
 	//Helper method to print adjacent vertices.
-	protected static void printAdj(int j, ArrayList<Integer> i) {
-		Iterator<Integer> marker = i.iterator();
+	protected static void printAdj(int j, ArrayList<Node> i) {
+		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next() + " ");
+			Tester.writer.print(marker.next().getNode() + " ");
 	}
 }//End AMDG

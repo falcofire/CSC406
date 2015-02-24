@@ -44,11 +44,11 @@ public class ALWG extends G{
 		}
 	}
 	
-	protected List<Integer> adjacentVertices(int i) {
-		List<Integer> adjNodes = new ArrayList<Integer>();
+	protected List<Node> adjacentVertices(int i) {
+		List<Node> adjNodes = new ArrayList<Node>();
 		Iterator<Node> marker = undirectedList[i].iterator();
 		while (marker.hasNext()){
-			adjNodes.add(marker.next().getNode());
+			adjNodes.add(marker.next());
 		}
 		return adjNodes;
 	}

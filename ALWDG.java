@@ -74,25 +74,24 @@ public class ALWDG extends G{
 				}	
 			}
 		}
-		
 	}
 	
-	protected static List<Integer> adjacentVertices(Node i) {
-		List<Integer> adjNodes = new ArrayList<Integer>();
+	protected static List<Node> adjacentVertices(Node i) {
+		List<Node> adjNodes = new ArrayList<Node>();
 		Iterator<Node> marker = weightedList[i.getNode()].iterator();
 		while (marker.hasNext()){
-			adjNodes.add(marker.next().getNode());
+			adjNodes.add(marker.next());
 		}
 		printAdj(i.getNode(), adjNodes);
 		return adjNodes;
 	}
 
-	protected List<Integer> adjacentVertices(int i) {
-		List<Integer> adjNodes = new ArrayList<Integer>();
+	protected List<Node> adjacentVertices(int i) {
+		List<Node> adjNodes = new ArrayList<Node>();
 		Iterator<Node> marker = weightedList[i].iterator();
 		while (marker.hasNext()){
 			Node check = marker.next();
-			adjNodes.add(check.getNode());
+			adjNodes.add(check);
 		}
 		printAdj(i, adjNodes);
 		return adjNodes;
@@ -133,9 +132,9 @@ public class ALWDG extends G{
 		}
 	}
 	//Helper method that prints out list of adjacent Nodes for specified Node.
-	protected static void printAdj(int j, List<Integer> i) {
-		Iterator<Integer> marker = i.iterator();
+	protected static void printAdj(int j, List<Node> i) {
+		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next() + " ");
+			Tester.writer.print(marker.next().getNode() + " ");
 	}
 }//End ALWDG

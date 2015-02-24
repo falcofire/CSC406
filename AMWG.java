@@ -2,7 +2,7 @@ import java.util.*;
 
 public class AMWG extends G{
 
-	private static Integer[][] undirectedMatrix = new Integer[Tester.size][Tester.size];
+	private static Node[][] undirectedMatrix = new Node[Tester.size][Tester.size];
 	
 	public AMWG(){
 	}
@@ -14,25 +14,27 @@ public class AMWG extends G{
 	}
 	
 	protected void putEdge(int i, int j) {
-		undirectedMatrix[i][j] = 1;
+		Node node = new Node(j, 1);
+		undirectedMatrix[i][j] = node;
 	}
 
 	protected void putEdge(int i, int j, int k) {
-		undirectedMatrix[i][j] = k;
+		Node node = new Node(j, k);
+		undirectedMatrix[i][j] = node;
 	}
 
 	protected void putEdge(Edge e) {
 		Node node1 = e.getVertex1();
 		Node node2 = e.getVertex2();
-		undirectedMatrix[node1.getNode()][node2.getNode()] = e.getWeight();
+		undirectedMatrix[node1.getNode()][node2.getNode()] = node2;
 	}
 	
 	protected void removeEdge(int i, int j) {
 		undirectedMatrix[i][j] = null;
 	}
 	
-	protected List<Integer> adjacentVertices(int i) {
-		List<Integer> adjNodes = new ArrayList<Integer>();
+	protected List<Node> adjacentVertices(int i) {
+		List<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 1; j < undirectedMatrix[i].length; j++){
 			adjNodes.add(undirectedMatrix[i][j]);
 		}
@@ -52,7 +54,7 @@ public class AMWG extends G{
 		for (int i = 1; i < undirectedMatrix.length; i++){
 			for (int j = 1; j < undirectedMatrix.length; j++){
 				if (undirectedMatrix[i][j] != null)
-					Tester.writer.print(undirectedMatrix[i][j] + " ");
+					Tester.writer.print(undirectedMatrix[i][j].getNode() + " ");
 				else
 					Tester.writer.print("0 ");
 			}

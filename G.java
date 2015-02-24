@@ -139,7 +139,7 @@ public abstract class G {
 	//Methods that depend on the class to process.
 	protected abstract void initializeList();
 	protected abstract boolean areAdjacent(int i, int j);
-	protected abstract List<Integer> adjacentVertices(int i);
+	protected abstract List<Node> adjacentVertices(int i);
 	protected abstract boolean existEdge(int i, int j);
 	protected abstract void removeEdge(int i, int j);
 	protected abstract void putEdge(int i, int j);

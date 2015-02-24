@@ -2,7 +2,7 @@ import java.util.*;
 
 public class AMWDG extends G{
 	
-	private static Integer[][] weightedMatrix = new Integer[Tester.size][Tester.size];
+	private static Node[][] weightedMatrix = new Node[Tester.size][Tester.size];
 	
 	public AMWDG(){
 	}
@@ -31,19 +31,18 @@ public class AMWDG extends G{
 		if (!existEdge(edge)){
 			Node node1 = edge.getVertex1();
 			Node node2 = edge.getVertex2();
-			int dim1 = node1.getNode();
-			int dim2 = node2.getNode();
-			int weight = edge.getWeight();
-			weightedMatrix[dim1][dim2] = weight;
+			weightedMatrix[node1.getNode()][node2.getNode()] = node2;
 		}
 	}
 
 	protected void putEdge(int i, int j) {
-		weightedMatrix[i][j] = 1;
+		Node node = new Node(j, 1);
+		weightedMatrix[i][j] = node;
 	}
 	
 	protected void putEdge(int i, int j, int k) {
-		weightedMatrix[i][j] = k;
+		Node node = new Node(j, k);
+		weightedMatrix[i][j] = node;
 	}
 
 	protected static void removeEdge(Edge e) {
@@ -58,8 +57,8 @@ public class AMWDG extends G{
 		weightedMatrix[i][j] = null;
 	}
 	
-	protected static ArrayList<Integer> adjacentVertices(Node i){
-		ArrayList<Integer> adjNodes = new ArrayList<Integer>();
+	protected static ArrayList<Node> adjacentVertices(Node i){
+		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 1; j < weightedMatrix.length; j++){
 			if (weightedMatrix[i.getNode()][j] != null)
 				adjNodes.add(weightedMatrix[i.getNode()][j]);
@@ -67,8 +66,8 @@ public class AMWDG extends G{
 		return adjNodes;
 	}
 	
-	protected ArrayList<Integer> adjacentVertices(int i){
-		ArrayList<Integer> adjNodes = new ArrayList<Integer>();
+	protected ArrayList<Node> adjacentVertices(int i){
+		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 1; j < weightedMatrix.length; j++){
 			if (weightedMatrix[i][j] != null)
 				adjNodes.add(weightedMatrix[i][j]);
@@ -90,7 +89,7 @@ public class AMWDG extends G{
 		return false;
 	}
 	
-	protected static Integer[][] getMatrix(){
+	protected static Node[][] getMatrix(){
 		return weightedMatrix;
 	}
 
@@ -109,9 +108,9 @@ public class AMWDG extends G{
 		}
 	}
 	//Helper method to print adjacent Nodes.
-	protected void printAdj(int j, ArrayList<Integer> i) {
-		Iterator<Integer> marker = i.iterator();
+	protected void printAdj(int j, ArrayList<Node> i) {
+		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next() + " ");
+			Tester.writer.print(marker.next().getWeight() + " ");
 	}
 }//End AMWDG

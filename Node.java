@@ -3,7 +3,7 @@ public class Node {
 	private int value;
 	private int weight;
 	
-	//Constructor that is used to create Nodes in the Weighted Directed Adjacency List.
+	//Constructor that is used to create Nodes in the weighted graphs.
 	protected Node (int nextNode, int weight){
 		setNode(nextNode);
 		setWeight(weight);

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class TopoSort {
-	G g;
+
 	//Constructor for matrix graph representations.
 	public TopoSort(Node[][] graph){
 		//Step 1 of TopoSort, create stack of Nodes and push Nodes on if their in degree is 0.

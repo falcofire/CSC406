@@ -63,4 +63,10 @@ public class ALWG extends G{
 	protected void print() {
 		
 	}
+
+	@Override
+	protected void toposort() {
+		// TODO Auto-generated method stub
+		
+	}
 } //End ALWG

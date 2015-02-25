@@ -61,4 +61,10 @@ public class AMWG extends G{
 			Tester.writer.println();
 		}
 	}
+
+	@Override
+	protected void toposort() {
+		// TODO Auto-generated method stub
+		
+	}
 }//END AMWG

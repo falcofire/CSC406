@@ -113,4 +113,8 @@ public class AMWDG extends G{
 		while (marker.hasNext())
 			Tester.writer.print(marker.next().getNode() + " ");
 	}
+
+	protected void toposort() {
+		TopoSort t = new TopoSort(weightedMatrix);
+	}
 }//End AMWDG

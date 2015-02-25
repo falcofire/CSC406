@@ -102,7 +102,12 @@ public abstract class G {
 		Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
 		//Print to verify correct placement.
 		print();
-	}//End G
+		
+		
+		//ASSIGNMENT 2 ADDITION
+		toposort();
+		
+	}//End G constructor
 	
 	//Methods that are implemented uniformly across all graph classes.
 	protected static int degree(Node i){
@@ -146,4 +151,6 @@ public abstract class G {
 	protected abstract void putEdge(int i, int j, int k);
 	protected abstract void putEdge(Edge e);
 	protected abstract void print();
+	//ASSIGNMENT 2 ADDITION
+	protected abstract void toposort();
 }//End G

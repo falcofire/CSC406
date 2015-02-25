@@ -107,4 +107,10 @@ public class AMDG extends G{
 		while (marker.hasNext())
 			Tester.writer.print(marker.next().getNode() + " ");
 	}
+
+	@Override
+	protected void toposort() {
+		// TODO Auto-generated method stub
+		
+	}
 }//End AMDG

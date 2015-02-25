@@ -13,6 +13,10 @@ public class Node {
 		setNode(nextNode);
 	}
 	
+	protected Node (Node i){
+		setNode(i.getNodeValue());
+	}
+	
 	private void setNode(int value){
 		this.value = value;
 	}
@@ -21,12 +25,18 @@ public class Node {
 		this.weight = value;
 	}
 	
-	protected int getNode(){
+	protected int getNodeValue(){
 		return value; 
 	}
 	
 	protected int getWeight(){
 		return weight;
+	}
+	
+	protected boolean equals(Node i, Node j){
+		if (i.getNodeValue() == j.getNodeValue())
+			return true;
+		return false;
 	}
 
 }//End Node

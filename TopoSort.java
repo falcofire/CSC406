@@ -18,7 +18,7 @@ public class TopoSort {
 		while (!s.isEmpty()){
 			Node check = s.pop();
 			i++;
-			int index = check.getNode();
+			int index = check.getNodeValue();
 			for (int j = 1; j < graph.length; j++){
 				if (graph[index][j] != null){
 					G.inDegrees[j]--;

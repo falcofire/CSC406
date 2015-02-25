@@ -8,7 +8,7 @@ public class ALWG extends G{
 	public ALWG(){
 	}
 	
-	protected boolean existEdge(int i, int j) {
+	protected boolean existsEdge(int i, int j) {
 		if (undirectedList[i].contains(j))
 			return true;
 		return false;
@@ -17,19 +17,19 @@ public class ALWG extends G{
 	protected void putEdge(int i, int j) {
 		Node node = new Node(j, 1);
 		undirectedList[i].add(node);
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 
 	protected void putEdge(int i, int j, int k) {
 		Node node = new Node(j, k);
 		undirectedList[i].add(node);
-	}
-
-	protected void putEdge(Edge e) {
-		Node node1 = e.getVertex1();
-		Node node2 = e.getVertex2();
-		int weight = e.getWeight();
-		Node node = new Node(node2.getNode(), weight);
-		undirectedList[node1.getNode()].add(node);
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 	
 	protected void removeEdge(int i, int j) {
@@ -38,7 +38,7 @@ public class ALWG extends G{
 		int node;
 		while (marker.hasNext()){
 			check = marker.next();
-			node = check.getNode();
+			node = check.getNodeValue();
 			if (node == j)
 				undirectedList[i].remove(check);
 		}
@@ -60,8 +60,8 @@ public class ALWG extends G{
 	protected void initializeList() {
 	}
 
-	protected void print() {
-		
+	public String toString() {
+		return "";
 	}
 
 	@Override

@@ -58,4 +58,20 @@ public class Edge {
 	protected Node getVertex2(){
 		return vertex2;
 	}
+	
+	protected String toString(Edge e){
+		Node v1 = e.getVertex1();
+		Node v2 = e.getVertex2();
+		return v1.getNodeValue() + "-" + v2.getNodeValue();
+	}
+	
+	protected boolean equals(Edge e1, Edge e2){
+		Node e1v1 = e1.getVertex1();
+		Node e1v2 = e1.getVertex2();
+		Node e2v1 = e2.getVertex1();
+		Node e2v2 = e2.getVertex2();
+		if ((e1v1.getNodeValue() == e2v1.getNodeValue()) && (e1v2.getNodeValue() == e2v2.getNodeValue()))
+				return true;
+		return false;
+	}
 }//End Edge

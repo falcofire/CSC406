@@ -7,50 +7,29 @@ public class AMWDG extends G{
 	public AMWDG(){
 	}
 	
-	protected static boolean existEdge(Edge e){
-		Node node1 = e.getVertex1();
-		Node node2 = e.getVertex2();
-		if (node1.getNode() < Tester.size && node2.getNode() < Tester.size){
-			if (weightedMatrix[node1.getNode()][node2.getNode()] != null)
-				return true;
-			else
-				return false;
-		}	
-		else
-			return false;
-	}
-	
-	protected boolean existEdge(int i, int j){
+	protected boolean existsEdge(int i, int j){
 		if (weightedMatrix[i][j] != null)
 			return true;
 		else
 			return false;
 	}
-	
-	protected void putEdge(Edge edge){
-		if (!existEdge(edge)){
-			Node node1 = edge.getVertex1();
-			Node node2 = edge.getVertex2();
-			weightedMatrix[node1.getNode()][node2.getNode()] = node2;
-		}
-	}
 
 	protected void putEdge(int i, int j) {
 		Node node = new Node(j, 1);
 		weightedMatrix[i][j] = node;
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 	
 	protected void putEdge(int i, int j, int k) {
 		Node node = new Node(j, k);
 		weightedMatrix[i][j] = node;
-	}
-
-	protected static void removeEdge(Edge e) {
-		if (existEdge(e)){
-			Node node1 = e.getVertex1();
-			Node node2 = e.getVertex2();
-			weightedMatrix[node1.getNode()][node2.getNode()] = null;
-		}	
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 
 	protected void removeEdge(int i, int j) {
@@ -60,8 +39,8 @@ public class AMWDG extends G{
 	protected static ArrayList<Node> adjacentVertices(Node i){
 		ArrayList<Node> adjNodes = new ArrayList<Node>();
 		for (int j = 1; j < weightedMatrix.length; j++){
-			if (weightedMatrix[i.getNode()][j] != null)
-				adjNodes.add(weightedMatrix[i.getNode()][j]);
+			if (weightedMatrix[i.getNodeValue()][j] != null)
+				adjNodes.add(weightedMatrix[i.getNodeValue()][j]);
 		}
 		return adjNodes;
 	}
@@ -77,7 +56,7 @@ public class AMWDG extends G{
 	}
 	
 	protected static boolean areAdjacent(Node i, Node j){
-		if (weightedMatrix[i.getNode()][j.getNode()] != null || weightedMatrix[j.getNode()][i.getNode()] != null)
+		if (weightedMatrix[i.getNodeValue()][j.getNodeValue()] != null || weightedMatrix[j.getNodeValue()][i.getNodeValue()] != null)
 			return true;
 		else
 			return false;
@@ -96,7 +75,7 @@ public class AMWDG extends G{
 	protected void initializeList() {
 	}
 	//Helper method to print contents of matrix in readable format.
-	protected void print() {
+	public String toString() {
 		for (int i = 1; i < weightedMatrix.length; i++){
 			for (int j = 1; j < weightedMatrix.length; j++){
 				if (weightedMatrix[i][j] != null)
@@ -106,12 +85,13 @@ public class AMWDG extends G{
 			}
 			Tester.writer.println();
 		}
+		return "";
 	}
 	//Helper method to print adjacent Nodes.
 	protected void printAdj(int j, ArrayList<Node> i) {
 		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next().getNode() + " ");
+			Tester.writer.print(marker.next().getNodeValue() + " ");
 	}
 
 	protected void toposort() {

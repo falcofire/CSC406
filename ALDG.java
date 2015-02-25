@@ -7,54 +7,35 @@ public class ALDG extends G{
 	public ALDG (){
 	}
 
-	protected static boolean existEdge(Edge e) {
-		Node node1 = e.getVertex1();
-		Node node2 = e.getVertex2();
-		Iterator<Node> marker = unweightedList[node1.getNode()].iterator();
-		//While loop checks over all nodes in list to ensure the specified node is not already present.
-		while (marker.hasNext()){
-			Node check = marker.next();
-			if (check.getNode() == node2.getNode())
-				return true;
-		}
-		return false;
-	}
-
-	protected boolean existEdge(int i, int j) {
+	protected boolean existsEdge(int i, int j) {
 		if (unweightedList[i].contains(j))
 			return true;
 		return false;
 	}
 
-	protected void putEdge(Edge e) {
-		Node node1 = e.getVertex1();
-		Node node2 = e.getVertex2();
-		unweightedList[node1.getNode()].add(node2);
-	}
-
 	protected void putEdge(int i, int j) {
 		Node node2 = new Node(j);
 		unweightedList[i].add(node2);
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 
-	protected static void removeEdge(Edge e) {
-		if (existEdge(e)){
-			Node node1 = e.getVertex1();
-			Node node2 = e.getVertex2();
-			Iterator<Node> marker = unweightedList[node1.getNode()].iterator();
-			while (marker.hasNext()){
-				Node check = marker.next();
-				if (check.getNode() == node2.getNode())
-					unweightedList[node1.getNode()].remove(check);
-			}
-		}
+	protected void putEdge(int i, int j, int k) {
+		Node node2 = new Node(j,k);
+		unweightedList[i].add(node2);
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 
 	protected void removeEdge(int i, int j) {
 		Iterator<Node> marker = unweightedList[i].iterator();
 		while (marker.hasNext()){
 			Node node = marker.next();
-			if (node.getNode() == j){
+			if (node.getNodeValue() == j){
 				unweightedList[i].remove(node);
 				break;
 			}	
@@ -62,8 +43,8 @@ public class ALDG extends G{
 	}
 	
 	protected static List<Node> adjacentVertices(Node i) {
-		printAdj(i.getNode(), unweightedList[i.getNode()]);
-		return unweightedList[i.getNode()];
+		printAdj(i.getNodeValue(), unweightedList[i.getNodeValue()]);
+		return unweightedList[i.getNodeValue()];
 	}
 
 	protected List<Node> adjacentVertices(int i) {
@@ -72,9 +53,8 @@ public class ALDG extends G{
 	}
 
 	protected static boolean areAdjacent(Node i, Node j) {
-		Edge e = new Edge(i, j);
-		if (existEdge(e))
-			return true;
+	
+		
 		return false;
 	}
 
@@ -96,23 +76,21 @@ public class ALDG extends G{
 	    }
 	}
 
-	protected void putEdge(int i, int j, int k) {
-	}
-
-	protected void print() {
+	public String toString() {
 		for (int i = 1; i < unweightedList.length; i++){
 			Tester.writer.print(i + ": ");
 			Iterator<Node> marker = unweightedList[i].iterator();
 			while (marker.hasNext())
-				Tester.writer.print(marker.next().getNode() + " ");
+				Tester.writer.print(marker.next().getNodeValue() + " ");
 			Tester.writer.println();
 		}
+		return "";
 	}
 	
 	protected static void printAdj(int j, List<Node> i) {
 		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next().getNode() + " ");
+			Tester.writer.print(marker.next().getNodeValue() + " ");
 	}
 
 	@Override

@@ -7,7 +7,7 @@ public class AMWG extends G{
 	public AMWG(){
 	}
 	
-	protected boolean existEdge(int i, int j) {
+	protected boolean existsEdge(int i, int j) {
 		if (undirectedMatrix[i][j] != null)
 			return true;
 		return false;
@@ -16,17 +16,19 @@ public class AMWG extends G{
 	protected void putEdge(int i, int j) {
 		Node node = new Node(j, 1);
 		undirectedMatrix[i][j] = node;
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 
 	protected void putEdge(int i, int j, int k) {
 		Node node = new Node(j, k);
 		undirectedMatrix[i][j] = node;
-	}
-
-	protected void putEdge(Edge e) {
-		Node node1 = e.getVertex1();
-		Node node2 = e.getVertex2();
-		undirectedMatrix[node1.getNode()][node2.getNode()] = node2;
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 	
 	protected void removeEdge(int i, int j) {
@@ -50,16 +52,17 @@ public class AMWG extends G{
 	protected void initializeList() {
 	}
 	//Helper method to print contents of matrix in readable format.
-	protected void print() {
+	public String toString() {
 		for (int i = 1; i < undirectedMatrix.length; i++){
 			for (int j = 1; j < undirectedMatrix.length; j++){
 				if (undirectedMatrix[i][j] != null)
-					Tester.writer.print(undirectedMatrix[i][j].getNode() + " ");
+					Tester.writer.print(undirectedMatrix[i][j].getNodeValue() + " ");
 				else
 					Tester.writer.print("0 ");
 			}
 			Tester.writer.println();
 		}
+		return "";
 	}
 
 	@Override

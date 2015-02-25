@@ -8,41 +8,28 @@ public class AMDG extends G{
 	public AMDG (){
 	}
 	
-	protected static boolean existEdge(Edge e){
-		Node node1 = e.getVertex1();
-		Node node2 = e.getVertex2();
-		if (unweightedMatrix[node1.getNode()][node2.getNode()] != null)
-			return true;
-		else
-			return false;
-	}
-	
-	protected boolean existEdge(int i, int j){
+	protected boolean existsEdge(int i, int j){
 		if (unweightedMatrix[i][j] != null)
 			return true;
 		return false;
 	}
 	
-	protected void putEdge(Edge edge){
-		if (!existEdge(edge)){
-			Node node1 = edge.getVertex1();
-			Node node2 = edge.getVertex2();
-			unweightedMatrix[node1.getNode()][node2.getNode()] = node2;
-		}
-	}
-	
 	protected void putEdge(int i, int j){
 		Node node = new Node(j, 1);
 		unweightedMatrix[i][j] = node;
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 	
 	protected void putEdge(int i, int j, int k) {
-	}
-	
-	protected static void removeEdge(Edge edge){
-		Node node1 = edge.getVertex1();
-		Node node2 = edge.getVertex2();
-		unweightedMatrix[node1.getNode()][node2.getNode()] = null;
+		Node node = new Node(j, k);
+		unweightedMatrix[i][j] = node;
+		G.degrees[i]++;
+		G.degrees[j]++;
+		G.inDegrees[j]++;
+		G.outDegrees[i]++;
 	}
 	
 	protected void removeEdge(int i, int j){
@@ -52,10 +39,10 @@ public class AMDG extends G{
 	protected static ArrayList<Node> adjacentVertices(Node i){
 		ArrayList<Node> adjNodes= new ArrayList<Node>();
 		for (int j = 1; j < unweightedMatrix.length; j++){
-			if (unweightedMatrix[i.getNode()][j] != null)
-				adjNodes.add(unweightedMatrix[i.getNode()][j]);
+			if (unweightedMatrix[i.getNodeValue()][j] != null)
+				adjNodes.add(unweightedMatrix[i.getNodeValue()][j]);
 		}
-		printAdj(i.getNode(), adjNodes);
+		printAdj(i.getNodeValue(), adjNodes);
 		return adjNodes;
 	}
 	
@@ -70,7 +57,7 @@ public class AMDG extends G{
 	}
 	
 	protected static boolean areAdjacent(Node i, Node j){
-		if (unweightedMatrix[j.getNode()][i.getNode()] != null)
+		if (unweightedMatrix[j.getNodeValue()][i.getNodeValue()] != null)
 			return true;
 		else
 			return false;
@@ -90,7 +77,7 @@ public class AMDG extends G{
 	protected void initializeList() {	
 	}
 	//Helper method to print contents of matrix in readable format.
-	protected void print() {
+	public String toString() {
 		for (int i = 1; i < unweightedMatrix.length; i++){
 			for (int j = 1; j < unweightedMatrix.length; j++){
 				if (unweightedMatrix[i][j] != null)
@@ -100,12 +87,13 @@ public class AMDG extends G{
 			}
 			Tester.writer.println();
 		}
+		return "\n";
 	}
 	//Helper method to print adjacent vertices.
 	protected static void printAdj(int j, ArrayList<Node> i) {
 		Iterator<Node> marker = i.iterator();
 		while (marker.hasNext())
-			Tester.writer.print(marker.next().getNode() + " ");
+			Tester.writer.print(marker.next().getNodeValue() + " ");
 	}
 
 	@Override

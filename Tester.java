@@ -89,32 +89,32 @@ public class Tester {
 					Tester.writer.print("Adjacencies for Node " + first + ": ");
 					AMWDgraph.adjacentVertices(first);
 					
-		//					Tester.writer.print("\n\n***TEST FOR EDGE REMOVAL***");
-		//					first = Tester.fileScanner.nextInt();
-		//					second = Tester.fileScanner.nextInt();
-		//					removeEdge(first, second);
-		//					Tester.writer.println("\n After edge removal (" + first + ", " + second + "): ");
-		//					//Print to verify correct removal.
-		//					print();
-		//					
-		//					Tester.writer.print("\n***TEST FOR EDGE PLACEMENT***");
-		//					first = Tester.fileScanner.nextInt();
-		//					rangeCheck(first);
-		//					second = Tester.fileScanner.nextInt();
-		//					rangeCheck(second);
-		//					if (Tester.type == 0 || Tester.type == 2){
-		//						int weight;
-		//						try{
-		//							weight = Tester.fileScanner.nextInt();
-		//						}
-		//						catch(NoSuchElementException e){
-		//							weight = 1;
-		//						}
-		//						putEdge(first, second, weight);
-		//					}
-		//					else
-		//						putEdge(first, second);
-		//					Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
+					Tester.writer.print("\n\n***TEST FOR EDGE REMOVAL***");
+					first = Tester.fileScanner.nextInt();
+					second = Tester.fileScanner.nextInt();
+					AMWDgraph.removeEdge(first, second);
+					Tester.writer.println("\n After edge removal (" + first + ", " + second + "): ");
+					//Print to verify correct removal.
+					AMWDgraph.toString();
+					
+					Tester.writer.print("\n***TEST FOR EDGE PLACEMENT***");
+					first = Tester.fileScanner.nextInt();
+					G.rangeCheck(first);
+					second = Tester.fileScanner.nextInt();
+					G.rangeCheck(second);
+					if (Tester.type == 0 || Tester.type == 2){
+						int weight;
+						try{
+							weight = Tester.fileScanner.nextInt();
+						}
+						catch(NoSuchElementException e){
+							weight = 1;
+						}
+						AMWDgraph.putEdge(first, second, weight);
+					}
+					else
+						AMWDgraph.putEdge(first, second);
+					Tester.writer.println("\n After edge placement (" + first + ", " + second + "): ");
 					//Print to verify correct placement.
 					AMWDgraph.toString();
 					

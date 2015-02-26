@@ -30,12 +30,13 @@ public class TopoSort {
 		}
 		//Step 3 of TopoSort.
 		if (i > graph.length-1){
+			Tester.writer.println("\n\nNodes after topological sorting: ");
 			for (int k = 0; k < sortedNodes.length; k++){
-				System.out.print(sortedNodes[k] + " ");
+				Tester.writer.print(sortedNodes[k] + " ");
 			}
 		}	
 		else
-			System.out.println("GRAPH IS CYCLIC.");
+			Tester.writer.println("GRAPH IS CYCLIC.");
 	}
 	//Constructor for list graph representations.
 	public TopoSort(List<Node>[] graph, int numNodes){

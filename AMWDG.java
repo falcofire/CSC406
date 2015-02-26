@@ -92,7 +92,6 @@ public class AMWDG extends G{
 	}
 
 	protected void toposort() {
-		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(weightedMatrix);
 	}
 }//End AMWDG

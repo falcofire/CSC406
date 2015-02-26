@@ -29,13 +29,13 @@ public class TopoSort {
 			}
 		}
 		//Step 3 of TopoSort.
-		if (i > graph.length-1)
+		if (i > graph.length-1){
 			for (int k = 0; k < sortedNodes.length; k++){
 				System.out.print(sortedNodes[k] + " ");
 			}
+		}	
 		else
 			System.out.println("GRAPH IS CYCLIC.");
-		
 	}
 	//Constructor for list graph representations.
 	public TopoSort(List<Node>[] graph, int numNodes){
@@ -63,12 +63,13 @@ public class TopoSort {
 		}
 		//Step 3 of TopoSort.
 		if (i > graph.length-1){
+			Tester.writer.println("Nodes after topological sorting: \n");
 			for (int k = 0; k < sortedNodes.length; k++){
-				System.out.print(sortedNodes[k] + " ");
+				Tester.writer.print(sortedNodes[k] + " ");
 			}
 		}
 		else
 			System.out.println("GRAPH IS CYCLIC.");
 	}
 	
-}
+}//End TopoSort

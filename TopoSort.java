@@ -11,8 +11,7 @@ public class TopoSort {
 		for (int i = 1; i < graph.length; i++){
 			int indegree = G.inDegree(i);
 			if (indegree == 0){
-				Node node = new Node(i);
-				s.push(node.getNodeValue());
+				s.push(i);
 			}	
 		}
 		//Step 2 of TopoSort.
@@ -31,9 +30,11 @@ public class TopoSort {
 		}
 		//Step 3 of TopoSort
 		if (i > graph.length-1)
-			System.out.println("GRAPH IS CYCLIC");
+			for (int k = 0; k < sortedNodes.length; k++){
+				System.out.print(sortedNodes[k] + " ");
+			}
 		else
-			System.out.println(sortedNodes.toString());
+			System.out.println("GRAPH IS CYCLIC");
 		
 	}
 	//Constructor for list graph representations.

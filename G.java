@@ -1,26 +1,26 @@
 import java.util.*;
 public abstract class G {
+	protected static int size = Tester.size;
+	protected static int type = Tester.type;
 	protected static int edgeCount = 0;
-	protected static int[] degrees = new int[Tester.size];
-	protected static int[] outDegrees = new int[Tester.size + 1];
-	protected static int[] inDegrees = new int[Tester.size + 1];
-	
+	protected static int[] degrees = new int[size];
+	protected static int[] outDegrees = new int[size + 1];
+	protected static int[] inDegrees = new int[size + 1];
 	public G () {
 		//Checks if structure is a list and if so, initializes the list.
-		if (Tester.type == 2 || Tester.type == 3)
+		if (type == 2 || type == 3)
 			initializeList();
 		//While loop checks when to stop processing data as Nodes.
 		while (edgeCount < Tester.numEdges){
-			//Get next node from file.
 			int firstNode = Tester.fileScanner.nextInt();
 			int weight = 0;
 			int secondNode = Tester.fileScanner.nextInt();
-			if (Tester.type == 0 || Tester.type == 2){
+			if (type == 0 || type == 2){
 				weight = Tester.fileScanner.nextInt();
 			}	
 			
 			//Store nodes in appropriate graph data structure at this point according to value of type.
-			switch (Tester.type){
+			switch (type){
 				case 0: putEdge(firstNode, secondNode, weight);
 						break;
 				case 1: putEdge(firstNode, secondNode);

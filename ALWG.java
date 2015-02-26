@@ -9,9 +9,7 @@ public class ALWG extends G{
 	}
 	
 	protected boolean existsEdge(int i, int j) {
-		if (undirectedList[i].contains(j))
-			return true;
-		return false;
+		return (undirectedList[i].contains(j));
 	}
 	
 	protected void putEdge(int i, int j) {

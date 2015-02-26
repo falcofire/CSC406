@@ -8,15 +8,7 @@ public class ALWDG extends G{
 	}
 	
 	protected boolean existsEdge(int i, int j) {
-		if (i < Tester.size){
-			Iterator<Node> marker = weightedList[i].iterator();
-			while (marker.hasNext()){
-				Node check = marker.next();
-				if (check.getNodeValue() == j)
-					return true;
-			}
-		}
-		return false;
+		return (weightedList[i].contains(j));
 	}
 
 	protected void putEdge(int i, int j) {

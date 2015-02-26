@@ -8,9 +8,7 @@ public class AMWG extends G{
 	}
 	
 	protected boolean existsEdge(int i, int j) {
-		if (undirectedMatrix[i][j] != null)
-			return true;
-		return false;
+		return (undirectedMatrix[i][j] != null);
 	}
 	
 	protected void putEdge(int i, int j) {

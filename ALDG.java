@@ -8,9 +8,7 @@ public class ALDG extends G{
 	}
 
 	protected boolean existsEdge(int i, int j) {
-		if (unweightedList[i].contains(j))
-			return true;
-		return false;
+		return (unweightedList[i].contains(j));
 	}
 
 	protected void putEdge(int i, int j) {

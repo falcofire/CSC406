@@ -8,10 +8,7 @@ public class AMWDG extends G{
 	}
 	
 	protected boolean existsEdge(int i, int j){
-		if (weightedMatrix[i][j] != null)
-			return true;
-		else
-			return false;
+		return (weightedMatrix[i][j] != null);
 	}
 
 	protected void putEdge(int i, int j) {

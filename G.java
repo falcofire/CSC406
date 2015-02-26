@@ -1,33 +1,35 @@
 import java.util.*;
 public abstract class G {
 	protected static int size = Tester.size;
-	protected static int type = Tester.type;
+	protected static GraphTypes type = Tester.gT;
 	protected static int edgeCount = 0;
 	protected static int[] degrees = new int[size];
 	protected static int[] outDegrees = new int[size + 1];
 	protected static int[] inDegrees = new int[size + 1];
 	public G () {
 		//Checks if structure is a list and if so, initializes the list.
-		if (type == 2 || type == 3)
+		if (type == GraphTypes.ALDG || type == GraphTypes.ALWDG || type == GraphTypes.ALWG)
 			initializeList();
 		//While loop checks when to stop processing data as Nodes.
 		while (edgeCount < Tester.numEdges){
 			int firstNode = Tester.fileScanner.nextInt();
 			int weight = 0;
 			int secondNode = Tester.fileScanner.nextInt();
-			if (type == 0 || type == 2){
+			if (type == GraphTypes.ALWDG || type == GraphTypes.ALWG || type == GraphTypes.AMWDG || type == GraphTypes.AMWG){
 				weight = Tester.fileScanner.nextInt();
 			}	
 			
 			//Store nodes in appropriate graph data structure at this point according to value of type.
 			switch (type){
-				case 0: putEdge(firstNode, secondNode, weight);
+				case ALWDG: putEdge(firstNode, secondNode, weight);
 						break;
-				case 1: putEdge(firstNode, secondNode);
+				case ALWG: putEdge(firstNode, secondNode, weight);
 						break;
-				case 2: putEdge(firstNode, secondNode, weight);
+				case AMWDG: putEdge(firstNode, secondNode, weight);
 						break;
-				case 3: putEdge(firstNode, secondNode);
+				case AMWG: putEdge(firstNode, secondNode, weight);
+						break;
+				default: putEdge(firstNode, secondNode);
 						break;
 			}
 			edgeCount++;
@@ -98,4 +100,5 @@ public abstract class G {
 	public abstract String toString();
 	//ASSIGNMENT 2 ADDITION
 	protected abstract void toposort();
+	
 }//End G

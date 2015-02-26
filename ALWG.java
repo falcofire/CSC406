@@ -56,6 +56,10 @@ public class ALWG extends G{
 	}
 	
 	protected void initializeList() {
+		for (int i = 1; i < Tester.size; i++){
+	        List<Node> list = new ArrayList<Node>();
+	        undirectedList[i] = list;
+	    }
 	}
 
 	public String toString() {

@@ -19,10 +19,11 @@ public class Tester {
 	static Scanner fileScanner;
 	static PrintWriter writer;
 	static String path;
-	static int type;
+	static String type;
 	static int weight;
 	static int size;
 	static int numEdges;
+	static GraphTypes gT;
 	
 	@Before public static void setUp(){
 		scanner = new Scanner(System.in);
@@ -34,7 +35,7 @@ public class Tester {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		type = fileScanner.nextInt();
+		type = fileScanner.next();
 		size = fileScanner.nextInt() + 1;
 		numEdges = fileScanner.nextInt();
 	}//End setUp
@@ -53,9 +54,17 @@ public class Tester {
 		} catch (UnsupportedEncodingException e1) {
 			e1.printStackTrace();
 		}
+		
+		for (GraphTypes graph: GraphTypes.values()){
+			if (type.equals(graph.getValue())){
+				gT = graph;
+				break;
+			}
+		}
+		
 		//Switch here creates appropriate graph object and manipulates with test objects from this class.
-		switch (type){
-			case 0: AMWDG AMWDgraph = new AMWDG();
+		switch (gT){
+			case AMWDG: AMWDG AMWDgraph = new AMWDG();
 					//Processing for testing the various methods for the data structures.
 					Tester.writer.println("Graph statistics: ");
 					//Print graph with initial contents.
@@ -94,11 +103,15 @@ public class Tester {
 					//***********************ASSIGNMENT 2 ADDITION*****************************************
 					
 					break;
-			case 1: AMDG AMDgraph = new AMDG();
+			case AMDG: AMDG AMDgraph = new AMDG();
 					break;
-			case 2: ALWDG ALWDgraph = new ALWDG();
+			case AMWG: AMWG AMWgraph = new AMWG();
 					break;
-			case 3: ALDG ALDgraph = new ALDG();
+			case ALWDG: ALWDG ALWDgraph = new ALWDG();
+					break;
+			case ALDG: ALDG ALDgraph = new ALDG();
+					break;
+			case ALWG: ALWG ALWgraph = new ALWG();
 					break;
 		}
 		

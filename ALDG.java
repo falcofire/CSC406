@@ -91,9 +91,8 @@ public class ALDG extends G{
 			Tester.writer.print(marker.next().getNodeValue() + " ");
 	}
 
-	@Override
 	protected void toposort() {
-		// TODO Auto-generated method stub
-		
+		@SuppressWarnings("unused")
+		TopoSort t = new TopoSort(unweightedList);
 	}
 }//End ALDG

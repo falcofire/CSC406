@@ -94,9 +94,8 @@ public class AMDG extends G{
 			Tester.writer.print(marker.next().getNodeValue() + " ");
 	}
 
-	@Override
 	protected void toposort() {
-		// TODO Auto-generated method stub
-		
+		@SuppressWarnings("unused")
+		TopoSort t = new TopoSort(unweightedMatrix);
 	}
 }//End AMDG

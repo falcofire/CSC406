@@ -39,7 +39,7 @@ public class TopoSort {
 			Tester.writer.println("GRAPH IS CYCLIC.");
 	}
 	//Constructor for list graph representations.
-	public TopoSort(List<Node>[] graph, int numNodes){
+	public TopoSort(List<Node>[] graph){
 		//Step 1 of TopoSort.
 		for (int i = 1; i < graph.length; i++){
 			int indegree = G.inDegree(i);

@@ -62,9 +62,8 @@ public class ALWG extends G{
 		return "";
 	}
 
-	@Override
 	protected void toposort() {
-		// TODO Auto-generated method stub
-		
+		@SuppressWarnings("unused")
+		TopoSort t = new TopoSort(undirectedList);
 	}
 } //End ALWG

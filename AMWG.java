@@ -63,9 +63,8 @@ public class AMWG extends G{
 		return "";
 	}
 
-	@Override
 	protected void toposort() {
-		// TODO Auto-generated method stub
-		
+		@SuppressWarnings("unused")
+		TopoSort t = new TopoSort(undirectedMatrix);
 	}
 }//END AMWG

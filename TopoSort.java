@@ -4,7 +4,7 @@ public class TopoSort {
 	
 	private static int[] sortedNodes= new int[Tester.size];
 	private static Stack<Integer> s = new Stack<Integer>();
-	//Constructor for matrix graph representations.
+	//Method for matrix graph representations.
 	public TopoSort(Node[][] graph){
 		//Step 1 of TopoSort, create stack of Nodes and push Nodes on if their in degree is 0.
 		s = new Stack<Integer>();
@@ -41,7 +41,7 @@ public class TopoSort {
 			System.out.println("Topological sort not viable - graph is cyclic.");
 		}
 	}
-	//Constructor for list graph representations.
+	//Method for list graph representations.
 	public TopoSort(List<Node>[] graph){
 		//Step 1 of TopoSort.
 		for (int i = 1; i < graph.length; i++){

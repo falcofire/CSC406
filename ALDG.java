@@ -95,4 +95,9 @@ public class ALDG extends G{
 		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(unweightedList);
 	}
+
+	protected void kruskalMST() {
+		System.out.println("Cannot construct MST - not a weighted graph.");
+		Tester.writer.println("Cannot construct MST - not a weighted graph.");
+	}
 }//End ALDG

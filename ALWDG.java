@@ -108,4 +108,9 @@ public class ALWDG extends G{
 		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(weightedList);
 	}
+
+	protected void kruskalMST() {
+		@SuppressWarnings("unused")
+		KruskalMST minSpanTree = new KruskalMST(weightedList);
+	}
 }//End ALWDG

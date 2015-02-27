@@ -95,4 +95,9 @@ public class AMWDG extends G{
 		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(weightedMatrix);
 	}
+
+	protected void kruskalMST() {
+		@SuppressWarnings("unused")
+		KruskalMST minSpanTree = new KruskalMST(weightedMatrix);
+	}
 }//End AMWDG

@@ -67,4 +67,9 @@ public class AMWG extends G{
 		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(undirectedMatrix);
 	}
+
+	protected void kruskalMST() {
+		@SuppressWarnings("unused")
+		KruskalMST minSpanTree = new KruskalMST(undirectedMatrix);
+	}
 }//END AMWG

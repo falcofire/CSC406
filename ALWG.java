@@ -70,4 +70,9 @@ public class ALWG extends G{
 		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(undirectedList);
 	}
+
+	protected void kruskalMST() {
+		@SuppressWarnings("unused")
+		KruskalMST minSpanTree = new KruskalMST(undirectedList);
+	}
 } //End ALWG

@@ -98,4 +98,9 @@ public class AMDG extends G{
 		@SuppressWarnings("unused")
 		TopoSort t = new TopoSort(unweightedMatrix);
 	}
+
+	protected void kruskalMST() {
+		System.out.println("Cannot construct MST - not a weighted graph.");
+		Tester.writer.println("Cannot construct MST - not a weighted graph.");
+	}
 }//End AMDG

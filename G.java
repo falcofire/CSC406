@@ -98,7 +98,8 @@ public abstract class G {
 	protected abstract void putEdge(int i, int j);
 	protected abstract void putEdge(int i, int j, int k);
 	public abstract String toString();
-	//ASSIGNMENT 2 ADDITION
+	//******************************ASSIGNMENT 2 ADDITION**************************
 	protected abstract void toposort();
-	
+	protected abstract void kruskalMST();
+	//******************************ASSIGNMENT 2 ADDITION**************************
 }//End G

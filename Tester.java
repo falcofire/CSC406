@@ -64,38 +64,38 @@ public class Tester {
 		//Switch here creates appropriate graph object and manipulates with test objects from this class.
 		switch (gT){
 			case AMWDG: AMWDG AMWDgraph = new AMWDG();
-					//Processing for testing the various methods for the data structures.
-					Tester.writer.println("Graph statistics: ");
-					//Print graph with initial contents.
-					AMWDgraph.toString();
-					
-					Tester.writer.println();
-					Tester.writer.println("Number of nodes: " + (Tester.size-1));
-					Tester.writer.println("Number of edges: " + G.edgeCount);
-					Tester.writer.println();
-					
-					Tester.writer.println("***TEST FOR EXISTING EDGE***");
-					int first = Tester.fileScanner.nextInt();
-					int second = Tester.fileScanner.nextInt();
-					Tester.writer.println("Exists edge from " + first + " to " + second + ": " + AMWDgraph.existsEdge(first, second));
-					Tester.writer.println();
-					
-					Tester.writer.println("***TEST FOR DEGREES***");
-					first = Tester.fileScanner.nextInt();
-					Tester.writer.println("Degrees for node " + first + ":");
-					Tester.writer.println("Degree: " + G.degree(first));
-					Tester.writer.println("In degree: " + G.inDegree(first));
-					Tester.writer.println("Out degree: " + G.outDegree(first) + "\n");
-					
-					Tester.writer.println("***TEST FOR ADJACENCY***");
-					first = Tester.fileScanner.nextInt();
-					second = Tester.fileScanner.nextInt();
-					Tester.writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + AMWDgraph.areAdjacent(first, second) + "\n");
-					
-					Tester.writer.print("***TEST FOR ADJACENT NODES***\n");
-					first = Tester.fileScanner.nextInt();
-					Tester.writer.print("Adjacencies for Node " + first + ": ");
-					AMWDgraph.adjacentVertices(first);
+//					//Processing for testing the various methods for the data structures.
+//					Tester.writer.println("Graph statistics: ");
+//					//Print graph with initial contents.
+//					AMWDgraph.toString();
+//					
+//					Tester.writer.println();
+//					Tester.writer.println("Number of nodes: " + (Tester.size-1));
+//					Tester.writer.println("Number of edges: " + G.edgeCount);
+//					Tester.writer.println();
+//					
+//					Tester.writer.println("***TEST FOR EXISTING EDGE***");
+//					int first = Tester.fileScanner.nextInt();
+//					int second = Tester.fileScanner.nextInt();
+//					Tester.writer.println("Exists edge from " + first + " to " + second + ": " + AMWDgraph.existsEdge(first, second));
+//					Tester.writer.println();
+//					
+//					Tester.writer.println("***TEST FOR DEGREES***");
+//					first = Tester.fileScanner.nextInt();
+//					Tester.writer.println("Degrees for node " + first + ":");
+//					Tester.writer.println("Degree: " + G.degree(first));
+//					Tester.writer.println("In degree: " + G.inDegree(first));
+//					Tester.writer.println("Out degree: " + G.outDegree(first) + "\n");
+//					
+//					Tester.writer.println("***TEST FOR ADJACENCY***");
+//					first = Tester.fileScanner.nextInt();
+//					second = Tester.fileScanner.nextInt();
+//					Tester.writer.println("Adjacency exists for Nodes " + first + " " + second + ": " + AMWDgraph.areAdjacent(first, second) + "\n");
+//					
+//					Tester.writer.print("***TEST FOR ADJACENT NODES***\n");
+//					first = Tester.fileScanner.nextInt();
+//					Tester.writer.print("Adjacencies for Node " + first + ": ");
+//					AMWDgraph.adjacentVertices(first);
 					
 					//***********************ASSIGNMENT 2 ADDITION*****************************************
 					AMWDgraph.toposort();

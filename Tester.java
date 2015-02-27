@@ -99,6 +99,7 @@ public class Tester {
 					
 					//***********************ASSIGNMENT 2 ADDITION*****************************************
 					AMWDgraph.toposort();
+					AMWDgraph.kruskalMST();
 					//***********************ASSIGNMENT 2 ADDITION*****************************************
 					
 					break;

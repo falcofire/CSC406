@@ -29,16 +29,17 @@ public class TopoSort {
 			}
 		}
 		//Step 3 of TopoSort.
-		if (i > graph.length-1){
+		if (i > graph.length){
 			Tester.writer.println("\n\nNodes after topological sorting: ");
 			for (int k = 0; k < sortedNodes.length; k++){
 				Tester.writer.print(sortedNodes[k] + " ");
 			}
 			System.out.println("Topological sort successful.");
 		}	
-		else
+		else{
 			Tester.writer.println("GRAPH IS CYCLIC.");
-			Tester.writer.println("Topological sort not viable - graph is cyclic.");
+			System.out.println("Topological sort not viable - graph is cyclic.");
+		}
 	}
 	//Constructor for list graph representations.
 	public TopoSort(List<Node>[] graph){

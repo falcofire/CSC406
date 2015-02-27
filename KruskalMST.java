@@ -7,11 +7,8 @@ public class KruskalMST {
 	Set<Integer>[] theSets = new Set[Tester.size];
 	Set<Edge> msTree;
 	public KruskalMST(List<Node>[] weightedList) {
-		
-		for (int i = 1; i < theSets.length; i++){
-			theSets[i] = new HashSet<Integer>();
-			theSets[i].add(i);
-		}
+		//Initialize sets.
+		makeSets(Tester.size);
 		
 		//Step 2, initialize a priority queue containing edges with weights as keys.
 		Queue<Edge> pQueue = new PriorityQueue<Edge>(Tester.size, weightComparator);
@@ -28,15 +25,16 @@ public class KruskalMST {
 		msTree = new HashSet<Edge>();
 		while (msTree.size() < Tester.size - 2){
 			//Remove minimum weight edge from Q.
-			Edge e1 = pQueue.poll();
-			int u = e1.getVertex1().getNodeValue();
-			int v = e1.getVertex2().getNodeValue();
+			e = pQueue.poll();
+			//Derive Nodes and their values from Edge object.
+			int u = e.getVertex1().getNodeValue();
+			int v = e.getVertex2().getNodeValue();
 			int setU = find(u);
 			int setV = find(v);
 			//If find(u) != find(v):
 			if (setU != setV){
 				//Add edge to tree.
-				msTree.add(e1);
+				msTree.add(e);
 				//Union set(u), set(v).
 				theSets[setU].addAll(theSets[setV]);
 			}
@@ -45,7 +43,32 @@ public class KruskalMST {
 	}
 
 	public KruskalMST(Node[][] weightedMatrix) {
-		// TODO Auto-generated constructor stub
+		
+		makeSets(Tester.size);
+		Queue<Edge> pQueue = new PriorityQueue<Edge>(Tester.size, weightComparator);
+		Edge e = null;
+		for (int i = 1; i < weightedMatrix.length; i++){
+			for (int j = 1; j < weightedMatrix[i].length; j++){
+				if (weightedMatrix[i][j] != null){
+					Node node = weightedMatrix[i][j];
+					e = new Edge(i, node.getNodeValue(), node.getWeight());
+					pQueue.add(e);
+				}
+			}
+		}
+		msTree = new HashSet<Edge>();
+		while (msTree.size() < Tester.size - 2){
+			e = pQueue.poll();
+			int u = e.getVertex1().getNodeValue();
+			int v = e.getVertex2().getNodeValue();
+			int setU = find(u);
+			int setV = find(v);
+			if (setU != setV){
+				msTree.add(e);
+				theSets[setU].addAll(theSets[setV]);
+			}
+		}
+		toString();
 	}
 
 	//Comparator method to compare edges.
@@ -54,7 +77,14 @@ public class KruskalMST {
 			return (e1.getWeight() - e2.getWeight());
 		}
 	};
-	
+	//Method initializes the sets.
+	private void makeSets(int j){
+		for (int i = 1; i < j; i++){
+			theSets[i] = new HashSet<Integer>();
+			theSets[i].add(i);
+		}
+	}
+	//Method prints the contents of the tree in human-readable format to file.
 	public String toString(){
 		Iterator<Edge> marker = msTree.iterator();
 		Tester.writer.println("\n\nMinimum spanning tree: ");
@@ -62,9 +92,10 @@ public class KruskalMST {
 			Edge e = marker.next();
 			Tester.writer.println(e.getVertex1().getNodeValue() + " -> " + e.getVertex2().getNodeValue());
 		}
+		System.out.println("Minimum spanning tree constructed.");
 		return "";
 	}
-	
+	//Accepts an integer (representing a node) and finds the set to which it belongs. Returns the index of that set.
 	private int find(int x){
 		for (int i = 1; i < theSets.length; i++){
 			if (theSets[i].contains(x))

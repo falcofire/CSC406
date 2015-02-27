@@ -110,6 +110,7 @@ public class Tester {
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
 					ALWDgraph.toposort();
+					ALWDgraph.kruskalMST();
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
 					ALDgraph.toposort();

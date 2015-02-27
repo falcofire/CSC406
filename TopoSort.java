@@ -34,9 +34,11 @@ public class TopoSort {
 			for (int k = 0; k < sortedNodes.length; k++){
 				Tester.writer.print(sortedNodes[k] + " ");
 			}
+			System.out.println("Topological sort successful.");
 		}	
 		else
 			Tester.writer.println("GRAPH IS CYCLIC.");
+			Tester.writer.println("Topological sort not viable - graph is cyclic.");
 	}
 	//Constructor for list graph representations.
 	public TopoSort(List<Node>[] graph){
@@ -57,6 +59,7 @@ public class TopoSort {
 				while (marker.hasNext()){
 					Node checkNode = marker.next();
 					int value = checkNode.getNodeValue();
+					G.inDegrees[value]--;
 					if (G.inDegree(value) == 0 && value != check)
 						s.push(value);
 				}
@@ -68,9 +71,12 @@ public class TopoSort {
 			for (int k = 0; k < sortedNodes.length; k++){
 				Tester.writer.print(sortedNodes[k] + " ");
 			}
+			System.out.println("Topological sort successful.");
 		}
-		else
+		else{
 			System.out.println("GRAPH IS CYCLIC.");
+			Tester.writer.println("Topological sort not viable - graph is cyclic.");
+		}	
 	}
 	
 }//End TopoSort

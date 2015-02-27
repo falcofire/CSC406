@@ -44,7 +44,6 @@ public class Tester {
 		setUp();
 		testMain();
 	}
-	@SuppressWarnings({ "unused" })
 	@Test
 	public static void testMain() {
 		try {
@@ -104,14 +103,19 @@ public class Tester {
 					
 					break;
 			case AMDG: AMDG AMDgraph = new AMDG();
+					AMDgraph.toposort();
 					break;
 			case AMWG: AMWG AMWgraph = new AMWG();
+					AMWgraph.toposort();
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
+					ALWDgraph.toposort();
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
+					ALDgraph.toposort();
 					break;
 			case ALWG: ALWG ALWgraph = new ALWG();
+					ALWgraph.toposort();
 					break;
 		}
 		

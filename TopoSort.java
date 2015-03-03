@@ -2,7 +2,7 @@ import java.util.*;
 
 public class TopoSort {
 	
-	private static int[] sortedNodes= new int[Tester.size];
+	private static int[] sortedNodes= new int[Tester.size - 1];
 	private static Stack<Integer> s = new Stack<Integer>();
 	//Method for matrix graph representations.
 	public TopoSort(Node[][] graph){
@@ -29,7 +29,7 @@ public class TopoSort {
 			}
 		}
 		//Step 3 of TopoSort.
-		if (i > graph.length){
+		if (i > graph.length-1){
 			Tester.writer.println("\n\nNodes after topological sorting: ");
 			for (int k = 0; k < sortedNodes.length; k++){
 				Tester.writer.print(sortedNodes[k] + " ");

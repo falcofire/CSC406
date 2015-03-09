@@ -1,17 +1,14 @@
 /*
 TUBB, ZACHARY
 CSC406 SPRING 2015
-ASSIGNMENT 1
-ASSIGNED: 26 JAN 2015
-DUE: 11 FEB 2015
+ASSIGNMENT 3
+ASSIGNED: 5 MARCH 2015
+DUE: 25 MARCH 2015
 */
 import java.io.*;
 import java.util.*;
-
 import org.junit.Before;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class Tester {
@@ -35,8 +32,11 @@ public class Tester {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		//Reads in first string from file to determine the graph type.
 		type = fileScanner.next();
+		//Reads in first integer from file to determine how many nodes are in graph (add 1 to account for not ever referencing a 0th node.
 		size = fileScanner.nextInt() + 1;
+		//Reads in next integer from file to determine how many edges are in the graph.
 		numEdges = fileScanner.nextInt();
 	}//End setUp
 	

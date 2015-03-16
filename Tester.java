@@ -78,8 +78,7 @@ public class Tester {
 					AMWgraph.toposort();
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
-					ALWDgraph.toposort();
-					ALWDgraph.kruskalMST();
+					ALWDgraph.warshalls();
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
 					ALDgraph.toposort();

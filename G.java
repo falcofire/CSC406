@@ -53,10 +53,10 @@ public abstract class G {
 		return outDegrees[i];
 	}
 	
-	protected static void rangeCheck(int i){
+	protected static void rangeCheck(int i) throws GraphExceptions{
 		if (i > Tester.size || i < 0){
 			System.out.println("Node value (" + i + ") out of range.");
-			System.exit(1);
+			throw new GraphExceptions("Index out of range.");
 		}		
 	}
 	

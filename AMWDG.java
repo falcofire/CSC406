@@ -104,4 +104,8 @@ public class AMWDG extends G{
 	protected void warshalls() {
 		WTransClosure.Warshalls(weightedMatrix);
 	}
+	
+	protected void floyds() {
+		FloydsShortestPath.Floyds(weightedMatrix);
+	}
 }//End AMWDG

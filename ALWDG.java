@@ -117,4 +117,8 @@ public class ALWDG extends G{
 	protected void warshalls() {
 		WTransClosure.WarshallsList(weightedList);
 	}
+	
+	protected void floyds() {
+		FloydsShortestPath.FloydsList(weightedList);
+	}
 }//End ALWDG

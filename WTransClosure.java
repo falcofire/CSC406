@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class WTransClosure {
 	protected static Node[][] R;
 	protected static Node[][] Warshalls(Node[][] graph) {
@@ -48,5 +47,5 @@ public class WTransClosure {
 			}
 		}
 		return string;
-	}//End toString
+	}
 }

@@ -107,4 +107,8 @@ public class AMDG extends G{
 	protected void warshalls() {
 		WTransClosure.Warshalls(unweightedMatrix);
 	}
+	
+	protected void floyds() throws GraphExceptions{
+		throw new GraphExceptions("Cannot implement Floyd's algorithm on a non-weighted graph.");
+	}
 }//End AMDG

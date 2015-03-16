@@ -104,4 +104,8 @@ public class ALDG extends G{
 	protected void warshalls() {
 		WTransClosure.WarshallsList(unweightedList);
 	}
+	
+	protected void floyds() throws GraphExceptions{
+		throw new GraphExceptions("Cannot implement Floyd's algorithm on a non-weighted graph.");
+	}
 }//End ALDG

@@ -113,4 +113,8 @@ public class ALWDG extends G{
 		@SuppressWarnings("unused")
 		KruskalMST minSpanTree = new KruskalMST(weightedList);
 	}
+	
+	protected void warshalls() {
+		WTransClosure.WarshallsList(weightedList);
+	}
 }//End ALWDG

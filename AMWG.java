@@ -72,4 +72,8 @@ public class AMWG extends G{
 		@SuppressWarnings("unused")
 		KruskalMST minSpanTree = new KruskalMST(undirectedMatrix);
 	}
+	
+	protected void warshalls() throws GraphExceptions{
+		throw new GraphExceptions("Cannot implement Warshall's algorithm on an undirected graph.");
+	}
 }//END AMWG

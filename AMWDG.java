@@ -100,4 +100,8 @@ public class AMWDG extends G{
 		@SuppressWarnings("unused")
 		KruskalMST minSpanTree = new KruskalMST(weightedMatrix);
 	}
+	
+	protected void warshalls() {
+		WTransClosure.Warshalls(weightedMatrix);
+	}
 }//End AMWDG

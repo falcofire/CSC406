@@ -20,18 +20,7 @@ public abstract class G {
 			}	
 			
 			//Store nodes in appropriate graph data structure at this point according to value of type.
-			switch (type){
-				case ALWDG: putEdge(firstNode, secondNode, weight);
-						break;
-				case ALWG: putEdge(firstNode, secondNode, weight);
-						break;
-				case AMWDG: putEdge(firstNode, secondNode, weight);
-						break;
-				case AMWG: putEdge(firstNode, secondNode, weight);
-						break;
-				default: putEdge(firstNode, secondNode);
-						break;
-			}
+			putEdge(firstNode, secondNode, weight);
 			edgeCount++;
 			
 		}//End while loop

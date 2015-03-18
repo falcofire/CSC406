@@ -1,18 +1,25 @@
 import java.util.*;
 
 public class WTransClosure {
-	protected static Node[][] R;
-	protected static Node[][] Warshalls(Node[][] graph) {
+	protected static int[][] R;
+	protected static int[][] Warshalls(Node[][] graph) {
 		//Initialize R to the adjacency matrix.
-		R = graph;
-		Node node = new Node(1);
+		R = new int[Tester.size][Tester.size];
+		for (int i = 1; i < graph.length; i++){
+			for (int j = 1; j < graph.length; j++){
+				if (graph[i][j] != null)
+					R[i][j] = 1;
+				else
+					R[i][j] = 0;
+			}
+		}
+		
 		//For loop limits the iterations of the algorithm to the number of nodes in the graph.
-		for (int i = 0; i < graph.length; i++){
-			for (int j = 0; j < graph.length; j++){
-				for (int k = 0; k < graph.length; k++){
-					if (R[i][k] != null && R[k][j] != null){
-						R[i][j] = node;
-					}
+		for (int k = 1; k < graph.length - 1; k++){
+			for (int i = 1; i < graph.length; i++){
+				for (int j = 1; j < graph.length; j++){
+					if (R[i][k] == 1 && R[k][j] == 1)
+						R[i][j] = 1;
 				}
 			}
 		}
@@ -41,11 +48,7 @@ public class WTransClosure {
 		for (int i = 1; i < Tester.size; i++){
 			string += "\n[" + i + "] ";
 			for (int j = 1; j < Tester.size; j++){
-				if (R[i][j] != null){
-					string += "1\t";
-				}
-				else
-					string += "0\t";
+				string += R[i][j] + "\t";
 			}
 		}
 		return string;

@@ -79,7 +79,7 @@ public class Tester {
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
 					ALWDgraph.warshalls();
-					ALWDgraph.floyds();
+//					ALWDgraph.floyds();
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
 					ALDgraph.toposort();

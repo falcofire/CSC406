@@ -20,7 +20,7 @@ public class AMWG extends G{
 		G.outDegrees[i]++;
 	}
 
-	protected void putEdge(int i, int j, int k) {
+	protected void putEdge(int i, int j, double k) {
 		Node node = new Node(j, k);
 		undirectedMatrix[i][j] = node;
 		G.degrees[i]++;

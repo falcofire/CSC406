@@ -1,10 +1,10 @@
 public class Node {
 	
 	private int value;
-	private int weight;
+	private double weight;
 	
 	//Constructor that is used to create Nodes in the weighted graphs.
-	protected Node (int nextNode, int weight){
+	protected Node (int nextNode, double weight){
 		setNode(nextNode);
 		setWeight(weight);
 	}
@@ -21,7 +21,7 @@ public class Node {
 		this.value = value;
 	}
 	
-	private void setWeight(int value){
+	private void setWeight(double value){
 		this.weight = value;
 	}
 	
@@ -29,7 +29,7 @@ public class Node {
 		return value; 
 	}
 	
-	protected int getWeight(){
+	protected double getWeight(){
 		return weight;
 	}
 	

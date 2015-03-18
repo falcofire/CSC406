@@ -21,7 +21,7 @@ public class ALWG extends G{
 		G.outDegrees[i]++;
 	}
 
-	protected void putEdge(int i, int j, int k) {
+	protected void putEdge(int i, int j, double k) {
 		Node node = new Node(j, k);
 		undirectedList[i].add(node);
 		G.degrees[i]++;

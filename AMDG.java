@@ -21,7 +21,7 @@ public class AMDG extends G{
 		G.outDegrees[i]++;
 	}
 	
-	protected void putEdge(int i, int j, int k) {
+	protected void putEdge(int i, int j, double k) {
 		Node node = new Node(j, k);
 		unweightedMatrix[i][j] = node;
 		G.degrees[i]++;

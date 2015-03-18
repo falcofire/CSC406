@@ -74,7 +74,7 @@ public class KruskalMST {
 	//Comparator method to compare edges.
 	private static Comparator<Edge> weightComparator = new Comparator<Edge>(){
 		public int compare(Edge e1, Edge e2) {
-			return (e1.getWeight() - e2.getWeight());
+			return (int) (e1.getWeight() - e2.getWeight());
 		}
 	};
 	//Method initializes the sets.

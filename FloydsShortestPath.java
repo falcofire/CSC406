@@ -9,25 +9,28 @@ public class FloydsShortestPath {
 	
 	protected static Node[][] Floyds(Node[][] graph){
 		
-		for (int i = 0; i < graph.length; i++){
-			for (int j = 0; j < graph.length; j++){
+		for (int i = 1; i < graph.length; i++){
+			for (int j = 1; j < graph.length; j++){
 				if (i == j && graph[i][j].getWeight() == 0)
 					D[i][j] = inf;
 				else{
-					D[i][j] = graph[i][j].getWeight();
+					if (graph[i][j] != null)
+						D[i][j] = graph[i][j].getWeight();
+					else
+						D[i][j] = inf;
 				}
 			}
 		}
 	
-		for (int i = 0; i < graph.length; i++){
-			for (int j = 0; j < graph.length; j++){
-				for (int k = 0; k < graph.length; k++){
+		for (int i = 1; i < graph.length; i++){
+			for (int j = 1; j < graph.length; j++){
+				for (int k = 1; k < graph.length; k++){
 					if (D[i][j] > (D[j][k] + D[k][j]))
 						D[i][j] = D[j][k] + D[k][j];
 				}
 			}
 		}
-		printFloyds();
+		Tester.writer.println(printFloyds());
 		return graph;
 	}
 	
@@ -46,11 +49,14 @@ public class FloydsShortestPath {
 	
 	protected static String printFloyds(){
 		String string = "Shortest paths: ";
-		string += "\n   [1][2][3][4][5]";
+		string += "\n    [1]  [2]  [3]  [4]";
 		for (int i = 1; i < Tester.size; i++){
 			string += "\n[" + i + "] ";
 			for (int j = 1; j < Tester.size; j++){
-				string += D[i][j];
+				if (D[i][j] != inf)
+					string += D[i][j] + "  ";
+				else
+					string += "INF  ";
 			}
 		}
 		return string;

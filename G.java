@@ -1,5 +1,6 @@
 import java.util.*;
 public abstract class G {
+	private static double inf = Double.POSITIVE_INFINITY;
 	protected static int size = Tester.size;
 	protected static GraphTypes type = Tester.gT;
 	protected static int edgeCount = 0;
@@ -13,10 +14,12 @@ public abstract class G {
 		//While loop checks when to stop processing data as Nodes.
 		while (edgeCount < Tester.numEdges){
 			int firstNode = Tester.fileScanner.nextInt();
-			int weight = 0;
+			double weight = 0;
 			int secondNode = Tester.fileScanner.nextInt();
 			if (type == GraphTypes.ALWDG || type == GraphTypes.ALWG || type == GraphTypes.AMWDG || type == GraphTypes.AMWG){
 				weight = Tester.fileScanner.nextInt();
+				if (weight == 99)
+					weight = inf;
 			}	
 			
 			//Store nodes in appropriate graph data structure at this point according to value of type.
@@ -85,7 +88,7 @@ public abstract class G {
 	protected abstract boolean existsEdge(int i, int j);
 	protected abstract void removeEdge(int i, int j);
 	protected abstract void putEdge(int i, int j);
-	protected abstract void putEdge(int i, int j, int k);
+	protected abstract void putEdge(int i, int j, double k);
 	public abstract String toString();
 	//******************************ASSIGNMENT 2 ADDITION**************************
 	protected abstract void toposort();

@@ -14,12 +14,12 @@ public abstract class G {
 		//While loop checks when to stop processing data as Nodes.
 		while (edgeCount < Tester.numEdges){
 			int firstNode = Tester.fileScanner.nextInt();
-			double weight = 0;
+			int weight = 0;
 			int secondNode = Tester.fileScanner.nextInt();
 			if (type == GraphTypes.ALWDG || type == GraphTypes.ALWG || type == GraphTypes.AMWDG || type == GraphTypes.AMWG){
 				weight = Tester.fileScanner.nextInt();
 				if (weight == 99)
-					weight = inf;
+					weight = Integer.MAX_VALUE;
 			}	
 			
 			//Store nodes in appropriate graph data structure at this point according to value of type.
@@ -88,7 +88,7 @@ public abstract class G {
 	protected abstract boolean existsEdge(int i, int j);
 	protected abstract void removeEdge(int i, int j);
 	protected abstract void putEdge(int i, int j);
-	protected abstract void putEdge(int i, int j, double k);
+	protected abstract void putEdge(int i, int j, int k);
 	public abstract String toString();
 	//******************************ASSIGNMENT 2 ADDITION**************************
 	protected abstract void toposort();

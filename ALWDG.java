@@ -20,7 +20,7 @@ public class ALWDG extends G{
 		G.outDegrees[i]++;
 	}
 	
-	protected void putEdge(int i, int j, double k) {
+	protected void putEdge(int i, int j, int k) {
 		Node node = new Node(j,k);
 		weightedList[i].add(node);
 		G.degrees[i]++;

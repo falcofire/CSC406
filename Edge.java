@@ -3,7 +3,7 @@ public class Edge {
 
 	private Node vertex1;
 	private Node vertex2;
-	private double weight1;
+	private int weight1;
 	
 	//Constructor for unweighted graph edges.
 	protected Edge (int i, int j){
@@ -20,14 +20,14 @@ public class Edge {
 	}
 	
 	//Constructor for weighted graph edges.
-	protected Edge (Node i, Node j, double weight){
+	protected Edge (Node i, Node j, int weight){
 		setVertex1(i);
 		setVertex2(j);
 		setWeight(weight);
 	}
 	
 	//Constructor for weighted graph edges.
-	protected Edge (int i, int j, double weight){
+	protected Edge (int i, int j, int weight){
 		Node node1 = new Node(i);
 		Node node2 = new Node(j);
 		setVertex1(node1);
@@ -35,7 +35,7 @@ public class Edge {
 		setWeight(weight);
 	}
 	
-	protected void setWeight(double weight){
+	protected void setWeight(int weight){
 		this.weight1 = weight;
 	}
 	

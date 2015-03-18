@@ -21,7 +21,8 @@ public class FloydsShortestPath {
 				}
 			}
 		}
-	
+		Tester.writer.println("Initial adjacency matrix: \n");
+		Tester.printMatrix(D);
 		for (int k = 1; k < graph.length; k++){
 			for (int i = 1; i < graph.length; i++){
 				for (int j = 1; j < graph.length; j++){
@@ -34,6 +35,7 @@ public class FloydsShortestPath {
 				}
 			}
 		}
+		Tester.writer.println("\nFinal matrix: \n");
 		return D;
 	}
 	

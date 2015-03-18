@@ -13,7 +13,8 @@ public class WTransClosure {
 					R[i][j] = 0;
 			}
 		}
-		
+		Tester.writer.println("Initial adjacency matrix: \n");
+		Tester.printMatrix(R);
 		//For loop limits the iterations of the algorithm to the number of nodes in the graph.
 		for (int k = 1; k < graph.length - 1; k++){
 			for (int i = 1; i < graph.length; i++){
@@ -23,7 +24,7 @@ public class WTransClosure {
 				}
 			}
 		}
-		Tester.writer.println(printWarshalls() + "\n");
+		Tester.writer.println("\nFinal matrix: \n");
 		return R;
 	}
 	
@@ -38,19 +39,5 @@ public class WTransClosure {
 			}
 		}
 		return Warshalls(matrixRep);
-	}
-	
-	protected static String printWarshalls(){
-		String string = "Transitive closure implementing Warshall's algorithm: \n   ";
-		for (int i = 1; i < Tester.size; i++){
-			string += "[" + i + "]\t";
-		}
-		for (int i = 1; i < Tester.size; i++){
-			string += "\n[" + i + "] ";
-			for (int j = 1; j < Tester.size; j++){
-				string += R[i][j] + "\t";
-			}
-		}
-		return string;
 	}
 }

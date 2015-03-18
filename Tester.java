@@ -81,8 +81,10 @@ public class Tester {
 					AMWgraph.toposort();
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
-//					ALWDgraph.warshalls();
-					ALWDgraph.floyds();
+//					Tester.writer.println("Transitive closure implementing Warshall's algorithm: \n");
+//					printMatrix(ALWDgraph.warshalls());
+					Tester.writer.println("Shortest paths implementing Floyd's algorithm: \n");
+					printMatrix(ALWDgraph.floyds());
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
 					ALDgraph.toposort();
@@ -104,8 +106,8 @@ public class Tester {
 	    fail();
 	}
 	
-	protected void printMatrix(int[][] matrix){
-		String string = "";
+	protected static void printMatrix(int[][] matrix){
+		String string = "\t";
 		for (int i = 1; i < Tester.size; i++){
 			string += "[" + i + "]\t";
 		}
@@ -118,6 +120,6 @@ public class Tester {
 					string += "INF\t";
 			}
 		}
-		System.out.println(string);
+		Tester.writer.println(string);
 	}
 }//End Tester

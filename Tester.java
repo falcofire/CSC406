@@ -78,8 +78,8 @@ public class Tester {
 					AMWgraph.toposort();
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
-					ALWDgraph.warshalls();
-//					ALWDgraph.floyds();
+//					ALWDgraph.warshalls();
+					ALWDgraph.floyds();
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
 					ALDgraph.toposort();

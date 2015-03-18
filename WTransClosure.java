@@ -41,7 +41,7 @@ public class WTransClosure {
 	}
 	
 	protected static String printWarshalls(){
-		String string = "Transitive closure: \n   ";
+		String string = "Transitive closure implementing Warshall's algorithm: \n   ";
 		for (int i = 1; i < Tester.size; i++){
 			string += "[" + i + "]\t";
 		}

@@ -52,7 +52,7 @@ public class FloydsShortestPath {
 	}
 	
 	protected static String printFloyds(){
-		String string = "Shortest paths: \n   ";
+		String string = "Shortest paths implementing Floyd's algorithm: \n   ";
 		for (int i = 1; i < Tester.size; i++){
 			string += "[" + i + "]\t";
 		}

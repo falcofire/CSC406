@@ -16,7 +16,7 @@ public class WTransClosure {
 				}
 			}
 		}
-		Tester.writer.println(printWarshalls());
+		Tester.writer.println(printWarshalls() + "\n");
 		return R;
 	}
 	
@@ -34,16 +34,18 @@ public class WTransClosure {
 	}
 	
 	protected static String printWarshalls(){
-		String string = "Transitive closure: ";
-		string += "\n   [1][2][3][4][5]";
+		String string = "Transitive closure: \n   ";
+		for (int i = 1; i < Tester.size; i++){
+			string += "[" + i + "]\t";
+		}
 		for (int i = 1; i < Tester.size; i++){
 			string += "\n[" + i + "] ";
 			for (int j = 1; j < Tester.size; j++){
 				if (R[i][j] != null){
-					string += "1  ";
+					string += "1\t";
 				}
 				else
-					string += "0  ";
+					string += "0\t";
 			}
 		}
 		return string;

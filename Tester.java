@@ -22,7 +22,7 @@ public class Tester {
 	static int numEdges;
 	static GraphTypes gT;
 	
-	@Before public static void setUp(){
+	@Before public static void setUp() throws GraphExceptions{
 		scanner = new Scanner(System.in);
 		//Prompt for file.
 		System.out.println("Enter file name.");
@@ -30,7 +30,7 @@ public class Tester {
 		try {
 			fileScanner = new Scanner(new FileReader(path));
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new GraphExceptions("Cannot find that file.");
 		}
 		//Reads in first string from file to determine the graph type.
 		type = fileScanner.next();
@@ -40,7 +40,7 @@ public class Tester {
 		numEdges = fileScanner.nextInt();
 	}//End setUp
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws GraphExceptions{
 		setUp();
 		testMain();
 	}
@@ -78,6 +78,7 @@ public class Tester {
 					AMWgraph.toposort();
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
+					ALWDgraph.warshalls();
 					ALWDgraph.floyds();
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();

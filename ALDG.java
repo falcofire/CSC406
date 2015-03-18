@@ -101,8 +101,8 @@ public class ALDG extends G{
 		Tester.writer.println("Cannot construct MST - not a weighted graph.");
 	}
 	
-	protected void warshalls() {
-		WTransClosure.WarshallsList(unweightedList);
+	protected int[][] warshalls() {
+		return WTransClosure.WarshallsList(unweightedList);
 	}
 	
 	protected void floyds() throws GraphExceptions{

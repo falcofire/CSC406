@@ -6,7 +6,7 @@ public class FloydsShortestPath {
 	
 	private static int[][] D = new int[Tester.size][Tester.size];
 	
-	protected static Node[][] Floyds(Node[][] graph){
+	protected static int[][] Floyds(Node[][] graph){
 		
 		for (int i = 1; i < graph.length; i++){
 			for (int j = 1; j < graph.length; j++){
@@ -34,12 +34,11 @@ public class FloydsShortestPath {
 				}
 			}
 		}
-		Tester.writer.println(printFloyds());
-		return graph;
+		return D;
 	}
 	
 	//This method prepares data from a List representation to be processed in Warshall's Algorithm.
-	protected static void FloydsList(List<Node>[] graph){
+	protected static int[][] FloydsList(List<Node>[] graph){
 		Node[][] matrixRep = new Node[graph.length][graph.length];
 		for (int i = 1; i < graph.length; i++){
 			Iterator<Node> marker = graph[i].iterator();
@@ -48,23 +47,6 @@ public class FloydsShortestPath {
 				matrixRep[i][node.getNodeValue()] = node;
 			}
 		}
-		Floyds(matrixRep);
-	}
-	
-	protected static String printFloyds(){
-		String string = "Shortest paths implementing Floyd's algorithm: \n   ";
-		for (int i = 1; i < Tester.size; i++){
-			string += "[" + i + "]\t";
-		}
-		for (int i = 1; i < Tester.size; i++){
-			string += "\n[" + i + "] ";
-			for (int j = 1; j < Tester.size; j++){
-				if (D[i][j] != Integer.MAX_VALUE)
-					string += D[i][j] + "\t";
-				else
-					string += "INF\t";
-			}
-		}
-		return string;
+		return Floyds(matrixRep);
 	}
 }

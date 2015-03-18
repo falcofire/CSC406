@@ -101,11 +101,11 @@ public class AMWDG extends G{
 		KruskalMST minSpanTree = new KruskalMST(weightedMatrix);
 	}
 	
-	protected void warshalls() {
-		WTransClosure.Warshalls(weightedMatrix);
+	protected int[][] warshalls() {
+		return WTransClosure.Warshalls(weightedMatrix);
 	}
 	
-	protected void floyds() {
-		FloydsShortestPath.Floyds(weightedMatrix);
+	protected int[][] floyds() {
+		return FloydsShortestPath.Floyds(weightedMatrix);
 	}
 }//End AMWDG

@@ -7,8 +7,11 @@ DUE: 25 MARCH 2015
 */
 import java.io.*;
 import java.util.*;
+
 import org.junit.Before;
+
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class Tester {
@@ -99,5 +102,22 @@ public class Tester {
 	
 	public void testFailure() throws Exception {
 	    fail();
+	}
+	
+	protected void printMatrix(int[][] matrix){
+		String string = "";
+		for (int i = 1; i < Tester.size; i++){
+			string += "[" + i + "]\t";
+		}
+		for (int i = 1; i < Tester.size; i++){
+			string += "\n[" + i + "] ";
+			for (int j = 1; j < Tester.size; j++){
+				if (matrix[i][j] != Integer.MAX_VALUE)
+					string += matrix[i][j] + "\t";
+				else
+					string += "INF\t";
+			}
+		}
+		System.out.println(string);
 	}
 }//End Tester

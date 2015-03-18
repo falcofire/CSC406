@@ -104,8 +104,8 @@ public class AMDG extends G{
 		Tester.writer.println("Cannot construct MST - not a weighted graph.");
 	}
 	
-	protected void warshalls() {
-		WTransClosure.Warshalls(unweightedMatrix);
+	protected int[][] warshalls() {
+		return WTransClosure.Warshalls(unweightedMatrix);
 	}
 	
 	protected void floyds() throws GraphExceptions{

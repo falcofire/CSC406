@@ -114,11 +114,11 @@ public class ALWDG extends G{
 		KruskalMST minSpanTree = new KruskalMST(weightedList);
 	}
 	
-	protected void warshalls() {
-		WTransClosure.WarshallsList(weightedList);
+	protected int[][] warshalls() {
+		return WTransClosure.WarshallsList(weightedList);
 	}
 	
-	protected void floyds() {
-		FloydsShortestPath.FloydsList(weightedList);
+	protected int[][] floyds() {
+		return FloydsShortestPath.FloydsList(weightedList);
 	}
 }//End ALWDG

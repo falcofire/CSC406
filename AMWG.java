@@ -77,7 +77,7 @@ public class AMWG extends G{
 		throw new GraphExceptions("Cannot implement Warshall's algorithm on an undirected graph.");
 	}
 	
-	protected void floyds() {
-		FloydsShortestPath.Floyds(undirectedMatrix);
+	protected int[][] floyds() {
+		return FloydsShortestPath.Floyds(undirectedMatrix);
 	}
 }//END AMWG

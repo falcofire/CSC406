@@ -80,7 +80,7 @@ public class ALWG extends G{
 		throw new GraphExceptions("Cannot implement Warshall's algorithm on an undirected graph.");
 	}
 	
-	protected void floyds() {
-		FloydsShortestPath.FloydsList(undirectedList);
+	protected int[][] floyds() {
+		return FloydsShortestPath.FloydsList(undirectedList);
 	}
 } //End ALWG

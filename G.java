@@ -1,6 +1,5 @@
 import java.util.*;
 public abstract class G {
-	private static double inf = Double.POSITIVE_INFINITY;
 	protected static int size = Tester.size;
 	protected static GraphTypes type = Tester.gT;
 	protected static int edgeCount = 0;

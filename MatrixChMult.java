@@ -55,7 +55,7 @@ public class MatrixChMult {
 		};
 		
 		//printOrder() prints out the correct order to multiply the matrices in. Solution derived from
-		//Razvan Bunescu, Ohio State Univ., lecture slides (http://oucsace.cs.ohiou.edu/~razvan/courses/cs4040/lecture17.pdf, slide 21)
+		//Razvan Bunescu, Ohio Univ., lecture slides (http://oucsace.cs.ohiou.edu/~razvan/courses/cs4040/lecture17.pdf, slide 21)
 		private static void printOrder(int i, int j){
 			
 			if (i == j)

@@ -7,18 +7,24 @@ public class FloydsShortestPath {
 	private static int[][] D = new int[Tester.size][Tester.size];
 	
 	protected static int[][] Floyds(Node[][] graph){
-		
+		Tester.writer.println("Shortest paths implementing Floyd's algorithm: \n");
 		for (int i = 1; i < graph.length; i++){
 			for (int j = 1; j < graph.length; j++){
 				//Initialize all non-diagonal zeros to infinity.
-				if (i != j && graph[i][j].getWeight() == 0)
-					D[i][j] = Integer.MAX_VALUE;
-				else{
-					if (graph[i][j] != null)
-						D[i][j] = graph[i][j].getWeight();
-					else
+				if (graph[i][j] != null){
+					if (i != j && graph[i][j].getWeight() == 0)
 						D[i][j] = Integer.MAX_VALUE;
+					else
+						D[i][j] = graph[i][j].getWeight();
 				}
+				
+				else {
+					if (i != j)	
+						D[i][j] = Integer.MAX_VALUE;
+					else
+						D[i][j] = 0;
+				}	
+				
 			}
 		}
 		Tester.writer.println("Initial adjacency matrix: \n");

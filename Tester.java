@@ -65,8 +65,8 @@ public class Tester {
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 		switch (gT){
 			case AMWDG: AMWDG AMWDgraph = new AMWDG();
-					Tester.writer.println("Shortest paths implementing Floyd's algorithm: \n");
 					printMatrix(AMWDgraph.floyds());
+//					printMatrix(AMWDgraph.warshalls());
 					MatrixChMult m = new MatrixChMult();
 					
 					//Reads in number of elements and maximum weight values for knapsack problem.
@@ -113,7 +113,7 @@ public class Tester {
 			string += "[" + i + "]\t";
 		}
 		for (int i = 1; i < Tester.size; i++){
-			string += "\n[" + i + "] ";
+			string += "\n[" + i + "] \t";
 			for (int j = 1; j < Tester.size; j++){
 				if (matrix[i][j] != Integer.MAX_VALUE)
 					string += matrix[i][j] + "\t";

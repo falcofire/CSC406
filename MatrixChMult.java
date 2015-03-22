@@ -38,6 +38,7 @@ public class MatrixChMult {
 				}
 				int[][] min = queue.poll();
 				matrixMults[i][j] = min[0][0];
+				//Store the k values in the same values array but beneath the diagonal, opposite of its corresponding mult value.
 				matrixMults[j][i] = min[0][1];
 			}
 		}

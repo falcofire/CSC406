@@ -44,7 +44,7 @@ public class MatrixChMult {
 		int firstStop = matrixMults[matrixMults.length-1][0];
 		printOrder(0, firstStop);
 		printOrder(firstStop+1, matrixMults.length-1);
-		Tester.writer.println("Parenthesization of matrices: \n" + s);
+		Tester.writer.println("\nParenthesization of matrices: \n" + s);
 	}
 		//Comparator method to compare edges.
 		private static Comparator<int[][]> kComparator = new Comparator<int[][]>(){
@@ -53,7 +53,8 @@ public class MatrixChMult {
 			}
 		};
 		
-		//printOrder() prints out the correct order to multiply the matrices in.
+		//printOrder() prints out the correct order to multiply the matrices in. Solution derived from
+		//Razvan Bunescu, Ohio State Univ., lecture slides (http://oucsace.cs.ohiou.edu/~razvan/courses/cs4040/lecture17.pdf, slide 21)
 		private static void printOrder(int i, int j){
 			
 			if (i == j)

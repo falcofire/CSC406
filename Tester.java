@@ -37,7 +37,7 @@ public class Tester {
 		}
 		//Reads in first string from file to determine the graph type.
 		type = fileScanner.next();
-		//Reads in first integer from file to determine how many nodes are in graph (add 1 to account for not ever referencing a 0th node.
+		//Reads in first integer from file to determine how many nodes are in graph (add 1 to account for not ever referencing a 0th node).
 		size = fileScanner.nextInt() + 1;
 		//Reads in next integer from file to determine how many edges are in the graph.
 		numEdges = fileScanner.nextInt();
@@ -47,6 +47,7 @@ public class Tester {
 		setUp();
 		testMain();
 	}
+	@SuppressWarnings("unused")
 	@Test
 	public static void testMain() {
 		try {
@@ -67,12 +68,9 @@ public class Tester {
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 		switch (gT){
 			case AMWDG: AMWDG AMWDgraph = new AMWDG();
-					
-					//***********************ASSIGNMENT 2 ADDITION*****************************************
-					AMWDgraph.toposort();
-					AMWDgraph.kruskalMST();
-					//***********************ASSIGNMENT 2 ADDITION*****************************************
-					
+					Tester.writer.println("Shortest paths implementing Floyd's algorithm: \n");
+					printMatrix(AMWDgraph.floyds());
+					MatrixChMult m = new MatrixChMult();
 					break;
 			case AMDG: AMDG AMDgraph = new AMDG();
 					AMDgraph.toposort();

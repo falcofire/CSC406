@@ -10,9 +10,9 @@ public class FloydsShortestPath {
 		
 		for (int i = 1; i < graph.length; i++){
 			for (int j = 1; j < graph.length; j++){
-				if (i == j && graph[i][j].getWeight() == 0)
-					D[i][j] = graph[i][j].getWeight();
-					//D[i][j] = Integer.MAX_VALUE;
+				//Initialize all non-diagonal zeros to infinity.
+				if (i != j && graph[i][j].getWeight() == 0)
+					D[i][j] = Integer.MAX_VALUE;
 				else{
 					if (graph[i][j] != null)
 						D[i][j] = graph[i][j].getWeight();

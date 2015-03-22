@@ -71,6 +71,11 @@ public class Tester {
 					Tester.writer.println("Shortest paths implementing Floyd's algorithm: \n");
 					printMatrix(AMWDgraph.floyds());
 					MatrixChMult m = new MatrixChMult();
+					
+					int n = fileScanner.nextInt();
+					int W = fileScanner.nextInt();
+					
+					KnapSack k = new KnapSack(n, W);
 					break;
 			case AMDG: AMDG AMDgraph = new AMDG();
 					AMDgraph.toposort();

@@ -7,11 +7,8 @@ DUE: 25 MARCH 2015
 */
 import java.io.*;
 import java.util.*;
-
 import org.junit.Before;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class Tester {
@@ -72,6 +69,7 @@ public class Tester {
 					printMatrix(AMWDgraph.floyds());
 					MatrixChMult m = new MatrixChMult();
 					
+					//Reads in number of elements and maximum weight values for knapsack problem.
 					int n = fileScanner.nextInt();
 					int W = fileScanner.nextInt();
 					

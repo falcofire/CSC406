@@ -2,7 +2,6 @@ import java.util.*;
 
 public class MatrixChMult {
 	
-	Scanner scanner = new Scanner(System.in);
 	protected static int[] dims;
 	protected static String s = "";
 	protected static int[][]matrixMults;
@@ -11,6 +10,7 @@ public class MatrixChMult {
 		//Reads in the number of matrices in the chain.
 		int numMatrices = Tester.fileScanner.nextInt();
 		matrixMults = new int[numMatrices][numMatrices];
+		//Structure to hold the dimensions of arrays (d0, d1, d2, etc.) in order.
 		dims = new int[numMatrices+1];
 		
 		//Read in the dimensions of the matrices and store them in an array.
@@ -47,25 +47,25 @@ public class MatrixChMult {
 		printOrder(firstStop+1, matrixMults.length-1);
 		Tester.writer.println("\nParenthesization of matrices: \n" + s);
 	}
-		//Comparator method to compare edges.
-		private static Comparator<int[][]> kComparator = new Comparator<int[][]>(){
-			public int compare(int[][] o1, int[][] o2) {
-				return (int) (o1[0][0] - o2[0][0]);
-			}
-		};
-		
-		//printOrder() prints out the correct order to multiply the matrices in. Solution derived from
-		//Razvan Bunescu, Ohio Univ., lecture slides (http://oucsace.cs.ohiou.edu/~razvan/courses/cs4040/lecture17.pdf, slide 21)
-		private static void printOrder(int i, int j){
-			
-			if (i == j)
-				s += "A[" + i + "]";
-			else{
-				s += " (";
-				printOrder(i, matrixMults[j][i]);
-				printOrder(matrixMults[j][i]+1, j);
-				s += ") ";
-			}
-			
+	
+	//Comparator method to compare edges based on calculated multiplication value, NOT k value.
+	private static Comparator<int[][]> kComparator = new Comparator<int[][]>(){
+		public int compare(int[][] o1, int[][] o2) {
+			return (int) (o1[0][0] - o2[0][0]);
 		}
+	};
+		
+	//printOrder() prints out the correct order to multiply the matrices in. Solution derived from
+	//Razvan Bunescu, Ohio Univ., lecture slides (http://oucsace.cs.ohiou.edu/~razvan/courses/cs4040/lecture17.pdf, slide 21)
+	private static void printOrder(int i, int j){
+		if (i == j)
+			s += "A[" + i + "]";
+		else{
+			s += " (";
+			printOrder(i, matrixMults[j][i]);
+			printOrder(matrixMults[j][i]+1, j);
+			s += ") ";
+		}
+		
+	}
 }

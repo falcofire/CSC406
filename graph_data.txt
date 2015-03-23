@@ -21,4 +21,5 @@ Final matrix:
 Parenthesization of matrices: 
  (A[0] (A[1]A[2]) ) A[3]
 
+Maximum knapsack value: 37
 Optimal subset: {3, 1, 0 }

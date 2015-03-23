@@ -52,7 +52,7 @@ public class KnapSack {
 			}
 			
 		}
-		
+		Tester.writer.println("\nMaximum knapsack value: " + matrix[N][W]);
 		printSubset(N, W);
 		
 	}
@@ -60,7 +60,7 @@ public class KnapSack {
 	//Method to print out the optimal subset. It accepts two parameters despite the fact the integers
 	//are statically available due to the fact that they are modified in the processing of the method.
 	private void printSubset(int elements, int weight){
-		String s = "\nOptimal subset: {";
+		String s = "Optimal subset: {";
 		while (elements > 0){
 			if (subsets[elements][weight] == 1){
 				if (elements == 1)

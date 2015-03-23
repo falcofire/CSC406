@@ -3,6 +3,7 @@ import java.util.*;
 public class WTransClosure {
 	protected static int[][] R;
 	protected static int[][] Warshalls(Node[][] graph) {
+		Tester.writer.println("Transitive closure implementing Warshall's algorithm.\n");
 		//Initialize R to the adjacency matrix.
 		R = new int[Tester.size][Tester.size];
 		for (int i = 1; i < graph.length; i++){

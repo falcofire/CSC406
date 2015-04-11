@@ -7,8 +7,11 @@ DUE: 25 MARCH 2015
 */
 import java.io.*;
 import java.util.*;
+
 import org.junit.Before;
+
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class Tester {
@@ -44,7 +47,6 @@ public class Tester {
 		setUp();
 		testMain();
 	}
-	@SuppressWarnings("unused")
 	@Test
 	public static void testMain() {
 		try {
@@ -62,36 +64,21 @@ public class Tester {
 			}
 		}
 		
+		SplayTree splay = new SplayTree();
+		
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 		switch (gT){
 			case AMWDG: AMWDG AMWDgraph = new AMWDG();
-					printMatrix(AMWDgraph.floyds());
-//					printMatrix(AMWDgraph.warshalls());
-					MatrixChMult m = new MatrixChMult();
-					
-					//Reads in number of elements and maximum weight values for knapsack problem.
-					int n = fileScanner.nextInt();
-					int W = fileScanner.nextInt();
-					
-					KnapSack k = new KnapSack(n, W);
 					break;
 			case AMDG: AMDG AMDgraph = new AMDG();
-					AMDgraph.toposort();
 					break;
 			case AMWG: AMWG AMWgraph = new AMWG();
-					AMWgraph.toposort();
 					break;
 			case ALWDG: ALWDG ALWDgraph = new ALWDG();
-//					Tester.writer.println("Transitive closure implementing Warshall's algorithm: \n");
-//					printMatrix(ALWDgraph.warshalls());
-					Tester.writer.println("Shortest paths implementing Floyd's algorithm: \n");
-					printMatrix(ALWDgraph.floyds());
 					break;
 			case ALDG: ALDG ALDgraph = new ALDG();
-					ALDgraph.toposort();
 					break;
 			case ALWG: ALWG ALWgraph = new ALWG();
-					ALWgraph.toposort();
 					break;
 		}
 		

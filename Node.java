@@ -22,21 +22,21 @@ public class Node {
 	}
 	
 	@SuppressWarnings("unused")
-	private void setLeft(Node n){
+	protected void setLeft(Node n){
 		this.left = n;
 	}
 	
-	private void setNode(int value){
+	protected void setNode(int value){
 		this.value = value;
 	}
 	
 	@SuppressWarnings("unused")
-	private void setParent(Node n){
+	protected void setParent(Node n){
 		this.parent = n;
 	}
 	
 	@SuppressWarnings("unused")
-	private void setRight(Node n){
+	protected void setRight(Node n){
 		this.right = n;
 	}
 	

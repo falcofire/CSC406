@@ -93,7 +93,4 @@ public abstract class G {
 	protected abstract void toposort();
 	protected abstract void kruskalMST();
 	//******************************ASSIGNMENT 2 ADDITION**************************
-	//******************************ASSIGNMENT 4 ADDITION**************************
-	protected abstract void splay();
-	//******************************ASSIGNMENT 4 ADDTION***************************
 }//End G

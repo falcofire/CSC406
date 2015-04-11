@@ -23,7 +23,6 @@ public class Node {
 	
 	protected void setLeft(Node n){
 		this.left = n;
-		n.setParent(this);
 	}
 	
 	protected void setNode(int value){
@@ -36,7 +35,6 @@ public class Node {
 	
 	protected void setRight(Node n){
 		this.right = n;
-		n.setParent(this);
 	}
 	
 	private void setWeight(int value){

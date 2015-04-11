@@ -65,22 +65,24 @@ public class Tester {
 		}
 		
 		SplayTree splay = new SplayTree();
-		
-		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
-		switch (gT){
-			case AMWDG: AMWDG AMWDgraph = new AMWDG();
-					break;
-			case AMDG: AMDG AMDgraph = new AMDG();
-					break;
-			case AMWG: AMWG AMWgraph = new AMWG();
-					break;
-			case ALWDG: ALWDG ALWDgraph = new ALWDG();
-					break;
-			case ALDG: ALDG ALDgraph = new ALDG();
-					break;
-			case ALWG: ALWG ALWgraph = new ALWG();
-					break;
+		while (fileScanner.hasNextInt()){
+			splay.put(fileScanner.nextInt());
 		}
+		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
+//		switch (gT){
+//			case AMWDG: AMWDG AMWDgraph = new AMWDG();
+//					break;
+//			case AMDG: AMDG AMDgraph = new AMDG();
+//					break;
+//			case AMWG: AMWG AMWgraph = new AMWG();
+//					break;
+//			case ALWDG: ALWDG ALWDgraph = new ALWDG();
+//					break;
+//			case ALDG: ALDG ALDgraph = new ALDG();
+//					break;
+//			case ALWG: ALWG ALWgraph = new ALWG();
+//					break;
+//		}
 		
 		
 		System.out.println("Processing complete. See 'graph_data.txt'.");

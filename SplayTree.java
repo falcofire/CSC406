@@ -13,8 +13,8 @@ public class SplayTree {
 			rootNode = node;
 			return;
 		}
-		
-		splay(rootNode, node);
+		insert(node, rootNode);
+		splay(node, node.getParent());
 		
 		
 	}
@@ -48,12 +48,24 @@ public class SplayTree {
 	private void leftRotate(Node n){
 		
 	}
-	
-	public void splay(Node root, Node node){
+	//splay method accepts the inserted/accessed node and its parent as
+	//"root" to determine if we are at the top of the tree or not.
+	public void splay(Node node, Node root){
 		//There are only three different cases to account for to
 		//ensure proper splaying.
-		
+		Node parent = node.getParent();
+		Node grandParent = node.getParent();
 		//Case 1: Zig zag (left child of right child or vice versa)
+		if (grandParent.getLeft().getRight() == node){
+			parent.setParent(node);
+			parent.setLeft(node.getRight());
+			node.setRight(parent);
+		}
+		else if (grandParent.getRight().getLeft() == node){
+			parent.setParent(node);
+			parent.setRight(node.getLeft());
+			node.setLeft(parent);
+		}
 		
 		//Case 2: Zig zig (right child of right child or vice versa)
 		

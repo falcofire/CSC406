@@ -21,23 +21,22 @@ public class Node {
 		setNode(i.getNodeValue());
 	}
 	
-	@SuppressWarnings("unused")
 	protected void setLeft(Node n){
 		this.left = n;
+		n.setParent(this);
 	}
 	
 	protected void setNode(int value){
 		this.value = value;
 	}
 	
-	@SuppressWarnings("unused")
 	protected void setParent(Node n){
 		this.parent = n;
 	}
 	
-	@SuppressWarnings("unused")
 	protected void setRight(Node n){
 		this.right = n;
+		n.setParent(this);
 	}
 	
 	private void setWeight(int value){

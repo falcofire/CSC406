@@ -44,8 +44,45 @@ public class SplayTree {
 		}
 	}
 	
-	public void remove(){
+	public void remove(int n){
+		Node node = new Node(n);
+		//Find operation splays the specified node to the root.
+		node = find(node, rootNode);
+		//There are three cases that need to be accounted for for
+		//node removal.
 		
+		//Case 1: Node has no children.
+		if (node.getLeft() == null && node.getRight() == null)
+			node = null;
+		//Case 2: Node has exactly one child.
+		else if (node.getLeft() != null){
+			node.getLeft().setParent(null);
+			rootNode = node.getLeft();
+			node = null;
+		}
+		else if (node.getRight() != null){
+			node.getRight().setParent(null);
+			rootNode = node.getRight();
+			node = null;
+		}
+		//Case 3: Node has two children.
+		else{
+			//Find the smallest node that is bigger than node selected
+			//for deletion.
+			Node successor = findSuccessor(node);
+			//Copy successor node into deleted node.
+			node = successor;
+			//If successor had a right child (it can't have a left if it was
+			//the smallest node), attach it to its grandparent.
+			if (successor.getRight() != null){
+				successor.getRight().setParent(successor.getParent());
+				successor.getParent().setLeft(successor.getRight());
+			}
+			//Finally, splay the parent of the node that was removed to 
+			//balance out the tree.
+			splay(successor.getParent(), successor.getParent().getParent());
+			successor = null;
+		}
 	}
 	
 	//splay method accepts the inserted/accessed node and its parent as
@@ -62,14 +99,12 @@ public class SplayTree {
 				parent.setLeft(node.getRight());
 				node.setRight(parent);
 				rootNode = node;
-		//		parent.setParent(node);
 			}
 			else if (root.getRight() == node){
 				parent.setParent(node);
 				parent.setRight(node.getLeft());
 				node.setLeft(parent);
 				rootNode = node;
-		//		parent.setParent(node);;
 			}
 		}
 		//Case 1: Zig zag (left child of right child or vice versa)
@@ -113,8 +148,11 @@ public class SplayTree {
 	//Standard binary search tree find method to determine locations
 	//of nodes in tree.
 	public Node find(Node n, Node root){
-		if (root != null && (n.getNodeValue() == root.getNodeValue()))
+		if (root != null && (n.getNodeValue() == root.getNodeValue())){
+			//Once the node is found, splay it to make it more accessible.
+			splay(root, root.getParent());
 			return root;
+		}	
 		else if (root != null){
 			if (n.getNodeValue() > root.getNodeValue()){
 				return find(n, root.getRight());
@@ -124,5 +162,14 @@ public class SplayTree {
 			}
 		}
 		return null;
+	}
+	//This is a helper method to aid with Case 3 in 
+	//removing a node.
+	public Node findSuccessor(Node root){
+		root = root.getRight();
+		while (root.getLeft() != null){
+			root = root.getLeft();
+		}
+		return root;
 	}
 }

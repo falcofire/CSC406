@@ -16,12 +16,11 @@ public class SplayTree {
 			rootNode = node;
 			return;
 		}
-		if (find(node, rootNode) == null){
+		if (find(node, rootNode) != node){
 			splayTree.add(node);
 			insert(node, rootNode);
 			splay(node, node.getParent());
 		}
-		
 	}
 	
 	//Standard binary search tree insert method.
@@ -48,25 +47,28 @@ public class SplayTree {
 		Node node = new Node(n);
 		//Find operation splays the specified node to the root.
 		node = find(node, rootNode);
-		//There are three cases that need to be accounted for for
+		//There are four cases that need to be accounted for for
 		//node removal.
 		
-		//Case 1: Node has no children.
+		//Case 1: Node is not present in the tree.
+		if (node.getNodeValue() != n)
+			return;
+		//Case 2: Node has no children.
 		if (node.getLeft() == null && node.getRight() == null)
 			node = null;
-		//Case 2: Node has exactly one child.
+		//Case 3: Node has exactly one child.
 		else if (node.getLeft() != null){
 			node.getLeft().setParent(null);
-			rootNode = node.getLeft();
+			rootNode.setNode(node.getLeft().getNodeValue());
 			node = null;
 		}
 		else if (node.getRight() != null){
 			node.getRight().setParent(null);
-			rootNode = node.getRight();
+			rootNode.setNode(node.getRight().getNodeValue());
 			node = null;
 		}
-		//Case 3: Node has two children.
-		else{
+		//Case 4: Node has two children.
+		else if (node.getRight() != null && node.getLeft() != null){
 			//Find the smallest node that is bigger than node selected
 			//for deletion.
 			Node successor = findSuccessor(node);
@@ -161,7 +163,10 @@ public class SplayTree {
 				return find(n, root.getLeft());
 			}
 		}
-		return null;
+		//Note that find() splays on the last node it touched and then
+		//returns that node if it doesn't find the node requested.
+		splay(n, n.getParent());
+		return n;
 	}
 	//This is a helper method to aid with Case 3 in 
 	//removing a node.

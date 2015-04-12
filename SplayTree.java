@@ -5,8 +5,8 @@ import java.util.*;
 //and searches.
 public class SplayTree {
 	
-	private ArrayList<Node> splayTree = new ArrayList<Node>();
-	private Node rootNode;
+	protected static ArrayList<Node> splayTree = new ArrayList<Node>();
+	protected static Node rootNode;
 	
 	public void put(int n){
 		//Create a node object with given integer.
@@ -16,7 +16,9 @@ public class SplayTree {
 			rootNode = node;
 			return;
 		}
-		if (find(node, rootNode) != node){
+		//Find returns the last node it touched if the specified
+		//node wasn't found.
+		if (find(node, rootNode).getNodeValue() != node.getNodeValue()){
 			splayTree.add(node);
 			insert(node, rootNode);
 			splay(node, node.getParent());
@@ -100,12 +102,14 @@ public class SplayTree {
 				parent.setParent(node);
 				parent.setLeft(node.getRight());
 				node.setRight(parent);
+				node.setParent(null);
 				rootNode = node;
 			}
 			else if (root.getRight() == node){
 				parent.setParent(node);
 				parent.setRight(node.getLeft());
 				node.setLeft(parent);
+				node.setParent(null);
 				rootNode = node;
 			}
 		}
@@ -157,16 +161,19 @@ public class SplayTree {
 		}	
 		else if (root != null){
 			if (n.getNodeValue() > root.getNodeValue()){
+				if (root.getRight() == null)
+					return root;
 				return find(n, root.getRight());
 			}
 			else{
+				if (root.getLeft() == null)
+					return root;
 				return find(n, root.getLeft());
 			}
 		}
 		//Note that find() splays on the last node it touched and then
 		//returns that node if it doesn't find the node requested.
-		splay(n, n.getParent());
-		return n;
+		return null;
 	}
 	//This is a helper method to aid with Case 3 in 
 	//removing a node.
@@ -177,4 +184,19 @@ public class SplayTree {
 		}
 		return root;
 	}
+	
+	protected static void printTree(Node root){
+		if (root == null)
+			return;
+		Tester.writer.print(root.getNodeValue() + "-->");
+		if (root.getLeft() != null)
+			Tester.writer.print(root.getLeft().getNodeValue());
+		if (root.getRight() != null)
+			Tester.writer.print(root.getRight().getNodeValue());
+		Tester.writer.println();
+		printTree(root.getLeft());
+		printTree(root.getRight());
+		return;
+	}
+	
 }

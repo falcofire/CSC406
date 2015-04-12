@@ -68,6 +68,8 @@ public class Tester {
 		while (fileScanner.hasNextInt()){
 			splay.put(fileScanner.nextInt());
 		}
+		Node root = SplayTree.rootNode;
+		SplayTree.printTree(root);
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 //		switch (gT){
 //			case AMWDG: AMWDG AMWDgraph = new AMWDG();

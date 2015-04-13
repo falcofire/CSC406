@@ -40,7 +40,6 @@ public class SplayTree {
 			Tester.writer.println("------------------------------------");
 		}
 	}
-	
 	//Standard binary search tree insert method.
 	public void insert(Node n, Node root){
 		if (n.getNodeValue() > root.getNodeValue()){
@@ -104,7 +103,6 @@ public class SplayTree {
 			successor = null;
 		}
 	}
-	
 	//splay method accepts the inserted/accessed node and its parent as
 	//"root" to determine if we are at the top of the tree or not.
 	public void splay(Node node, Node root){
@@ -258,5 +256,4 @@ public class SplayTree {
 		if (root.getRight() != null)
 			printTree(root.getRight());
 	}
-	
 }

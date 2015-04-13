@@ -200,7 +200,8 @@ public class SplayTree {
 		}
 		return root;
 	}
-	
+	//This method determines the number of nodes in a specified node's
+	//subtree (including the specified node).
 	protected static int findSize(Node n){
 		if (n.getLeft() != null){
 			sizeN++;
@@ -214,7 +215,7 @@ public class SplayTree {
 		sizeN = 1;
 		return size;
 	}
-	
+	//This method finds the rank of the specified node in the tree.
 	protected static int findRank(Node n){
 		int size = findSize(n);
 		int rank = (int) Math.log10(size);

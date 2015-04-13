@@ -1,4 +1,10 @@
-
+/*
+TUBB, ZACHARY
+CSC406 SPRING 2015
+ASSIGNMENT 4
+ASSIGNED: 27 MARCH 2015
+DUE: 15 APRIL 2015
+*/
 import java.util.*;
 //This class constructs a splay tree structure and
 //manipulates it appropriately for insertions, deletions

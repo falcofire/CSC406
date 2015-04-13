@@ -65,6 +65,7 @@ public class Tester {
 		}
 		
 		SplayTree splay = new SplayTree();
+		Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
 		while (fileScanner.hasNextInt()){
 			splay.put(fileScanner.nextInt());
 		}

@@ -130,7 +130,7 @@ public class SplayTree {
 			}
 		}
 		//Case 1: Zig zag (left child of right child or vice versa)
-		else if (grandParent.getLeft().getRight() == node){
+		else if (grandParent.getLeft() != null && grandParent.getLeft().getRight() == node){
 			node.setParent(grandParent);
 			grandParent.setLeft(node);
 			parent.setRight(node.getLeft());
@@ -140,7 +140,7 @@ public class SplayTree {
 			parent.setParent(node);
 			splay(node, node.getParent());
 		}
-		else if (grandParent.getRight().getLeft() == node){
+		else if (grandParent.getRight() != null && grandParent.getRight().getLeft() == node){
 			node.setParent(grandParent);
 			grandParent.setRight(node);
 			parent.setLeft(node.getRight());
@@ -154,15 +154,35 @@ public class SplayTree {
 		//Case 2: Zig zig (right child of right child or vice versa)
 		//Note that the parent must be manipulated before the designated
 		//splay node is manipulated in this case.
-		else if (grandParent.getRight().getRight() == node){
+		else if (grandParent.getRight() != null && grandParent.getRight().getRight() == node){
+			if (grandParent.getParent() != null){
+				parent.setParent(grandParent.getParent());
+				grandParent.getParent().setRight(parent);
+			}	
+			else{
+				parent.setParent(null);
+				rootNode = parent;
+			}
 			grandParent.setParent(parent);
-			parent.getLeft().setParent(grandParent);
+			if (parent.getLeft() != null)
+				parent.getLeft().setParent(grandParent);
+			grandParent.setRight(parent.getLeft());
 			parent.setLeft(grandParent);
 			splay(node, node.getParent());
 		}
-		else if (grandParent.getLeft().getLeft() == node){
+		else if (grandParent.getLeft() != null && grandParent.getLeft().getLeft() == node){
+			if (grandParent.getParent() != null){
+				parent.setParent(grandParent.getParent());
+				grandParent.getParent().setLeft(parent);
+			}
+			else{
+				parent.setParent(null);
+				rootNode = parent;
+			}	
 			grandParent.setParent(parent);
-			parent.getRight().setParent(grandParent);
+			if (parent.getRight() != null)
+				parent.getRight().setParent(grandParent);
+			grandParent.setLeft(parent.getRight());
 			parent.setRight(grandParent);
 			splay(node, node.getParent());
 		}
@@ -218,8 +238,8 @@ public class SplayTree {
 	//This method finds the rank of the specified node in the tree.
 	protected static int findRank(Node n){
 		int size = findSize(n);
-		int rank = (int) Math.log10(size);
-		return rank;
+		float rank = (float) Math.ceil(Math.log10(size));
+		return (int)rank;
 	}
 	
 	protected static void printTree(Node root){

@@ -7,6 +7,7 @@ public class SplayTree {
 	
 	protected static ArrayList<Node> splayTree = new ArrayList<Node>();
 	protected static Node rootNode;
+	protected static int sizeN = 1;
 	
 	public void put(int n){
 		//Create a node object with given integer.
@@ -26,12 +27,17 @@ public class SplayTree {
 			//Print
 			Tester.writer.println("After inserting " + node.getNodeValue());
 			printTree(node.getParent());
+			Tester.writer.println("n(" + node.getNodeValue() + ") =" + findSize(node));
+			Tester.writer.println("r(" + node.getNodeValue() + ") =" + findRank(node));
 			Tester.writer.println();
 			//Splay the inserted node.
 			splay(node, node.getParent());
 			//Print
 			Tester.writer.println("After splaying  " + node.getNodeValue());
 			printTree(node);
+			Tester.writer.println("n'(" + node.getNodeValue() + ") =" + findSize(node));
+			Tester.writer.println("r'(" + node.getNodeValue() + ") =" + findRank(node));
+			Tester.writer.println("------------------------------------");
 		}
 	}
 	
@@ -193,6 +199,26 @@ public class SplayTree {
 			root = root.getLeft();
 		}
 		return root;
+	}
+	
+	protected static int findSize(Node n){
+		if (n.getLeft() != null){
+			sizeN++;
+			return findSize(n.getLeft());
+		}
+		if (n.getRight() != null){
+			sizeN++;
+			return findSize(n.getRight());
+		}
+		int size = sizeN;
+		sizeN = 1;
+		return size;
+	}
+	
+	protected static int findRank(Node n){
+		int size = findSize(n);
+		int rank = (int) Math.log10(size);
+		return rank;
 	}
 	
 	protected static void printTree(Node root){

@@ -19,9 +19,19 @@ public class SplayTree {
 		//Find returns the last node it touched if the specified
 		//node wasn't found.
 		if (find(node, rootNode).getNodeValue() != node.getNodeValue()){
+			//Add node to collection.
 			splayTree.add(node);
+			//Perform binary search tree insert.
 			insert(node, rootNode);
+			//Print
+			Tester.writer.println("After inserting " + node.getNodeValue());
+			printTree(node.getParent());
+			Tester.writer.println();
+			//Splay the inserted node.
 			splay(node, node.getParent());
+			//Print
+			Tester.writer.println("After splaying  " + node.getNodeValue());
+			printTree(node);
 		}
 	}
 	
@@ -75,7 +85,7 @@ public class SplayTree {
 			//for deletion.
 			Node successor = findSuccessor(node);
 			//Copy successor node into deleted node.
-			node = successor;
+			node.setNode(successor.getNodeValue());
 			//If successor had a right child (it can't have a left if it was
 			//the smallest node), attach it to its grandparent.
 			if (successor.getRight() != null){
@@ -186,17 +196,20 @@ public class SplayTree {
 	}
 	
 	protected static void printTree(Node root){
-		if (root == null)
-			return;
-		Tester.writer.print(root.getNodeValue() + "-->");
-		if (root.getLeft() != null)
-			Tester.writer.print(root.getLeft().getNodeValue());
-		if (root.getRight() != null)
-			Tester.writer.print(root.getRight().getNodeValue());
+		if (root.getLeft() != null || root.getRight() != null)
+			Tester.writer.print("\n" + root.getNodeValue());
+		if (root.getRight() != null){
+			Tester.writer.print("--" + root.getRight().getNodeValue());
+		}
+		if (root.getLeft() != null){
+			Tester.writer.println();
+			Tester.writer.print(" \\_" + root.getLeft().getNodeValue());
+		}
 		Tester.writer.println();
-		printTree(root.getLeft());
-		printTree(root.getRight());
-		return;
+		if (root.getLeft() != null)
+			printTree(root.getLeft());
+		if (root.getRight() != null)
+			printTree(root.getRight());
 	}
 	
 }

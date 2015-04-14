@@ -66,7 +66,7 @@ public class SplayTree {
 		}
 	}
 	
-	public void remove(int n){
+	protected void remove(int n){
 		Node node = new Node(n);
 		//Find operation splays the specified node to the root.
 		node = find(node, rootNode);
@@ -79,18 +79,7 @@ public class SplayTree {
 		//Case 2: Node has no children.
 		if (node.getLeft() == null && node.getRight() == null)
 			node = null;
-		//Case 3: Node has exactly one child.
-		else if (node.getLeft() != null){
-			node.getLeft().setParent(null);
-			rootNode.setNode(node.getLeft().getNodeValue());
-			node = null;
-		}
-		else if (node.getRight() != null){
-			node.getRight().setParent(null);
-			rootNode.setNode(node.getRight().getNodeValue());
-			node = null;
-		}
-		//Case 4: Node has two children.
+		//Case 3: Node has two children.
 		else if (node.getRight() != null && node.getLeft() != null){
 			//Find the smallest node that is bigger than node selected
 			//for deletion.
@@ -103,10 +92,24 @@ public class SplayTree {
 				successor.getRight().setParent(successor.getParent());
 				successor.getParent().setLeft(successor.getRight());
 			}
+			else
+				successor.getParent().setLeft(null);
 			//Finally, splay the parent of the node that was removed to 
 			//balance out the tree.
-			splay(successor.getParent(), successor.getParent().getParent());
+			//splay(successor.getParent(), successor.getParent().getParent());
+			successor.setParent(null);
 			successor = null;
+		}
+		//Case 4: Node has exactly one child.
+		else if (node.getLeft() != null){
+			node.getLeft().setParent(null);
+			rootNode.setNode(node.getLeft().getNodeValue());
+			node = null;
+		}
+		else if (node.getRight() != null){
+			node.getRight().setParent(null);
+			rootNode.setNode(node.getRight().getNodeValue());
+			node = null;
 		}
 	}
 	//splay method accepts the inserted/accessed node and its parent as
@@ -175,22 +178,6 @@ public class SplayTree {
 			node.setParent(grandParent);
 			grandParent.setRight(node);
 			splay(node, node.getParent());
-			
-			
-//			if (grandParent.getParent() != null){
-//				parent.setParent(grandParent.getParent());
-//				grandParent.getParent().setRight(parent);
-//			}	
-//			else{
-//				parent.setParent(null);
-//				rootNode = parent;
-//			}
-//			grandParent.setParent(parent);
-//			if (parent.getLeft() != null)
-//				parent.getLeft().setParent(grandParent);
-//			grandParent.setRight(parent.getLeft());
-//			parent.setLeft(grandParent);
-//			splay(node, node.getParent());
 			return;
 		}
 		else if (grandParent.getLeft() != null && grandParent.getLeft().getLeft() == node){
@@ -204,21 +191,6 @@ public class SplayTree {
 			grandParent.setLeft(node);
 			splay(node, node.getParent());
 			return;
-			
-//			if (grandParent.getParent() != null){
-//				parent.setParent(grandParent.getParent());
-//				grandParent.getParent().setLeft(parent);
-//			}
-//			else{
-//				parent.setParent(null);
-//				rootNode = parent;
-//			}	
-//			grandParent.setParent(parent);
-//			if (parent.getRight() != null)
-//				parent.getRight().setParent(grandParent);
-//			grandParent.setLeft(parent.getRight());
-//			parent.setRight(grandParent);
-//			splay(node, node.getParent());
 		}
 	}
 	//Standard binary search tree find method to determine locations

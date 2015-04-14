@@ -36,11 +36,11 @@ public class Tester {
 			throw new GraphExceptions("Cannot find that file.");
 		}
 		//Reads in first string from file to determine the graph type.
-		type = fileScanner.next();
+		//type = fileScanner.next();
 		//Reads in first integer from file to determine how many nodes are in graph (add 1 to account for not ever referencing a 0th node).
-		size = fileScanner.nextInt() + 1;
+		//size = fileScanner.nextInt() + 1;
 		//Reads in next integer from file to determine how many edges are in the graph.
-		numEdges = fileScanner.nextInt();
+		//numEdges = fileScanner.nextInt();
 	}//End setUp
 	
 	public static void main(String[] args) throws GraphExceptions{
@@ -57,20 +57,24 @@ public class Tester {
 			e1.printStackTrace();
 		}
 		
-		for (GraphTypes graph: GraphTypes.values()){
-			if (type.equals(graph.getValue())){
-				gT = graph;
-				break;
-			}
-		}
+//		for (GraphTypes graph: GraphTypes.values()){
+//			if (type.equals(graph.getValue())){
+//				gT = graph;
+//				break;
+//			}
+//		}
 		
 		SplayTree splay = new SplayTree();
 		Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
 		while (fileScanner.hasNextInt()){
 			splay.put(fileScanner.nextInt());
 		}
-		Node root = SplayTree.rootNode;
-		SplayTree.printTree(root);
+		Tester.writer.println("Final tree");
+		SplayTree.printTree(SplayTree.rootNode);
+		Tester.writer.println("------------------------------------");
+		splay.remove(3);
+		Tester.writer.println("After removing 3");
+		SplayTree.printTree(SplayTree.rootNode);
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 //		switch (gT){
 //			case AMWDG: AMWDG AMWDgraph = new AMWDG();

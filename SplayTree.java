@@ -32,7 +32,7 @@ public class SplayTree {
 			insert(node, rootNode);
 			//Print
 			Tester.writer.println("After inserting " + node.getNodeValue());
-			printTree(node.getParent());
+			printTree(rootNode);
 			Tester.writer.println("n(" + node.getNodeValue() + ") =" + findSize(node));
 			Tester.writer.println("r(" + node.getNodeValue() + ") =" + findRank(node));
 			Tester.writer.println();
@@ -40,9 +40,9 @@ public class SplayTree {
 			splay(node, node.getParent());
 			//Print
 			Tester.writer.println("After splaying  " + node.getNodeValue());
-			printTree(node);
-			Tester.writer.println("n'(" + node.getNodeValue() + ") =" + findSize(node));
-			Tester.writer.println("r'(" + node.getNodeValue() + ") =" + findRank(node));
+			printTree(rootNode);
+			Tester.writer.println("n'(" + node.getNodeValue() + ") = " + findSize(node));
+			Tester.writer.println("r'(" + node.getNodeValue() + ") = " + findRank(node));
 			Tester.writer.println("------------------------------------");
 		}
 	}
@@ -116,11 +116,13 @@ public class SplayTree {
 		//ensure proper splaying.
 		Node parent = node.getParent();
 		Node grandParent = parent.getParent();
-		//Case 3: Zig (left or right child of root)
+		//Case 1: Zig (left or right child of root)
 		if (root == rootNode){
 			if (root.getLeft() == node){
 				parent.setParent(node);
 				parent.setLeft(node.getRight());
+				if (node.getRight() != null)
+					node.getRight().setParent(parent);
 				node.setRight(parent);
 				node.setParent(null);
 				rootNode = node;
@@ -128,12 +130,15 @@ public class SplayTree {
 			else if (root.getRight() == node){
 				parent.setParent(node);
 				parent.setRight(node.getLeft());
+				if (node.getLeft() != null)
+					node.getLeft().setParent(parent);
 				node.setLeft(parent);
 				node.setParent(null);
 				rootNode = node;
 			}
+			return;
 		}
-		//Case 1: Zig zag (left child of right child or vice versa)
+		//Case 2: Zig zag (left child of right child or vice versa)
 		else if (grandParent.getLeft() != null && grandParent.getLeft().getRight() == node){
 			node.setParent(grandParent);
 			grandParent.setLeft(node);
@@ -143,6 +148,7 @@ public class SplayTree {
 			node.setLeft(parent);
 			parent.setParent(node);
 			splay(node, node.getParent());
+			return;
 		}
 		else if (grandParent.getRight() != null && grandParent.getRight().getLeft() == node){
 			node.setParent(grandParent);
@@ -153,42 +159,66 @@ public class SplayTree {
 			node.setRight(parent);
 			parent.setParent(node);
 			splay(node, node.getParent());
+			return;
 		}
 		
-		//Case 2: Zig zig (right child of right child or vice versa)
+		//Case 3: Zig zig (right child of right child or vice versa)
 		//Note that the parent must be manipulated before the designated
 		//splay node is manipulated in this case.
 		else if (grandParent.getRight() != null && grandParent.getRight().getRight() == node){
-			if (grandParent.getParent() != null){
-				parent.setParent(grandParent.getParent());
-				grandParent.getParent().setRight(parent);
-			}	
-			else{
-				parent.setParent(null);
-				rootNode = parent;
-			}
-			grandParent.setParent(parent);
-			if (parent.getLeft() != null)
-				parent.getLeft().setParent(grandParent);
-			grandParent.setRight(parent.getLeft());
-			parent.setLeft(grandParent);
+
+			parent.setRight(node.getLeft());
+			if (node.getLeft() != null)
+				node.getLeft().setParent(parent);
+			parent.setParent(node);
+			node.setLeft(parent);
+			node.setParent(grandParent);
+			grandParent.setRight(node);
 			splay(node, node.getParent());
+			
+			
+//			if (grandParent.getParent() != null){
+//				parent.setParent(grandParent.getParent());
+//				grandParent.getParent().setRight(parent);
+//			}	
+//			else{
+//				parent.setParent(null);
+//				rootNode = parent;
+//			}
+//			grandParent.setParent(parent);
+//			if (parent.getLeft() != null)
+//				parent.getLeft().setParent(grandParent);
+//			grandParent.setRight(parent.getLeft());
+//			parent.setLeft(grandParent);
+//			splay(node, node.getParent());
+			return;
 		}
 		else if (grandParent.getLeft() != null && grandParent.getLeft().getLeft() == node){
-			if (grandParent.getParent() != null){
-				parent.setParent(grandParent.getParent());
-				grandParent.getParent().setLeft(parent);
-			}
-			else{
-				parent.setParent(null);
-				rootNode = parent;
-			}	
-			grandParent.setParent(parent);
-			if (parent.getRight() != null)
-				parent.getRight().setParent(grandParent);
-			grandParent.setLeft(parent.getRight());
-			parent.setRight(grandParent);
+			
+			parent.setLeft(node.getRight());
+			if (node.getRight() != null)
+				node.getRight().setParent(parent);
+			parent.setParent(node);
+			node.setRight(parent);
+			node.setParent(grandParent);
+			grandParent.setLeft(node);
 			splay(node, node.getParent());
+			return;
+			
+//			if (grandParent.getParent() != null){
+//				parent.setParent(grandParent.getParent());
+//				grandParent.getParent().setLeft(parent);
+//			}
+//			else{
+//				parent.setParent(null);
+//				rootNode = parent;
+//			}	
+//			grandParent.setParent(parent);
+//			if (parent.getRight() != null)
+//				parent.getRight().setParent(grandParent);
+//			grandParent.setLeft(parent.getRight());
+//			parent.setRight(grandParent);
+//			splay(node, node.getParent());
 		}
 	}
 	//Standard binary search tree find method to determine locations
@@ -227,17 +257,11 @@ public class SplayTree {
 	//This method determines the number of nodes in a specified node's
 	//subtree (including the specified node).
 	protected static int findSize(Node n){
-		if (n.getLeft() != null){
-			sizeN++;
-			return findSize(n.getLeft());
-		}
-		if (n.getRight() != null){
-			sizeN++;
-			return findSize(n.getRight());
-		}
-		int size = sizeN;
-		sizeN = 1;
-		return size;
+		if (n == null) 
+			return(0); 
+		else { 
+		    return(findSize(n.getLeft()) + 1 + findSize(n.getRight())); 
+		} 
 	}
 	//This method finds the rank of the specified node in the tree.
 	protected static int findRank(Node n){

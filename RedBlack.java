@@ -71,10 +71,6 @@ public class RedBlack {
 	//violation if there is one.
 	private void updateTree(Node n, Node root){
 		if (root != null){
-			//Violation 1: rootNode is red.
-			if (rootNode.getColor() == Node.NodeColor.Red){
-				rootNode.setColor(Node.NodeColor.Black);
-			}
 			//Violation 2: red-red violation.
 			if ((root.getColor() == Node.NodeColor.Red) && (n.getColor() == Node.NodeColor.Red)){
 				//root is the right child of grandparent.
@@ -91,11 +87,23 @@ public class RedBlack {
 						root.getParent().setColor(Node.NodeColor.Red);
 						//n is left child of root. Do RL rotation.
 						if (root.getLeft() == n){
-							
+							n.setParent(root.getParent());
+							root.getParent().setRight(n);
+							root.setLeft(n.getRight());
+							if (n.getRight() != null)
+								n.getRight().setParent(root);
+							n.setRight(root);
+							root.setParent(n);
 						}
 						//n is right child of root. Do RR rotation.
 						else{
-							
+							root.setRight(n.getLeft());
+							if (n.getLeft() != null)
+								n.getLeft().setParent(root);
+							root.setParent(n);
+							n.setLeft(root);
+							n.setParent(root.getParent());
+							root.getParent().setRight(n);
 						}
 					}
 				}
@@ -113,17 +121,33 @@ public class RedBlack {
 						root.getParent().setColor(Node.NodeColor.Red);
 						//n is left child of root. Do LL rotation.
 						if (root.getLeft() == n){
-							
+							root.setLeft(n.getRight());
+							if (n.getRight() != null)
+								n.getRight().setParent(root);
+							root.setParent(n);
+							n.setRight(root);
+							n.setParent(root.getParent());
+							root.getParent().setLeft(n);
 						}
 						//n is right child of root. Do LR rotation.
 						else{
-							
+							n.setParent(root.getParent());
+							root.getParent().setLeft(n);
+							root.setRight(n.getLeft());
+							if (n.getLeft() != null)
+								n.getLeft().setParent(root);
+							n.setLeft(root);
+							root.setParent(n);
 						}
 					}
 				}
 				
-			}//End Violation 2
-			return;
+			}
+			//Violation 1: rootNode is red.
+			if (rootNode.getColor() == Node.NodeColor.Red){
+				rootNode.setColor(Node.NodeColor.Black);
+			}
+			updateTree(root, root.getParent());
 		}
 		return;
 	}//End updateTree

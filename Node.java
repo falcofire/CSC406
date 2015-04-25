@@ -30,12 +30,8 @@ public class Node {
 		this.value = value;
 	}
 	
-	protected void setColor(Node n, String nodeColor){
-		for (NodeColor enumColor: NodeColor.values()){
-			if (nodeColor.equals(enumColor.getColor())){
-				this.color = enumColor;
-			}
-		}	
+	protected void setColor(NodeColor nodeColor){
+		this.color = nodeColor;
 	}
 	
 	protected void setParent(Node n){

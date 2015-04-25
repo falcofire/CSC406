@@ -5,9 +5,10 @@ public class Node {
 	private Node left;
 	private Node right;
 	private Node parent;
+	private NodeColor color;
 	
 	//Constructor that is used to create Nodes in the weighted graphs.
-	protected Node (int nextNode, int weight){
+	protected Node(int nextNode, int weight){
 		setNode(nextNode);
 		setWeight(weight);
 		
@@ -29,6 +30,14 @@ public class Node {
 		this.value = value;
 	}
 	
+	protected void setColor(Node n, String nodeColor){
+		for (NodeColor enumColor: NodeColor.values()){
+			if (nodeColor.equals(enumColor.getColor())){
+				this.color = enumColor;
+			}
+		}	
+	}
+	
 	protected void setParent(Node n){
 		this.parent = n;
 	}
@@ -39,6 +48,10 @@ public class Node {
 	
 	private void setWeight(int value){
 		this.weight = value;
+	}
+	
+	protected NodeColor getColor(Node n){
+		return this.color;
 	}
 	
 	protected Node getLeft(){
@@ -67,4 +80,15 @@ public class Node {
 		return false;
 	}
 
+	//Enums used to set and determine Node color.
+	public enum NodeColor{
+		Red("red"),Black("black");
+		private String color;
+		private NodeColor(String color){
+			this.color = color;
+		}
+		public String getColor(){
+			return this.color;
+		}
+	}
 }//End Node

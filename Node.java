@@ -46,7 +46,7 @@ public class Node {
 		this.weight = value;
 	}
 	
-	protected NodeColor getColor(Node n){
+	protected NodeColor getColor(){
 		return this.color;
 	}
 	

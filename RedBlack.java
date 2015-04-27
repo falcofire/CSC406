@@ -87,7 +87,7 @@ public class RedBlack {
 			Node grandParent = parent.getParent();
 			//Violation 2: red-red violation.
 			if ((parent.getColor() == Node.NodeColor.Red) && (n.getColor() == Node.NodeColor.Red)){
-				//root is the right child of grandparent.
+				//parent is the right child of grandparent.
 				if (grandParent.getRight() == parent){
 					//Case 1: uncle node is red - RECOLOR
 					if ((grandParent.getLeft() != null) && (grandParent.getLeft().getColor() == Node.NodeColor.Red)){
@@ -119,9 +119,11 @@ public class RedBlack {
 							n.setParent(grandParent);
 							grandParent.setRight(n);
 						}
+						if (parent == rootNode)
+							n = rootNode;
 					}
 				}
-				//root is the left child of grandparent.
+				//parent is the left child of grandparent.
 				else if (grandParent.getLeft() == parent){
 					//Case 1 - RECOLOR
 					if ((grandParent.getRight() != null) && (grandParent.getRight().getColor() == Node.NodeColor.Red)){
@@ -153,6 +155,8 @@ public class RedBlack {
 							n.setLeft(parent);
 							parent.setParent(n);
 						}
+						if (parent == rootNode)
+							n = rootNode;
 					}
 				}
 				

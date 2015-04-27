@@ -124,6 +124,7 @@ public class HuffmanEncode {
 	}
 	
 	protected void printTree(Node root){
+		Tester.writer.println();
 		if (root.getLeft() == null && root.getRight() == null){
 			Tester.writer.print(root.getParent().getFreq());
 			if (root.getParent().getLeft() == root)

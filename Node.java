@@ -2,10 +2,12 @@ public class Node {
 	
 	private int value;
 	private int weight;
+	private int frequency;
 	private Node left;
 	private Node right;
 	private Node parent;
 	private NodeColor color;
+	private char character;
 	
 	//Constructor that is used to create Nodes in the weighted graphs.
 	protected Node(int nextNode, int weight){
@@ -30,8 +32,16 @@ public class Node {
 		this.value = value;
 	}
 	
+	protected void setChar(char c){
+		this.character = c;
+	}
+	
 	protected void setColor(NodeColor nodeColor){
 		this.color = nodeColor;
+	}
+	
+	protected void setFreq(int i){
+		this.frequency = i;
 	}
 	
 	protected void setParent(Node n){
@@ -46,8 +56,16 @@ public class Node {
 		this.weight = value;
 	}
 	
+	protected char getChar(){
+		return this.character;
+	}
+	
 	protected NodeColor getColor(){
 		return this.color;
+	}
+	
+	protected int getFreq(){
+		return this.frequency;
 	}
 	
 	protected Node getLeft(){

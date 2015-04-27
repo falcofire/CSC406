@@ -64,12 +64,20 @@ public class Tester {
 //			}
 //		}
 		
-		RedBlack RBTree = new RedBlack();
-		Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
-		while (fileScanner.hasNextInt()){
-			RBTree.put(fileScanner.nextInt());
+		String message = new String();
+		while (fileScanner.hasNextLine()){
+			message += (fileScanner.nextLine());
 		}
-		RBTree.printTree(RBTree.rootNode);
+		HuffmanEncode huff = new HuffmanEncode(message);
+		
+//		RedBlack RBTree = new RedBlack();
+//		Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
+//		while (fileScanner.hasNextInt()){
+//			RBTree.put(fileScanner.nextInt());
+//		}
+//		RBTree.printTree(RBTree.rootNode);
+		
+		
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 //		switch (gT){
 //			case AMWDG: AMWDG AMWDgraph = new AMWDG();

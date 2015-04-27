@@ -47,6 +47,7 @@ public class Tester {
 		setUp();
 		testMain();
 	}
+	@SuppressWarnings("unused")
 	@Test
 	public static void testMain() {
 		try {

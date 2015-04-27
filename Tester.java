@@ -64,17 +64,12 @@ public class Tester {
 //			}
 //		}
 		
-		SplayTree splay = new SplayTree();
+		RedBlack RBTree = new RedBlack();
 		Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
 		while (fileScanner.hasNextInt()){
-			splay.put(fileScanner.nextInt());
+			RBTree.put(fileScanner.nextInt());
 		}
-		Tester.writer.println("Final tree");
-		SplayTree.printTree(SplayTree.rootNode);
-		Tester.writer.println("------------------------------------");
-		splay.remove(3);
-		Tester.writer.println("After removing 3");
-		SplayTree.printTree(SplayTree.rootNode);
+		RBTree.printTree(RBTree.rootNode);
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 //		switch (gT){
 //			case AMWDG: AMWDG AMWDgraph = new AMWDG();

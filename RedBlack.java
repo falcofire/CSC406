@@ -1,4 +1,13 @@
+/*
+TUBB, ZACHARY
+CSC406 SPRING 2015
+ASSIGNMENT 5
+ASSIGNED: 18 APRIL 2015
+DUE: 29 APRIL 2015
+*/
 
+//This class reads in integers and creates Node objects.
+//It then stores them in a self-balancing Red-Black tree.
 public class RedBlack {
 
 	protected static Node rootNode;

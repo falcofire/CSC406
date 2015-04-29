@@ -64,20 +64,24 @@ public class Tester {
 //				break;
 //			}
 //		}
-		
-		String message = new String();
-		while (fileScanner.hasNextLine()){
-			message += (fileScanner.nextLine());
+		System.out.println("Enter 1 to conduct Huffman encoding or 2 to construct red-black tree.");
+		int choice = scanner.nextInt();
+		if (choice == 1){
+			String message = new String();
+			while (fileScanner.hasNextLine()){
+				message += (fileScanner.nextLine());
+			}
+			HuffmanEncode huff = new HuffmanEncode(message);
 		}
-		HuffmanEncode huff = new HuffmanEncode(message);
-		
-//		RedBlack RBTree = new RedBlack();
-//		Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
-//		while (fileScanner.hasNextInt()){
-//			RBTree.put(fileScanner.nextInt());
-//		}
-//		RBTree.printTree(RBTree.rootNode);
-		
+		else if (choice == 2){
+			RedBlack RBTree = new RedBlack();
+			Tester.writer.println("'--' denotes a right child, '\\_' denotes a left child.\n");
+			while (fileScanner.hasNextInt()){
+				RBTree.put(fileScanner.nextInt());
+			}
+			RBTree.printTree(RedBlack.rootNode);
+			
+		}
 		
 		//Switch here creates appropriate graph object and manipulates with test method calls from this class.
 //		switch (gT){
